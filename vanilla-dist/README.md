@@ -7,7 +7,6 @@
 [![Vanilla HTML5](https://img.shields.io/badge/HTML5-Sem%C3%A1ntico-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/es/docs/Web/HTML)
 [![Vanilla CSS](https://img.shields.io/badge/CSS3-Puro_%26_Tokens-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/es/docs/Web/CSS)
 [![Vanilla JS](https://img.shields.io/badge/JavaScript-ES6%2B_Nativo-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/es/docs/Web/JavaScript)
-[![Version](https://img.shields.io/badge/Versi%C3%B3n-v1.2.0-FF4DA6?style=for-the-badge)](CHANGELOG.md)
 [![Lighthouse](https://img.shields.io/badge/Lighthouse-100%2F100-success?style=for-the-badge&logo=googlechrome&logoColor=white)](https://developers.google.com/web/tools/lighthouse)
 [![License: MIT](https://img.shields.io/badge/License-MIT-E4007C?style=for-the-badge)](LICENSE)
 
@@ -29,21 +28,10 @@ Maclovia representa una filosofía de software enfocada en **rendimiento extremo
 
 ```text
 maclovia-belleza-maldita/
-├── index.html                   # Esqueleto semántico modular (App Shell ~30 líneas)
-├── CHANGELOG.md                 # Registro histórico de versiones y cambios (SemVer)
-├── vite.config.js               # Plugin nativo de ensamble de parciales HTML y dev server
+├── index.html                   # Punto de entrada HTML5 semántico
+├── vite.config.js               # Entorno de desarrollo local ultra-rápido (Puerto 3000)
 ├── package.json                 # Scripts de desarrollo, compilación y linter sintáctico
 ├── metadata.json                # Configuración de runtime y capacidades de plataforma
-├── src/
-│   └── partials/                # Componentes HTML desacoplados y modulares
-│       ├── head.html            # Metatags, OpenGraph, fuentes y estilos
-│       ├── navbar.html          # Barra de navegación, branding y controles
-│       ├── hero.html            # Portada, manifiesto, conmutador de marca y CTA
-│       ├── team.html            # Perfil ejecutivo del CEO Erick Jonathan Aguilar
-│       ├── portfolio.html       # Grid de proyectos certificados y filtros
-│       ├── guidelines.html      # Manual de identidad, mockups en vivo y tokens
-│       ├── toolkit.html         # Banco interactivo de SVG con variantes Light/Dark
-│       └── footer.html          # Pie de página de 4 pilares, SLA y enlaces
 ├── css/
 │   └── style.css                # Sistema de diseño completo (Variables CSS, tipografía, layouts)
 ├── js/

@@ -1,0 +1,6 @@
+{
+  "name": "Maclovia / Belleza Maldita",
+  "description": "Minimalist dark landing page for a development group.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

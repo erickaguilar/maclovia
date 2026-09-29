@@ -1,0 +1,33 @@
+    <div id="portfolio"></div>
+    <!-- Engineering Portfolio & Open Source Laboratory -->
+    <section id="portfolio-section" class="container section-padding" style="overflow: hidden; width: 100%; max-width: 1200px; box-sizing: border-box;">
+      <div class="section-header">
+        <div class="section-tag">
+          <span style="width: 14px; height: 2px; background-color: var(--color-rosa-chilango);"></span>
+          <span data-i18n="portfolio.badge">PORTAFOLIO DE INGENIERÍA & OPEN SOURCE</span>
+        </div>
+        <h2 class="section-title">
+          <span data-i18n="portfolio.title">Laboratorio de Software</span>
+          <span class="font-cookie text-rosa" style="font-size: 2.25rem;" data-i18n="portfolio.titleAccent">GitHub</span>
+        </h2>
+        <p class="section-desc" data-i18n="portfolio.desc">
+          Repositorios y módulos de código abiertos certificados liderados por Erick Jonathan Aguilar García.
+        </p>
+      </div>
+
+      <!-- Category Filter Pills with Module Count -->
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 2rem;">
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+          <button class="btn btn-primary" data-filter="all" data-i18n="portfolio.filterAll">Todos los Proyectos</button>
+          <button class="btn btn-secondary" data-filter="maclovia" data-i18n="portfolio.filterMaclovia">Maclovia Core (Sistemas)</button>
+          <button class="btn btn-secondary" data-filter="belleza" data-i18n="portfolio.filterBelleza">Belleza Maldita (Web & WASM)</button>
+        </div>
+        <div class="font-mono text-muted" style="font-size: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+          <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-cpu"></use></svg>
+          <span id="portfolio-project-count">4 módulos certificados</span>
+        </div>
+      </div>
+
+      <!-- Projects Grid rendered dynamically via js/main.js -->
+      <div id="portfolio-grid-container" class="portfolio-grid"></div>
+    </section>
