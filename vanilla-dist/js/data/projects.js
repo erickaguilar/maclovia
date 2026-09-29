@@ -46,6 +46,49 @@ export const PROJECTS = [
     }
   },
   {
+    id: 'runa-y-piedra',
+    name: 'Runa y Piedra: Mazmorra Vóxel Cooperativa P2P',
+    repoName: 'erickaguilar/runa-y-piedra',
+    category: 'belleza',
+    badgeCategoryEs: 'BELLEZA MALDITA · WEBGL & P2P 3D',
+    badgeCategoryEn: 'BELLEZA MALDITA · WEBGL & P2P 3D',
+    taglineEs: 'Mazmorra vóxel cooperativa multijugador 3D en tiempo real con WebRTC dual-channel y motor WebGL a 60 FPS.',
+    taglineEn: 'Real-time multiplayer 3D voxel cooperative dungeon powered by dual-channel WebRTC and 60 FPS WebGL engine.',
+    descriptionEs: 'Experiencia multijugador 3D cooperativa en tiempo real para smartphones y escritorio con arquitectura listen-server P2P sobre WebRTC. Toda la mazmorra se renderiza en un único THREE.InstancedMesh (< 25 draw calls) con audio procedural sintetizado por Web Audio API, predicción de clientes y sincronización sin servidores centrales.',
+    descriptionEn: 'Real-time cooperative 3D multiplayer dungeon for smartphones and desktop with P2P listen-server architecture over WebRTC. The entire dungeon renders inside a single THREE.InstancedMesh (< 25 draw calls) featuring synthesized procedural audio via Web Audio API, client reconciliation, and zero server infrastructure cost.',
+    primaryLanguage: 'JavaScript / WebGL',
+    techStack: ['WebGL 2.0', 'Three.js', 'WebRTC P2P', 'Listen-Server', 'InstancedMesh', 'Web Audio API'],
+    githubUrl: 'https://github.com/erickaguilar/runa-y-piedra',
+    demoUrl: 'https://runa-y-piedra.vercel.app/',
+    cloneCmd: 'git clone https://github.com/erickaguilar/runa-y-piedra.git',
+    architectureDetails: {
+      runtime: 'WebGL 2.0 + WebRTC Peer-to-Peer Browser Engine',
+      throughput: '60 FPS Móvil · Latencia P2P LAN < 5ms',
+      quantizationOrType: 'Instanced Voxel Meshing + Dual DataChannels',
+      cliExample: 'git clone https://github.com/erickaguilar/runa-y-piedra.git && npm install && npm run dev',
+      highlightsEs: [
+        'Arquitectura Listen-Server P2P: un navegador asume el rol de host autoritativo con $0 en costos de servidor.',
+        'Canales duales WebRTC: canal confiable para eventos y canal de alta frecuencia a 30 Hz para inputs sin head-of-line blocking.',
+        'Presupuesto de rendimiento móvil: menos de 25 draw calls en total renderizando el calabozo en un solo InstancedMesh.',
+        'Audio procedural sintetizado en tiempo real con Web Audio API sin descargas de activos pesados.',
+        'Conexión instantánea entre jugadores vía Web Share API (WhatsApp/Telegram), código QR dinámico y PIN de 4 dígitos.'
+      ],
+      highlightsEn: [
+        'P2P Listen-Server Architecture: one client browser acts as authoritative host with zero cloud server expenses.',
+        'Dual WebRTC DataChannels: guaranteed delivery for events and high-frequency 30 Hz hot channel for inputs without head-of-line blocking.',
+        'Strict mobile performance budget: under 25 total draw calls by rendering the dungeon in a single InstancedMesh.',
+        'Real-time procedural audio synthesis via Web Audio API without downloading heavy sound assets.',
+        'Instant player pairing using Web Share API (WhatsApp/Telegram), dynamic QR codes, and 4-digit room PINs.'
+      ],
+      benchmarks: [
+        { label: 'Rendimiento', value: '60 FPS', subtext: 'GPUs móviles estándar' },
+        { label: 'Draw Calls', value: '< 25', subtext: 'THREE.InstancedMesh' },
+        { label: 'Red P2P', value: '< 5ms', subtext: 'WebRTC directo sin server' },
+        { label: 'Costo Servidor', value: '$0 / mes', subtext: 'Host descentralizado' }
+      ]
+    }
+  },
+  {
     id: 'valenquest',
     name: 'ValenQuest: Local-First Educational PWA',
     repoName: 'erickaguilar/ValenQuest',
