@@ -115,11 +115,28 @@ El proyecto incluye un banco de pruebas interactivo (**SVG Toolkit Workbench**) 
 
 El proyecto se puede alojar en cualquier plataforma de computación perimetral o servidor web tradicional:
 
-### 1. Cloudflare Pages / Vercel / Netlify
-* **Build Command:** `npm run build`
-* **Output Directory:** `dist` (o `vanilla-dist` si se opta por la versión sin bundler)
+### 1. Vercel (Zero-Config o Vía `vercel.json`)
+El repositorio incluye el archivo preconfigurado `vercel.json` con soporte para Vite, cabeceras de seguridad y enrutamiento SPA.
 
-### 2. GitHub Pages
+* **Opción A: Vercel CLI (Línea de Comandos)**
+  ```bash
+  # Instalar o ejecutar directamente Vercel CLI
+  npx vercel
+
+  # Despliegue directo a producción
+  npx vercel --prod
+  ```
+
+* **Opción B: Vercel Dashboard (Git Connect)**
+  1. Conecta el repositorio de GitHub en [vercel.com/new](https://vercel.com/new).
+  2. Vercel detectará automáticamente el preset **Vite**.
+  3. Los parámetros predeterminados son:
+     * **Framework Preset:** `Vite`
+     * **Build Command:** `npm run build`
+     * **Output Directory:** `dist`
+  4. Haz clic en **Deploy**.
+
+### 2. Cloudflare Pages / Netlify
 1. Aloja la carpeta `vanilla-dist/` o el contenido de `dist/` en la rama `gh-pages` o en `/docs`.
 2. Activa GitHub Pages en **Settings > Pages**.
 
