@@ -1,0 +1,149 @@
+/* ==========================================================================
+   MACLOVIA. Belleza Maldita — Resets, Base Elements & Typography
+   ========================================================================== */
+
+/* --- Resets & Base Elements --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  overflow-x: hidden;
+  transition: background-color var(--transition-smooth), color var(--transition-smooth);
+}
+
+/* ==========================================================================
+   Custom Rosa Mexicano (Rosa Chilango #E4007C) Internal Scrollbars
+   ========================================================================== */
+
+/* Standards-compliant browsers (Firefox, Chrome 121+) */
+*, *::before, *::after {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-rosa-chilango) rgba(7, 7, 9, 0.75);
+}
+
+/* WebKit & Chromium-based browsers (Chrome, Edge, Safari, Opera) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(7, 7, 9, 0.85);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #FF4DA6 0%, #E4007C 50%, #B30062 100%);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 102, 184, 0.35);
+  box-shadow: 0 0 6px rgba(228, 0, 124, 0.35);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #FF66B8 0%, #FF1A8C 50%, #E4007C 100%);
+  box-shadow: 0 0 12px rgba(228, 0, 124, 0.85), inset 0 0 4px rgba(255, 255, 255, 0.4);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #E4007C;
+  box-shadow: 0 0 16px rgba(228, 0, 124, 1);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Light Theme Scrollbars Harmonization (Cosmic Latte) */
+[data-theme="light"] *,
+[data-theme="light"] *::before,
+[data-theme="light"] *::after {
+  scrollbar-color: var(--color-rosa-chilango) rgba(245, 238, 219, 0.95);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: rgba(245, 238, 219, 0.95);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #FF4DA6 0%, #E4007C 60%, #C2006A 100%);
+  border: 1px solid rgba(228, 0, 124, 0.4);
+  box-shadow: 0 0 4px rgba(228, 0, 124, 0.25);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #FF1A8C 0%, #C2006A 100%);
+  box-shadow: 0 0 10px rgba(228, 0, 124, 0.6);
+}
+
+/* Dedicated Utility Class for Enhanced Scrollable Panels */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-rosa-chilango) rgba(7, 7, 9, 0.75);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #FF4DA6 0%, #E4007C 100%);
+  border-radius: 4px;
+}
+
+/* --- SVG Icons Helper --- */
+.icon {
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  vertical-align: -0.15em;
+  flex-shrink: 0;
+}
+
+.icon-stroke {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* --- Typography Utilities --- */
+.font-abril { font-family: var(--font-editorial); }
+.font-cookie { font-family: var(--font-script); }
+.font-mono { font-family: var(--font-mono); }
+.font-sans { font-family: var(--font-sans); }
+
+.text-rosa { color: var(--color-rosa-chilango); }
+.text-muted { color: var(--text-muted); }
+.text-secondary { color: var(--text-secondary); }
+
+.glow-rosa {
+  filter: drop-shadow(0 0 16px rgba(228, 0, 124, 0.45));
+}
+
+[data-theme="light"] .glow-rosa {
+  filter: drop-shadow(0 4px 18px rgba(228, 0, 124, 0.42)) drop-shadow(0 2px 6px rgba(120, 95, 60, 0.22));
+}
+
+.glow-box-rosa {
+  box-shadow: var(--shadow-neon);
+}

@@ -1,4 +1,4 @@
-# 📜 Registro de Cambios (Changelog)
+# Registro de Cambios (Changelog)
 
 Todos los cambios notables en este proyecto serán documentados en este archivo.
 
@@ -8,9 +8,9 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ## [1.2.0] - 2026-09-28
 
-### 🚀 Añadido
+### Añadido
 - **Media Hub & Galería Multiaset (4 Formatos Oficiales):**
-  - Selector interactivo entre: *01. Isotipo Pentagonal Sigilo 'ꂵ'*, *02. Logotipo Horizontal Completo*, *03. Monograma Editorial CDMX*, y *04. Insignia de Certificación de Arquitectura de Sistemas*.
+  - Selector interactivo entre: *01. Isotipo Pentagonal Glifo Mexica Tepētl*, *02. Logotipo Horizontal Completo*, *03. Monograma Editorial CDMX*, y *04. Insignia de Certificación de Arquitectura de Sistemas*.
 - **Retícula Técnica & Blueprint de Proporciones (Clearspace Overlay):**
   - Alternador interactivo que superpone ejes de construcción matemáticos a 72° del pentágono regular, radios dorados concéntricos, zona de protección mínima ($1X$) y cotas técnicas.
 - **Exportador Multi-Formato & Favicon Kit:**
@@ -28,7 +28,7 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ## [1.1.0] - 2026-09-28
 
-### 🚀 Añadido
+### Añadido
 - **Arquitectura App Shell Modular:** Transformación de `index.html` en un esqueleto semántico ultraligero de solo ~35 líneas.
 - **Directorio de Parciales HTML (`src/partials/`):**
   - `head.html`: Metadatos semánticos, SEO, OpenGraph cards (1200×630), Twitter preview, preconnect a fuentes y tokens.
@@ -37,19 +37,19 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
   - `team.html`: Sección de perfil ejecutivo y liderazgo tecnológico de Erick Jonathan Aguilar García.
   - `portfolio.html`: Laboratorio de software y proyectos certificados en GitHub con filtrado dinámico por categoría.
   - `guidelines.html`: Manual de identidad con escenarios reales de producción (OpenGraph Card, CLI Banner, Consola DevTools en Navegador Web, Tarjeta Editorial Foil de 600g) y normativa de aplicación Do's & Don'ts.
-  - `toolkit.html`: Banco de pruebas interactivo (*SVG Workbench*) para el Sigilo MAT (`ꂵ`) con variantes cromáticas *Obsidiana* (Dark) y *Porcelana* (Light), redimensionado en vivo (32px-128px), alternador de animación y exportación instantánea en `.svg` o marcado XML.
+  - `toolkit.html`: Banco de pruebas interactivo (*SVG Workbench*) para el Glifo Mexica Tepētl con variantes cromáticas *Obsidiana* (Dark) y *Porcelana* (Light), redimensionado en vivo (32px-128px), alternador de animación y exportación instantánea en `.svg` o marcado XML.
   - `footer.html`: Pie de página editorial de 4 pilares, reloj en tiempo real para la Ciudad de México (CDMX), estado operativo 99.98% SLA y botón de retorno al inicio con scroll suave.
 - **Plugin de Compilación Nativo (`vite-plugin-html-partials`):** Integrado en `vite.config.js` sin librerías externas de npm, con resolución recursiva de directivas `<include src="..." />` y soporte para hot-reload en desarrollo.
 - **Documentación Centralizada (`README.md`):** Manifiesto de ingeniería, guía de desarrollo local, especificaciones de diseño y opciones de despliegue en la nube.
 - **Registro Oficial de Versiones (`CHANGELOG.md`):** Trazabilidad histórica según estándar SemVer.
 
-### 🔄 Cambiado
+### Cambiado
 - Reducción drástica del archivo `index.html` de 1,144 líneas a ~35 líneas (97% de reducción de complejidad en la raíz).
 - Sincronización automática de compilación hacia `dist/`, `vanilla-dist/index.html` y `public/vanilla/`.
 - Actualización de versión en `package.json` a `1.1.0`.
 - Actualización del script `vanilla-dist/deploy.sh` para empaquetar artefactos `v1.1.0`.
 
-### 🛡️ Rendimiento y Seguridad
+### Rendimiento y Seguridad
 - Mantenimiento estricto de **100/100 en todas las categorías de Google Lighthouse** (Performance, Accessibility, Best Practices, SEO).
 - Cero dependencias de framework en cliente (0 KB de React, Vue o polyfills externos).
 - Verificación de contraste WCAG AAA para la paleta Rosa Chilango (`#E4007C`) y fondos Obsidian (`#070707`) / Alabastro (`#FAF8F8`).
@@ -58,7 +58,7 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ## [1.0.0] - 2026-09-25
 
-### 🚀 Añadido
+### Añadido
 - **Lanzamiento Inicial de Producción:** Plataforma web oficial de **MACLOVIA. Belleza Maldita**.
 - **Sistema de Diseño en CSS Puro (`css/style.css`):**
   - Más de 1,300 líneas de estilos autónomos con variables CSS nativas (*design tokens*).

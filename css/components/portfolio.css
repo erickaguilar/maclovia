@@ -1,0 +1,427 @@
+/* ==========================================================================
+   MACLOVIA. Belleza Maldita — Engineering Portfolio & Live Telemetry
+   ========================================================================== */
+
+/* --- Engineering Portfolio Grid --- */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.portfolio-grid > * {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.project-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--transition-smooth);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.project-card:hover {
+  border-color: var(--color-rosa-border);
+  background-color: var(--bg-card-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.project-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-rosa-chilango);
+  margin-bottom: 0.5rem;
+  word-break: break-word;
+}
+
+.project-title {
+  font-family: var(--font-editorial);
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+.project-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+.terminal-box {
+  background-color: #07070a;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #e4e4e7;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+.terminal-box:hover {
+  border-color: var(--color-rosa-border);
+  box-shadow: 0 0 16px rgba(228, 0, 124, 0.12);
+}
+
+.terminal-box code {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  color: inherit;
+}
+
+.terminal-box code::before {
+  content: "$ ";
+  color: var(--color-rosa-chilango);
+  font-weight: 700;
+  margin-right: 0.4rem;
+  flex-shrink: 0;
+}
+
+.copy-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: color var(--transition-fast);
+}
+
+.copy-btn:hover {
+  color: var(--color-rosa-chilango);
+}
+
+.project-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.project-card-actions a,
+.project-card-actions button {
+  font-size: 0.7rem;
+  padding: 0.35rem 0.65rem;
+  white-space: nowrap;
+}
+
+/* --- GitHub Real-Time Telemetry Module --- */
+.github-telemetry-panel {
+  position: relative;
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.github-telemetry-panel:hover {
+  border-color: var(--color-rosa-border);
+  box-shadow: 0 6px 24px rgba(228, 0, 124, 0.08);
+}
+
+.telemetry-ambient-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-rosa-chilango), transparent);
+}
+
+.github-telemetry-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.github-telemetry-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.github-telemetry-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 8px;
+  background: rgba(228, 0, 124, 0.08);
+  border: 1px solid var(--color-rosa-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.github-telemetry-metrics {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.telemetry-metric-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-right: 1rem;
+  border-right: 1px solid var(--border-subtle);
+}
+
+@media (max-width: 640px) {
+  .telemetry-metric-item {
+    border-right: none;
+    padding-right: 0;
+  }
+}
+
+.telemetry-icon-box {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.telemetry-icon-box.star-box {
+  background: rgba(255, 187, 0, 0.1);
+  border: 1px solid rgba(255, 187, 0, 0.3);
+}
+
+.telemetry-icon-box.fork-box {
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.telemetry-icon-box.repos-box {
+  background: rgba(228, 0, 124, 0.1);
+  border: 1px solid var(--color-rosa-border);
+}
+
+.telemetry-val {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.telemetry-lbl {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.1rem;
+}
+
+.telemetry-refresh-btn {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spinning {
+  animation: spin 0.8s linear infinite;
+}
+
+/* Card Level Real-Time GitHub Badges */
+.project-card-telemetry {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.project-github-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.project-github-stat:hover {
+  border-color: var(--color-rosa-border);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.project-github-stat.stars:hover svg {
+  color: #ffbe0b;
+}
+
+.project-github-stat.forks:hover svg {
+  color: #38bdf8;
+}
+
+.portfolio-container-section {
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+.portfolio-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.portfolio-filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.portfolio-count-chip {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.telemetry-meta-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.telemetry-title-badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-rosa-chilango);
+}
+
+.telemetry-status-pill {
+  padding: 0.15rem 0.45rem;
+  font-size: 0.65rem;
+  margin: 0;
+}
+
+.telemetry-status-dot {
+  width: 6px;
+  height: 6px;
+}
+
+.telemetry-endpoint-sub {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.telemetry-endpoint-code {
+  color: #38bdf8;
+}
+
+.telemetry-metric-item-last {
+  border-right: none;
+}
+
+.telemetry-star-icon {
+  width: 1rem;
+  height: 1rem;
+  color: #ffbe0b;
+}
+
+.telemetry-fork-icon {
+  width: 1rem;
+  height: 1rem;
+  color: #38bdf8;
+}
+
+.telemetry-refresh-icon-size {
+  width: 0.9rem;
+  height: 0.9rem;
+}

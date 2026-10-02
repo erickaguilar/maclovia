@@ -1,6 +1,6 @@
 {
   "name": "Maclovia / Belleza Maldita",
-  "description": "Minimalist dark landing page for a development group.",
+  "description": "Studio de software de alta precisión, compresión de modelos en Rust y sistemas distribuidos con artesanía de autor en la Ciudad de México.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

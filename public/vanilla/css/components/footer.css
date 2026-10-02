@@ -1,0 +1,324 @@
+/* ==========================================================================
+   MACLOVIA. Belleza Maldita — 4-Pillar Studio Footer & Operational Badges
+   ========================================================================== */
+
+/* --- Footer 4 Pillars Architecture --- */
+.site-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 4.5rem;
+  padding-bottom: 3rem;
+  background-color: var(--bg-surface);
+  position: relative;
+}
+
+.footer-ambient-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-rosa-glow), transparent);
+}
+
+.footer-pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .footer-pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-pillars-grid {
+    grid-template-columns: 5fr 3fr 2fr 2fr;
+    gap: 2rem;
+  }
+}
+
+.footer-pillar-title {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-rosa-chilango);
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+.footer-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-surface-elevated);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+}
+
+.footer-status-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #34d399;
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.8);
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.footer-mid-divider {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-subtle);
+  margin: 2rem 0;
+}
+
+.footer-mid-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--color-rosa-chilango);
+  box-shadow: 0 0 8px var(--color-rosa-chilango);
+}
+
+.footer-brand h4 {
+  font-family: var(--font-editorial);
+  font-size: 1.5rem;
+}
+
+.footer-brand p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  max-width: 24rem;
+  margin-top: 0.5rem;
+}
+
+.footer-col h5 {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-link {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+  color: var(--color-rosa-chilango);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+@media (min-width: 640px) {
+  .footer-bottom {
+    flex-direction: row;
+  }
+}
+
+.footer-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.footer-brand-title {
+  font-family: var(--font-editorial);
+  font-size: 1.25rem;
+}
+
+.footer-brand-subtitle {
+  font-family: var(--font-script);
+  font-size: 1.35rem;
+  color: var(--color-rosa-chilango);
+}
+
+.footer-tagline-text {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-rosa-chilango);
+}
+
+.footer-manifesto-text {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  max-width: 28rem;
+}
+
+.footer-clock-val {
+  color: var(--text-primary);
+}
+
+.footer-leadership-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+}
+
+.footer-role-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  display: block;
+  text-transform: uppercase;
+  color: var(--color-rosa-chilango);
+}
+
+.footer-ceo-name {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.footer-sub-meta {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.footer-sub-coords {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+}
+
+.footer-mail-btn {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.7rem;
+  width: 100%;
+}
+
+.footer-capabilities-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-cap-sub {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  display: block;
+  margin-left: 0.9rem;
+}
+
+.footer-cli-card-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+}
+
+.footer-cli-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+}
+
+.footer-cli-cmd {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-rosa-chilango);
+}
+
+.footer-social-link {
+  justify-content: flex-start;
+  padding: 0.35rem 0.5rem;
+}
+
+.footer-token-badge {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+}
+
+.footer-token-hex-title {
+  font-weight: 600;
+}
+
+.footer-legal-links {
+  display: flex;
+  gap: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.65rem;
+}
+
+.footer-back-to-top-btn {
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.75rem;
+}
+
+.mobile-nav-footer-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.mobile-nav-version-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}

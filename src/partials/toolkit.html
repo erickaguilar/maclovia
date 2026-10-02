@@ -4,12 +4,12 @@
     <section id="toolkit-section" class="container section-padding">
       <div class="section-header">
         <div class="section-tag">
-          <span style="width: 14px; height: 2px; background-color: var(--color-rosa-chilango);"></span>
+          <span class="section-tag-line"></span>
           <span data-i18n="toolkit.badge">ASSETS VECTORIALES & IDENTIDAD OFICIAL</span>
         </div>
         <h2 class="section-title">
           <span data-i18n="toolkit.title">SVG Toolkit</span>
-          <span class="font-cookie text-rosa" style="font-size: 2.25rem;" data-i18n="toolkit.titleAccent">& Media Hub</span>
+          <span class="font-cookie text-rosa title-accent-script" data-i18n="toolkit.titleAccent">& Media Hub</span>
         </h2>
         <p class="section-desc" data-i18n="toolkit.desc">
           Banco de trabajo de identidad oficial: descarga y embebe isotipos, logotipos e insignias en formato SVG sin compresión, genera wallpapers 4K, exporta PNG en alta resolución e inspecciona la retícula geométrica.
@@ -19,12 +19,12 @@
       <!-- Main Interactive Workbench -->
       <div class="svg-workbench">
         <!-- 01. Asset Selector Gallery (4 Official Formats) -->
-        <div style="margin-bottom: 2rem;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="font-mono text-muted" style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;">
+        <div class="toolkit-catalog-wrap">
+          <div class="flex-between mb-sm">
+            <span class="toolkit-section-label">
               Seleccionar Formato de Identidad Oficial:
             </span>
-            <span class="font-mono text-rosa" style="font-size: 0.65rem; border: 1px solid var(--color-rosa-border); padding: 0.15rem 0.45rem; border-radius: 4px;">
+            <span class="toolkit-pill-badge">
               4 FORMATOS DISPONIBLES
             </span>
           </div>
@@ -32,16 +32,16 @@
           <div class="asset-switcher-grid">
             <button class="asset-select-btn active" data-asset-type="mark">
               <div class="asset-btn-icon">
-                <svg viewBox="0 0 200 200" style="width: 1.6rem; height: 1.6rem;">
+                <svg viewBox="0 0 200 200" class="toolkit-card-icon-sq">
                   <use href="assets/icons/sprite.svg#icon-maclovia-mark"></use>
                 </svg>
               </div>
-              <span class="asset-btn-label">01. Isotipo Sigilo 'ꂵ'</span>
+              <span class="asset-btn-label">01. Isotipo Glifo Mexica 'Tepētl' (M)</span>
             </button>
 
             <button class="asset-select-btn" data-asset-type="lockup">
               <div class="asset-btn-icon">
-                <svg viewBox="0 0 32 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 2rem; height: 1.5rem;">
+                <svg viewBox="0 0 32 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="toolkit-card-icon-rect">
                   <polygon points="6,2 11,6 9,14 3,14 1,6" fill="rgba(228,0,124,0.25)" stroke="#E4007C" stroke-width="1.2" />
                   <rect x="14" y="4" width="16" height="3" rx="1" fill="#FFFFFF" />
                   <rect x="14" y="9.5" width="12" height="2" rx="0.5" fill="#E4007C" />
@@ -53,7 +53,7 @@
 
             <button class="asset-select-btn" data-asset-type="wordmark">
               <div class="asset-btn-icon">
-                <svg viewBox="0 0 32 24" fill="none" stroke="currentColor" style="width: 1.8rem; height: 1.5rem;">
+                <svg viewBox="0 0 32 24" fill="none" stroke="currentColor" class="toolkit-card-icon-rect-md">
                   <text x="2" y="16" font-family="'Abril Fatface', Georgia, serif" font-size="18" font-weight="900" fill="#FFFFFF">M</text>
                   <circle cx="23" cy="15" r="2.2" fill="#E4007C" />
                   <rect x="2" y="20" width="23" height="1.8" rx="0.9" fill="#E4007C" opacity="0.9" />
@@ -64,7 +64,7 @@
 
             <button class="asset-select-btn" data-asset-type="badge">
               <div class="asset-btn-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 1.6rem; height: 1.6rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="toolkit-card-icon-sq">
                   <circle cx="12" cy="12" r="10.5" stroke="#E4007C" stroke-dasharray="2 1.5" />
                   <circle cx="12" cy="12" r="7.5" stroke="#FFFFFF" opacity="0.4" />
                   <polygon points="12,6.5 16,14 8,14" fill="#E4007C" opacity="0.85" />
@@ -77,10 +77,10 @@
 
         <div class="svg-workbench-grid">
           <!-- Left: Live Interactive SVG Display with Blueprint Overlay -->
-          <div style="display: flex; flex-direction: column; align-items: center; gap: 1.25rem; min-width: 0; max-width: 100%; overflow: hidden; width: 100%;">
+          <div class="toolkit-stage-col">
             <div class="svg-preview-frame" id="toolkit-frame">
               <!-- Live Dynamic SVG -->
-              <svg id="toolkit-interactive-svg" class="text-rosa glow-rosa animate-pulse-glow" style="width: 120px; height: 120px; max-width: 90%; max-height: 90%; transition: all 0.3s ease; position: relative; z-index: 5;" viewBox="0 0 200 200">
+              <svg id="toolkit-interactive-svg" class="text-rosa glow-rosa animate-pulse-glow toolkit-interactive-svg-element" viewBox="0 0 200 200">
                 <use href="assets/icons/sprite.svg#icon-maclovia-mark"></use>
               </svg>
 
@@ -112,36 +112,36 @@
             </div>
 
             <!-- Blueprint & Tool Controls -->
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; width: 100%;">
-              <button id="toolkit-blueprint-toggle" class="btn btn-secondary" style="font-size: 0.7rem; padding: 0.35rem 0.75rem;">
-                <svg class="icon icon-stroke" style="color: #06b6d4;"><use href="assets/icons/sprite.svg#icon-binary"></use></svg>
-                <span>📐 Retícula Técnica & Zona Segura</span>
+            <div class="toolkit-stage-actions">
+              <button id="toolkit-blueprint-toggle" class="btn btn-secondary btn-compact">
+                <svg class="icon icon-stroke text-cyan"><use href="assets/icons/sprite.svg#icon-ruler"></use></svg>
+                <span>Retícula Técnica & Zona Segura</span>
               </button>
 
-              <button id="toolkit-anim-toggle" class="btn btn-ghost" style="font-size: 0.7rem; padding: 0.35rem 0.75rem;">
+              <button id="toolkit-anim-toggle" class="btn btn-ghost btn-compact">
                 Animación: Activa
               </button>
             </div>
 
             <!-- Theme Variant Selector (Dark / Light Mode) -->
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; width: 100%;">
-              <span class="font-mono" style="font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase;">
+            <div class="toolkit-theme-wrap">
+              <span class="toolkit-theme-label">
                 Variante Cromática
               </span>
-              <div class="guidelines-view-switcher" style="padding: 0.25rem;">
-                <button class="guidelines-view-btn active" data-svg-theme="dark" style="font-size: 0.75rem; padding: 0.4rem 0.9rem;">
-                  <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background-color: #050505; border: 1px solid #FF4DA6; margin-right: 0.35rem;"></span>
+              <div class="guidelines-view-switcher toolkit-switcher-pad">
+                <button class="toolkit-theme-btn active toolkit-theme-btn-size" data-svg-theme="dark">
+                  <span class="toolkit-theme-dot-dark"></span>
                   Obsidiana (Dark)
                 </button>
-                <button class="guidelines-view-btn" data-svg-theme="light" style="font-size: 0.75rem; padding: 0.4rem 0.9rem;">
-                  <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background-color: #FFF0F7; border: 1px solid #E4007C; margin-right: 0.35rem;"></span>
-                  Porcelana (Light)
+                <button class="toolkit-theme-btn toolkit-theme-btn-size" data-svg-theme="light">
+                  <span class="toolkit-theme-dot-light"></span>
+                  Cosmic Latte (Light)
                 </button>
               </div>
             </div>
 
             <!-- Size Selector Pills -->
-            <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: center;">
+            <div class="toolkit-zoom-actions">
               <button class="btn btn-secondary btn-sm" data-svg-size="32">32px</button>
               <button class="btn btn-secondary btn-sm" data-svg-size="64">64px</button>
               <button class="btn btn-primary btn-sm active" data-svg-size="120">120px</button>
@@ -151,20 +151,24 @@
           </div>
 
           <!-- Right: Technical Specs, Multi-Format Exporters & Code Inspector -->
-          <div style="display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; max-width: 100%; overflow: hidden; width: 100%;">
-            <div style="min-width: 0; max-width: 100%; overflow: hidden;">
-              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; flex-wrap: wrap;">
-                <span id="toolkit-asset-badge" class="font-mono text-rosa" style="font-size: 0.65rem; border: 1px solid var(--color-rosa-border); padding: 0.15rem 0.4rem; border-radius: 4px; white-space: nowrap;">
+          <div class="toolkit-meta-col">
+            <div class="min-w-0-overflow">
+              <div class="flex-row-center gap-sm flex-wrap mb-xs">
+                <span id="toolkit-asset-badge" class="toolkit-asset-badge-style">
                   ASSET 01 · VECTOR MAESTRO
                 </span>
-                <span class="font-mono text-muted" style="font-size: 0.65rem; white-space: nowrap;">SCALABLE VECTOR GRAPHICS</span>
+                <span class="toolkit-asset-type-label">SCALABLE VECTOR GRAPHICS</span>
               </div>
-              <h4 id="toolkit-asset-title" class="font-abril" style="font-size: clamp(1.2rem, 3vw, 1.5rem); margin-bottom: 0.35rem;">
-                Isotipo Pentagonal Sigilo 'ꂵ' (Vectorial SVG)
+              <h4 id="toolkit-asset-title" class="toolkit-asset-title-style">
+                Isotipo Pentagonal Glifo Mexica Tepētl (Vectorial SVG)
               </h4>
-              <p id="toolkit-asset-desc" style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5;">
-                Escudo pentagonal con sigilo criptográfico 'ꂵ' (MAT) cincelado en Rosa Chilango neón y obsidiana. Tres pilares, puente estructural y portales cuánticos. 100% vectorial nativo.
+              <p id="toolkit-asset-desc" class="toolkit-asset-desc-style">
+                Escudo pentagonal con el glifo mexica Tepētl (Cerro Sagrado / Montaña de la Civilización) de los códices de la Gran Tenochtitlan. Su silueta forja la letra 'M' monumental de Maclovia y México: dos volcanes sagrados (Iztaccíhuatl y Popocatépetl), el portal interior de origen Ōztōtl y el chalchihuite solar en Rosa Chilango neón sobre destellos y base celestial en Cosmic Latte (#FFF8E7). 100% vectorial nativo.
               </p>
+              <div class="toolkit-unicode-tag">
+                <span class="text-rosa">✦</span>
+                <span>Iconografía Mexica Ancestral • Códice Mendoza • Valle de México (Tenochtitlan)</span>
+              </div>
             </div>
 
             <!-- Multi-Format Export Action Buttons -->
@@ -192,18 +196,24 @@
 
             <!-- Code Inspector Container -->
             <div class="toolkit-code-container">
-              <div style="display: flex; border-bottom: 1px solid var(--border-subtle); background-color: #101014; overflow-x: auto; -webkit-overflow-scrolling: touch;">
-                <button class="mockup-tab-btn toolkit-code-tab-btn active" data-code-tab="xml" style="font-size: 0.7rem; padding: 0.5rem 0.85rem; white-space: nowrap;">
-                  Código SVG XML
-                </button>
-                <button class="mockup-tab-btn toolkit-code-tab-btn" data-code-tab="html" style="font-size: 0.7rem; padding: 0.5rem 0.85rem; white-space: nowrap;">
-                  HTML5 Embed
-                </button>
-                <button class="mockup-tab-btn toolkit-code-tab-btn" data-code-tab="jsx" style="font-size: 0.7rem; padding: 0.5rem 0.85rem; white-space: nowrap;">
-                  React / JSX
-                </button>
-                <button class="mockup-tab-btn toolkit-code-tab-btn" data-code-tab="datauri" style="font-size: 0.7rem; padding: 0.5rem 0.85rem; white-space: nowrap;">
-                  Data URI Base64
+              <div class="toolkit-code-header">
+                <div class="toolkit-code-tabs">
+                  <button class="toolkit-code-tab-btn active" data-code-tab="xml">
+                    Código SVG XML
+                  </button>
+                  <button class="toolkit-code-tab-btn" data-code-tab="html">
+                    HTML5 Embed
+                  </button>
+                  <button class="toolkit-code-tab-btn" data-code-tab="jsx">
+                    React / JSX
+                  </button>
+                  <button class="toolkit-code-tab-btn" data-code-tab="datauri">
+                    Data URI Base64
+                  </button>
+                </div>
+                <button id="toolkit-inline-copy-btn" class="toolkit-code-copy-btn" title="Copiar código actual">
+                  <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-copy"></use></svg>
+                  <span>Copiar</span>
                 </button>
               </div>
               <pre><code id="toolkit-code-display"></code></pre>
@@ -213,31 +223,31 @@
 
         <!-- 02. Wallpaper Studio 4K (HTML5 Canvas Engine) -->
         <div class="wallpaper-studio-card">
-          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem;">
+          <div class="toolkit-wallpaper-header">
             <div>
-              <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <span class="font-mono text-rosa" style="font-size: 0.65rem; font-weight: 700;">CANVAS ENGINE</span>
-                <span class="font-mono text-muted" style="font-size: 0.65rem;">• ULTRA HD RENDERING</span>
+              <div class="flex-row-center gap-sm">
+                <span class="toolkit-engine-label">CANVAS ENGINE</span>
+                <span class="toolkit-sub-label">• ULTRA HD RENDERING</span>
               </div>
-              <h3 class="font-abril" style="font-size: 1.35rem; margin-top: 0.2rem;">
+              <h3 class="toolkit-wallpaper-title">
                 Generador de Fondos de Pantalla 4K (Wallpapers)
               </h3>
-              <p style="font-size: 0.75rem; color: var(--text-secondary); max-width: 40rem; line-height: 1.5; margin-top: 0.25rem;">
-                Renderiza al instante un wallpaper minimalista de alta definición con el Sigilo MAT y resplandor en Rosa Chilango, optimizado para monitores 4K o pantallas Retina móviles.
+              <p class="toolkit-wallpaper-desc">
+                Renderiza al instante un wallpaper minimalista de alta definición con el Glifo Mexica Tepētl y resplandor en Rosa Chilango, optimizado para monitores 4K o pantallas Retina móviles.
               </p>
             </div>
 
             <!-- Wallpaper Preset Options -->
             <div class="wallpaper-controls-bar">
               <select id="wallpaper-resolution" class="wallpaper-control-select" aria-label="Resolución del fondo">
-                <option value="desktop-4k">🖥️ Desktop 4K (3840 × 2160)</option>
-                <option value="mobile-retina">📱 Mobile Retina (1170 × 2532)</option>
+                <option value="desktop-4k">Desktop 4K (3840 × 2160)</option>
+                <option value="mobile-retina">Mobile Retina (1170 × 2532)</option>
               </select>
 
               <select id="wallpaper-palette" class="wallpaper-control-select" aria-label="Paleta del fondo">
                 <option value="obsidian">Obsidiana Profunda (#070709)</option>
                 <option value="void">Azabache Puro (#000000)</option>
-                <option value="alabaster">Alabastro Editorial (#FAF8F8)</option>
+                <option value="alabaster">Cosmic Latte (#FFF8E7)</option>
               </select>
 
               <button id="wallpaper-generate-btn" class="wallpaper-control-btn btn btn-primary">
@@ -249,20 +259,20 @@
         </div>
 
         <!-- 03. Design Tokens Direct Export (CSS & JSON) -->
-        <div class="tokens-export-box" style="margin-top: 1.5rem;">
-          <div style="display: flex; align-items: center; gap: 0.75rem;">
-            <svg class="text-rosa" style="width: 1.8rem; height: 1.8rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <div class="tokens-export-box tokens-export-box-spaced">
+          <div class="flex-row-center-md">
+            <svg class="text-rosa icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <use href="assets/icons/sprite.svg#icon-binary"></use>
             </svg>
             <div>
-              <strong style="color: #ffffff; font-size: 0.85rem;">Tokens de Diseño Oficiales (Design System Specs)</strong>
-              <div style="font-size: 0.7rem; color: var(--text-muted);">
+              <strong class="text-primary tokens-box-title">Tokens de Diseño Oficiales (Design System Specs)</strong>
+              <div class="tokens-box-sub">
                 Variables CSS nativas y especificación JSON para Figma Tokens, Style Dictionary o Tailwind CSS.
               </div>
             </div>
           </div>
 
-          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <div class="flex-wrap-center gap-sm">
             <button id="download-tokens-css-btn" class="tokens-download-btn btn btn-secondary">
               <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-download"></use></svg>
               <span>maclovia-tokens.css</span>

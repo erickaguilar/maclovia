@@ -1,12 +1,12 @@
     <!-- Hero Section -->
     <section class="container hero-section">
       <!-- Ambient Radial Glow -->
-      <div style="position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); width: 75vw; height: 75vw; max-width: 800px; max-height: 800px; border-radius: 50%; background: radial-gradient(circle, rgba(228, 0, 124, 0.16) 0%, rgba(20, 8, 18, 0.8) 50%, transparent 75%); filter: blur(120px); pointer-events: none; z-index: 0;"></div>
+      <div class="hero-ambient-glow"></div>
 
-      <div style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center;">
+      <div class="hero-content-wrapper">
         <!-- Hero Badge -->
         <div class="hero-badge">
-          <span style="width: 6px; height: 6px; border-radius: 50%; background-color: var(--color-rosa-chilango);" class="animate-pulse"></span>
+          <span class="hero-badge-dot animate-pulse"></span>
           <span data-i18n="hero.badge">Development Group & Studio de Software • CDMX</span>
         </div>
 
@@ -21,8 +21,8 @@
         <div class="hero-brand-stage">
           <!-- View 1: Unified Identity -->
           <div id="brand-view-unified" class="brand-view active">
-            <div style="margin-bottom: 1.5rem;">
-              <svg class="text-rosa glow-rosa" style="width: 90px; height: 90px;" viewBox="0 0 200 200">
+            <div class="hero-logo-box">
+              <svg class="text-rosa glow-rosa hero-logo-svg" viewBox="0 0 200 200">
                 <use href="assets/icons/sprite.svg#icon-maclovia-mark"></use>
               </svg>
             </div>
@@ -30,51 +30,51 @@
               <h1 class="hero-h1">MACLOVIA.</h1>
               <h2 class="hero-h2">Belleza Maldita</h2>
             </div>
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;">
-              <span style="width: 5px; height: 5px; border-radius: 50%; background-color: var(--color-rosa-chilango);"></span>
-              <span class="font-mono text-muted" style="font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase;">
+            <div class="hero-subtitle-bar">
+              <span class="hero-subtitle-dot"></span>
+              <span class="hero-subtitle-text">
                 Development Group & Software Studio
               </span>
-              <span class="font-mono text-rosa" style="font-size: 0.6rem; border: 1px solid var(--color-rosa-border); padding: 0.1rem 0.35rem; border-radius: 4px;">CDMX</span>
+              <span class="hero-cdmx-tag">CDMX</span>
             </div>
           </div>
 
           <!-- View 2: Maclovia Core -->
           <div id="brand-view-maclovia" class="brand-view">
-            <div style="margin-bottom: 1.5rem;">
-              <svg class="text-rosa glow-rosa" style="width: 100px; height: 100px;" viewBox="0 0 200 200">
+            <div class="hero-logo-box">
+              <svg class="text-rosa glow-rosa hero-logo-svg-maclovia" viewBox="0 0 200 200">
                 <use href="assets/icons/sprite.svg#icon-maclovia-mark"></use>
               </svg>
             </div>
             <div class="hero-titles">
-              <h1 class="hero-h1" style="font-size: clamp(3.5rem, 8vw, 7.5rem); letter-spacing: 0.05em;">MACLOVIA.</h1>
+              <h1 class="hero-h1 hero-h1-maclovia">MACLOVIA.</h1>
             </div>
             <div class="horizon-divider"></div>
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
-              <span class="font-mono text-muted" style="font-size: 0.75rem; letter-spacing: 0.4em; text-transform: uppercase;">
+            <div class="flex-row-center gap-sm">
+              <span class="hero-subtitle-text-spaced">
                 Development Group • High-Scale Systems
               </span>
-              <span class="font-mono text-rosa" style="font-size: 0.6rem; border: 1px solid var(--color-rosa-border); padding: 0.1rem 0.35rem; border-radius: 4px;">CDMX</span>
+              <span class="hero-cdmx-tag">CDMX</span>
             </div>
           </div>
 
           <!-- View 3: Belleza Maldita -->
           <div id="brand-view-belleza" class="brand-view">
             <!-- Rosa Chilango Beads Indicator -->
-            <div style="display: flex; gap: 0.6rem; margin-bottom: 1rem;">
-              <div style="width: 6px; height: 6px; border-radius: 50%; background-color: #E4007C; box-shadow: 0 0 10px #E4007C;"></div>
-              <div style="width: 6px; height: 6px; border-radius: 50%; background-color: rgba(228, 0, 124, 0.7); box-shadow: 0 0 8px #E4007C;"></div>
-              <div style="width: 6px; height: 6px; border-radius: 50%; background-color: rgba(228, 0, 124, 0.4); box-shadow: 0 0 6px #E4007C;"></div>
+            <div class="hero-beads-wrap">
+              <div class="hero-bead hero-bead-1"></div>
+              <div class="hero-bead hero-bead-2"></div>
+              <div class="hero-bead hero-bead-3"></div>
             </div>
             <div class="hero-titles">
-              <h2 class="hero-h2" style="font-size: clamp(4.5rem, 10vw, 9rem);">Belleza Maldita</h2>
+              <h2 class="hero-h2 hero-h2-belleza">Belleza Maldita</h2>
             </div>
             <div class="horizon-divider"></div>
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
-              <span class="font-mono text-muted" style="font-size: 0.75rem; letter-spacing: 0.4em; text-transform: uppercase;">
+            <div class="flex-row-center gap-sm">
+              <span class="hero-subtitle-text-spaced">
                 Development Studio & Digital Craft
               </span>
-              <span class="text-rosa" style="font-size: 0.85rem;">✦</span>
+              <span class="text-rosa font-mono">✦</span>
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@
         </p>
 
         <!-- CTA Buttons -->
-        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem;">
+        <div class="hero-cta-wrap">
           <a href="#portfolio-section" class="btn btn-primary" data-i18n="hero.ctaPortfolio">
             Explorar Portafolio
           </a>
@@ -94,15 +94,15 @@
         </div>
 
         <!-- CEO Signature Badge -->
-        <div style="margin-top: 2rem;">
-          <a href="#executive-profile" class="specialty-pill" style="border-color: var(--color-rosa-border); color: var(--color-rosa-chilango); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;" data-i18n="hero.signature">
+        <div class="hero-ceo-badge-wrap">
+          <a href="#executive-profile" class="specialty-pill hero-ceo-pill-link" data-i18n="hero.signature">
             CEO & Fundador: Erick Jonathan Aguilar García →
           </a>
         </div>
 
         <!-- Subtle Bouncing Mouse Scroll Hint -->
         <a href="#executive-profile" class="hero-scroll-hint" title="Bajar a perfil y proyectos">
-          <span class="font-mono text-muted" style="font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;">SCROLL</span>
+          <span class="hero-scroll-label">SCROLL</span>
           <div class="scroll-mouse-pill">
             <div class="scroll-mouse-dot"></div>
           </div>

@@ -7,7 +7,7 @@ set -euo pipefail
 DIST_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OUTPUT_DIR="${DIST_DIR}/../dist-vanilla-packages"
 
-echo "🌸 MACLOVIA. Belleza Maldita — Verificando Vanilla Distribution..."
+echo "[✦] MACLOVIA. Belleza Maldita — Verificando Vanilla Distribution..."
 
 # 1. Verificar existencia de archivos fundamentales
 required_files=(
@@ -20,25 +20,26 @@ required_files=(
   "${DIST_DIR}/js/data/team.js"
   "${DIST_DIR}/js/data/projects.js"
   "${DIST_DIR}/js/data/translations.js"
+  "${DIST_DIR}/LICENSE"
 )
 
 for file in "${required_files[@]}"; do
   if [[ ! -f "$file" ]]; then
-    echo "❌ Error: Archivo faltante: $file"
+    echo "[ERROR] Archivo faltante: $file"
     exit 1
   fi
 done
-echo "✅ Todos los archivos fundamentales están presentes."
+echo "[OK] Todos los archivos fundamentales están presentes."
 
 # 2. Validar sintaxis JS
-echo "🔍 Validando sintaxis de JavaScript..."
-node --check "${DIST_DIR}/js/"*.js "${DIST_DIR}/js/data/"*.js
-echo "✅ Sintaxis JavaScript válida (100% ECMAScript 6+ nativo)."
+echo "[INFO] Validando sintaxis de JavaScript..."
+node --check "${DIST_DIR}/js/"*.js "${DIST_DIR}/js/modules/"*.js "${DIST_DIR}/js/data/"*.js
+echo "[OK] Sintaxis JavaScript válida (100% ECMAScript 6+ nativo)."
 
 # 3. Empaquetar distribución comprimida para despliegue
 mkdir -p "${OUTPUT_DIR}"
-TARBALL="${OUTPUT_DIR}/maclovia-vanilla-v1.0.0.tar.gz"
+TARBALL="${OUTPUT_DIR}/maclovia-vanilla-v1.2.0.tar.gz"
 tar -czf "${TARBALL}" -C "${DIST_DIR}" .
-echo "📦 Paquete de despliegue generado: ${TARBALL} ($(du -sh "${TARBALL}" | cut -f1))"
+echo "[BUILD] Paquete de despliegue generado: ${TARBALL} ($(du -sh "${TARBALL}" | cut -f1))"
 
-echo "🚀 Despliegue verificado y listo."
+echo "[SUCCESS] Despliegue verificado y listo."

@@ -2,52 +2,122 @@
   <header class="site-header">
     <div class="container nav-wrapper">
       <!-- Brand Lockup -->
-      <a href="#" class="brand-link">
-        <svg class="text-rosa site-brand-logo" style="width: 2rem; height: 2rem;" viewBox="0 0 200 200">
+      <a href="#" class="brand-link" aria-label="Maclovia. Belleza Maldita — Inicio">
+        <svg class="text-rosa site-brand-logo" viewBox="0 0 200 200">
           <use href="assets/icons/sprite.svg#icon-maclovia-mark"></use>
         </svg>
         <div class="brand-title-group">
           <span class="brand-name">MACLOVIA.</span>
           <span class="brand-subtitle">Belleza Maldita</span>
         </div>
-        <span class="font-mono text-rosa" style="font-size: 0.6rem; border: 1px solid var(--color-rosa-border); background-color: var(--color-rosa-subtle); padding: 0.15rem 0.4rem; border-radius: 4px; margin-left: 0.25rem;">
+        <span class="brand-badge-cdmx font-mono text-rosa">
           CDMX
         </span>
       </a>
 
       <!-- Navigation Links -->
-      <nav class="nav-links" style="display: flex; align-items: center; gap: 1rem;">
-        <div style="display: none; gap: 1.25rem; font-family: var(--font-mono); font-size: 0.75rem;" class="nav-desktop-links">
-          <a href="#executive-profile" class="footer-link" data-i18n="nav.leadership">Dirección</a>
-          <a href="#portfolio-section" class="footer-link" data-i18n="nav.engineering">Portafolio</a>
-          <a href="#guidelines-section" class="footer-link" data-i18n="nav.guidelines">Guidelines</a>
-          <a href="#toolkit-section" class="footer-link" data-i18n="nav.toolkit">SVG Kit</a>
+      <nav class="nav-links">
+        <div class="nav-desktop-links">
+          <a href="#executive-profile" class="nav-item-link" data-i18n="nav.leadership">Dirección</a>
+          <a href="#portfolio-section" class="nav-item-link" data-i18n="nav.engineering">Portafolio</a>
+          <a href="#guidelines-section" class="nav-item-link" data-i18n="nav.guidelines">Guidelines</a>
+          <a href="#toolkit-section" class="nav-item-link" data-i18n="nav.toolkit">SVG Kit</a>
+          <a href="#interactive-terminal-section" class="nav-item-link">CLI</a>
         </div>
 
         <div class="nav-actions">
-          <!-- 3-Way Brand Mode Switcher Button -->
-          <button id="brand-mode-btn" class="btn btn-ghost" title="Alternar identidad de marca / Switch Brand View">
-            <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-sparkles"></use></svg>
-            <span id="brand-mode-label" class="font-mono" style="font-size: 0.65rem;">UNIFIED</span>
-          </button>
-
-          <!-- Language Switcher (ES / EN) -->
-          <button id="lang-toggle-btn" class="btn btn-ghost" title="Cambiar idioma / Switch Language">
+          <!-- Language Switcher (ES / EN / ZH) -->
+          <button id="lang-toggle-btn" class="btn btn-ghost" title="Cambiar idioma / Switch Language" aria-label="Cambiar idioma">
             <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-globe"></use></svg>
             <span class="lang-label">ES</span>
           </button>
 
           <!-- Theme Switcher (Dark / Light) -->
-          <button id="theme-toggle-btn" class="btn btn-ghost" title="Alternar tema claro / oscuro">
+          <button id="theme-toggle-btn" class="btn btn-ghost" title="Alternar tema claro / oscuro" aria-label="Alternar tema de color">
             <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-sun"></use></svg>
           </button>
 
-          <!-- GitHub Profile -->
-          <a href="https://github.com/erickaguilar" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          <!-- GitHub Profile Link -->
+          <a href="https://github.com/erickaguilar" target="_blank" rel="noopener noreferrer" class="btn btn-secondary nav-github-btn" title="GitHub de Erick Jonathan Aguilar García" aria-label="GitHub Profile">
             <svg class="icon"><use href="assets/icons/sprite.svg#icon-github"></use></svg>
-            <span>@erickaguilar</span>
+            <span class="nav-github-label">@erickaguilar</span>
           </a>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button id="mobile-menu-btn" class="btn btn-ghost mobile-menu-toggle" aria-label="Abrir menú de navegación móvil" aria-expanded="false">
+            <svg class="icon icon-stroke menu-open-icon"><use href="assets/icons/sprite.svg#icon-menu"></use></svg>
+            <svg class="icon icon-stroke menu-close-icon"><use href="assets/icons/sprite.svg#icon-x"></use></svg>
+          </button>
         </div>
       </nav>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav-drawer" class="mobile-nav-drawer" aria-hidden="true">
+      <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
+      <div class="mobile-nav-content">
+        <div class="mobile-nav-header">
+          <div class="brand-title-group">
+            <span class="brand-name">MACLOVIA.</span>
+            <span class="brand-subtitle">Belleza Maldita</span>
+          </div>
+          <button id="mobile-nav-close-btn" class="btn btn-ghost btn-sm" aria-label="Cerrar menú móvil">
+            <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-x"></use></svg>
+          </button>
+        </div>
+
+        <!-- Section Navigation Links -->
+        <div class="mobile-nav-links">
+          <a href="#executive-profile" class="mobile-nav-link" data-i18n="nav.leadership">
+            <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-briefcase"></use></svg>
+            <span>Dirección & Liderazgo</span>
+          </a>
+          <a href="#portfolio-section" class="mobile-nav-link" data-i18n="nav.engineering">
+            <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-layers"></use></svg>
+            <span>Portafolio de Software</span>
+          </a>
+          <a href="#guidelines-section" class="mobile-nav-link" data-i18n="nav.guidelines">
+            <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-palette"></use></svg>
+            <span>Brand Guidelines & Identidad</span>
+          </a>
+          <a href="#toolkit-section" class="mobile-nav-link" data-i18n="nav.toolkit">
+            <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-download"></use></svg>
+            <span>SVG Toolkit & Wallpapers</span>
+          </a>
+          <a href="#interactive-terminal-section" class="mobile-nav-link">
+            <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-terminal"></use></svg>
+            <span>Terminal CLI Interactiva</span>
+          </a>
+        </div>
+
+        <!-- Mobile Brand Mode Selector -->
+        <div class="mobile-nav-brand-section">
+          <span class="mobile-nav-section-title">Modo de Identidad</span>
+          <div class="mobile-brand-mode-pill">
+            <button class="mobile-brand-btn active" data-brand-mode="unified">
+              <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-sparkles"></use></svg>
+              <span>Unificado</span>
+            </button>
+            <button class="mobile-brand-btn" data-brand-mode="maclovia">
+              <span>Maclovia</span>
+            </button>
+            <button class="mobile-brand-btn" data-brand-mode="belleza">
+              <span>Belleza</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Footer Contact -->
+        <div class="mobile-nav-footer">
+          <a href="https://github.com/erickaguilar" target="_blank" rel="noopener noreferrer" class="btn btn-secondary mobile-nav-footer-btn">
+            <svg class="icon"><use href="assets/icons/sprite.svg#icon-github"></use></svg>
+            <span>github.com/erickaguilar</span>
+          </a>
+          <div class="mobile-nav-version-bar">
+            <span>CDMX • MÉXICO</span>
+            <span class="text-rosa">v1.2.0 VANILLA</span>
+          </div>
+        </div>
+      </div>
     </div>
   </header>

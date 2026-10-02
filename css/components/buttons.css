@@ -1,0 +1,86 @@
+/* ==========================================================================
+   MACLOVIA. Belleza Maldita — Interactive Action Buttons
+   ========================================================================== */
+
+/* --- Interactive Action Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.25;
+  box-sizing: border-box;
+  vertical-align: middle;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.btn-sm {
+  height: 2rem;
+  min-height: 2rem;
+  max-height: 2rem;
+  padding: 0 0.75rem;
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+.btn-md {
+  height: 2.5rem;
+  min-height: 2.5rem;
+  max-height: 2.5rem;
+  padding: 0 1rem;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.btn-lg {
+  height: 3rem;
+  min-height: 3rem;
+  max-height: 3rem;
+  padding: 0 1.5rem;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.btn-primary {
+  background-color: var(--color-rosa-chilango);
+  color: #ffffff;
+  border-color: var(--color-rosa-chilango);
+  box-shadow: 0 0 18px rgba(228, 0, 124, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-rosa-hover);
+  border-color: var(--color-rosa-hover);
+  box-shadow: 0 0 25px rgba(228, 0, 124, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-rosa-chilango);
+  color: var(--color-rosa-chilango);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: var(--border-subtle);
+}
+
+.btn-ghost:hover {
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}

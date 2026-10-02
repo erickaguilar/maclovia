@@ -1,14 +1,14 @@
     <div id="portfolio"></div>
     <!-- Engineering Portfolio & Open Source Laboratory -->
-    <section id="portfolio-section" class="container section-padding" style="overflow: hidden; width: 100%; max-width: 1200px; box-sizing: border-box;">
+    <section id="portfolio-section" class="container section-padding portfolio-container-section">
       <div class="section-header">
         <div class="section-tag">
-          <span style="width: 14px; height: 2px; background-color: var(--color-rosa-chilango);"></span>
+          <span class="section-tag-line"></span>
           <span data-i18n="portfolio.badge">PORTAFOLIO DE INGENIERÍA & OPEN SOURCE</span>
         </div>
         <h2 class="section-title">
           <span data-i18n="portfolio.title">Laboratorio de Software</span>
-          <span class="font-cookie text-rosa" style="font-size: 2.25rem;" data-i18n="portfolio.titleAccent">GitHub</span>
+          <span class="font-cookie text-rosa title-accent-script" data-i18n="portfolio.titleAccent">GitHub</span>
         </h2>
         <p class="section-desc" data-i18n="portfolio.desc">
           Repositorios y módulos de código abiertos certificados liderados por Erick Jonathan Aguilar García.
@@ -16,15 +16,86 @@
       </div>
 
       <!-- Category Filter Pills with Module Count -->
-      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 2rem;">
-        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+      <div class="portfolio-filter-bar">
+        <div class="portfolio-filter-group">
           <button class="btn btn-primary" data-filter="all" data-i18n="portfolio.filterAll">Todos los Proyectos</button>
           <button class="btn btn-secondary" data-filter="maclovia" data-i18n="portfolio.filterMaclovia">Maclovia Core (Sistemas)</button>
           <button class="btn btn-secondary" data-filter="belleza" data-i18n="portfolio.filterBelleza">Belleza Maldita (Web & WASM)</button>
         </div>
-        <div class="font-mono text-muted" style="font-size: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+        <div class="portfolio-count-chip">
           <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-cpu"></use></svg>
           <span id="portfolio-project-count">5 módulos certificados</span>
+        </div>
+      </div>
+
+      <!-- Real-Time GitHub API Live Telemetry Module -->
+      <div id="github-telemetry-module" class="github-telemetry-panel">
+        <div class="telemetry-ambient-glow"></div>
+        <div class="github-telemetry-inner">
+          
+          <!-- Left: Title & Status Indicator -->
+          <div class="github-telemetry-meta">
+            <div class="github-telemetry-avatar">
+              <svg class="icon text-rosa icon-md"><use href="assets/icons/sprite.svg#icon-github"></use></svg>
+            </div>
+            <div>
+              <div class="telemetry-meta-header">
+                <span class="telemetry-title-badge" data-i18n="portfolio.telemetryBadge">
+                  TELEMETRÍA EN TIEMPO REAL · GITHUB REST API v3
+                </span>
+                <span id="github-sync-pill" class="footer-status-pill telemetry-status-pill">
+                  <span id="github-sync-dot" class="footer-status-dot telemetry-status-dot"></span>
+                  <span id="github-sync-status" data-i18n="portfolio.telemetrySyncing">Consultando GitHub API...</span>
+                </span>
+              </div>
+              <div class="telemetry-endpoint-sub">
+                <span data-i18n="portfolio.telemetryEndpoint">Endpoint:</span> <code class="telemetry-endpoint-code">api.github.com/repos/erickaguilar/*</code> • <span id="github-last-sync-time">Sincronizando...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Aggregated Live Metrics & Refresh Action -->
+          <div class="github-telemetry-metrics">
+            <!-- Stars Count -->
+            <div class="telemetry-metric-item">
+              <div class="telemetry-icon-box star-box">
+                <svg class="icon icon-stroke telemetry-star-icon"><use href="assets/icons/sprite.svg#icon-star"></use></svg>
+              </div>
+              <div>
+                <div id="github-total-stars" class="font-mono telemetry-val">--</div>
+                <div class="font-mono text-muted telemetry-lbl" data-i18n="portfolio.telemetryTotalStars">Estrellas Totales</div>
+              </div>
+            </div>
+
+            <!-- Forks Count -->
+            <div class="telemetry-metric-item">
+              <div class="telemetry-icon-box fork-box">
+                <svg class="icon icon-stroke telemetry-fork-icon"><use href="assets/icons/sprite.svg#icon-git-fork"></use></svg>
+              </div>
+              <div>
+                <div id="github-total-forks" class="font-mono telemetry-val">--</div>
+                <div class="font-mono text-muted telemetry-lbl" data-i18n="portfolio.telemetryTotalForks">Forks Totales</div>
+              </div>
+            </div>
+
+            <!-- Monitored Repos Count -->
+            <div class="telemetry-metric-item telemetry-metric-item-last">
+              <div class="telemetry-icon-box repos-box">
+                <svg class="icon icon-stroke text-rosa icon-sm"><use href="assets/icons/sprite.svg#icon-layers"></use></svg>
+              </div>
+              <div>
+                <div id="github-total-repos" class="font-mono telemetry-val">5</div>
+                <div class="font-mono text-muted telemetry-lbl">Repos Oficiales</div>
+              </div>
+            </div>
+
+            <!-- Manual Refresh Action Button -->
+            <button id="github-refresh-btn" class="btn btn-secondary telemetry-refresh-btn" title="Consultar GitHub API en vivo">
+              <svg id="github-refresh-icon" class="icon icon-stroke text-rosa telemetry-refresh-icon-size"><use href="assets/icons/sprite.svg#icon-refresh-cw"></use></svg>
+              <span data-i18n="portfolio.telemetryRefresh">Actualizar</span>
+            </button>
+          </div>
+
         </div>
       </div>
 

@@ -1,0 +1,131 @@
+/* ==========================================================================
+   MACLOVIA. Belleza Maldita — Layout Containers & Flex Helpers
+   ========================================================================== */
+
+/* --- Layout Containers --- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+/* --- Section Headers --- */
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 1.5rem;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-rosa-chilango);
+}
+
+.section-title {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.section-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  max-width: 42rem;
+}
+
+/* ==========================================================================
+   Refactored Semantic & Utility Classes (Progressive Style Elimination)
+   ========================================================================== */
+
+/* --- General Sizing & Flex Layout Helpers --- */
+.site-brand-logo {
+  width: 2rem;
+  height: 2rem;
+}
+
+.icon-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+.icon-md {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.icon-xs {
+  width: 0.85em;
+  height: 0.85em;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-row-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-wrap-center {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.gap-xs { gap: 0.25rem; }
+.gap-sm { gap: 0.5rem; }
+.gap-md { gap: 0.75rem; }
+.gap-lg { gap: 1rem; }
+.gap-xl { gap: 1.5rem; }
+
+/* Section tag line accent & typography */
+.section-tag-line {
+  width: 14px;
+  height: 2px;
+  background-color: var(--color-rosa-chilango);
+}
+
+.title-accent-script {
+  font-family: var(--font-script);
+  font-size: 2.25rem;
+  line-height: 1;
+}

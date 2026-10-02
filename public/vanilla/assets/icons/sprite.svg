@@ -192,6 +192,13 @@
     <polyline points="9 18 15 12 9 6"></polyline>
   </symbol>
 
+  <!-- Menu / Hamburger Icon -->
+  <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="12" x2="21" y2="12"></line>
+    <line x1="3" y1="6" x2="21" y2="6"></line>
+    <line x1="3" y1="18" x2="21" y2="18"></line>
+  </symbol>
+
   <!-- X / Close Icon -->
   <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -233,7 +240,87 @@
     <path d="m9 12 2 2 4-4"></path>
   </symbol>
 
-  <!-- Maclovia Signature Pentagonal Geometric Logo Mark with Chiseled Sigil MAT "ꂵ" (Dark / Obsidian Theme) -->
+  <!-- Technical Drafting Ruler -->
+  <symbol id="icon-ruler" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21.3 15.3l-9.6-9.6a2.4 2.4 0 0 0-3.4 0L2.7 11.3a2.4 2.4 0 0 0 0 3.4l9.6 9.6a2.4 2.4 0 0 0 3.4 0l5.6-5.6a2.4 2.4 0 0 0 0-3.4z"></path>
+    <line x1="8.5" y1="8.5" x2="10" y2="10"></line>
+    <line x1="12" y1="12" x2="13.5" y2="13.5"></line>
+    <line x1="15.5" y1="15.5" x2="17" y2="17"></line>
+  </symbol>
+
+  <!-- Smartphone / Retina Device -->
+  <symbol id="icon-smartphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+  </symbol>
+
+  <!-- Rocket / Aerospace Launch -->
+  <symbol id="icon-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
+    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+  </symbol>
+
+  <!-- Package / Archive -->
+  <symbol id="icon-package" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+  </symbol>
+
+  <!-- Alert Triangle / Warning -->
+  <symbol id="icon-alert-triangle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+    <line x1="12" y1="9" x2="12" y2="13"></line>
+    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+  </symbol>
+
+  <!-- Search / Audit -->
+  <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </symbol>
+
+  <!-- Activity / Chart Metrics -->
+  <symbol id="icon-activity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+  </symbol>
+
+  <!-- Wrench / Tools -->
+  <symbol id="icon-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+  </symbol>
+
+  <!-- User / Leadership Profile -->
+  <symbol id="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+    <circle cx="12" cy="7" r="4"></circle>
+  </symbol>
+
+  <!-- File Check / License Document -->
+  <symbol id="icon-file-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+    <polyline points="14 2 14 8 20 8"></polyline>
+    <path d="m9 15 2 2 4-4"></path>
+  </symbol>
+
+  <!-- Mexican Rose / Dahlia Flor -->
+  <symbol id="icon-flower" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="3"></circle>
+    <path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"></path>
+  </symbol>
+
+  <!-- Grid Blueprint Layout -->
+  <symbol id="icon-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="3" width="7" height="7"></rect>
+    <rect x="14" y="3" width="7" height="7"></rect>
+    <rect x="14" y="14" width="7" height="7"></rect>
+    <rect x="3" y="14" width="7" height="7"></rect>
+  </symbol>
+
+  <!-- Maclovia Signature Pentagonal Geometric Logo Mark with Mexica Glyph TEPĒTL "M" (Dark / Obsidian Theme) -->
   <symbol id="icon-maclovia-mark" viewBox="0 0 200 200">
     <defs>
       <!-- Radial Obsidian Medallion Background -->
@@ -250,14 +337,14 @@
         <stop offset="100%" stop-color="#7D003F" />
       </linearGradient>
 
-      <!-- Sigil MAT ꂵ - Light / Neon Facet -->
+      <!-- Sigil Tepētl M - Light / Neon Facet -->
       <linearGradient id="maclovia-sigil-light" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="#FF66B8" />
         <stop offset="40%" stop-color="#FF2B92" />
         <stop offset="100%" stop-color="#E4007C" />
       </linearGradient>
 
-      <!-- Sigil MAT ꂵ - Shadow / Obsidian Depth Facet -->
+      <!-- Sigil Tepētl M - Shadow / Obsidian Depth Facet -->
       <linearGradient id="maclovia-sigil-dark" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="#B8005F" />
         <stop offset="50%" stop-color="#75003A" />
@@ -272,37 +359,38 @@
     <polygon points="100,26 170,77 144,160 56,160 30,77" fill="none" stroke="#E4007C" stroke-width="1.5" stroke-dasharray="5 3.5" opacity="0.6" stroke-linejoin="round" />
 
     <!-- 5 Blueprint Vertex Pivot Nodes -->
-    <circle cx="100" cy="14" r="3.5" fill="#FF66B8" />
+    <circle cx="100" cy="14" r="4.2" fill="#FFF8E7" stroke="#FF4DA6" stroke-width="1.5" />
     <circle cx="182" cy="73" r="3.5" fill="#FF66B8" />
     <circle cx="151" cy="170" r="3.5" fill="#E4007C" />
     <circle cx="49" cy="170" r="3.5" fill="#E4007C" />
     <circle cx="18" cy="73" r="3.5" fill="#FF66B8" />
 
-    <!-- CHISELED SIGIL MAT (ꂵ) - COMPACT & CENTERED IN PENTAGON -->
-    <g id="sigil-mat-body">
-      <!-- Base Glyph Structure (Even-Odd Fill for internal portal windows) -->
-      <path fill-rule="evenodd" fill="url(#maclovia-sigil-light)" d="M 72.2 141.0 L 72.2 61.0 L 103.3 75.6 L 103.3 63.5 L 127.8 76.3 L 125.1 82.6 L 110.8 75.5 L 110.8 141.0 L 103.3 141.0 L 103.3 106.8 L 94.9 106.8 L 94.9 141.0 L 87.5 141.0 L 87.5 106.8 L 79.1 106.8 L 79.1 141.0 Z M 79.1 100.9 L 87.5 100.9 L 87.5 75.1 L 79.1 71.5 Z M 94.9 100.9 L 103.3 100.9 L 103.3 83.4 L 94.9 79.3 Z" />
+    <!-- GLIFO MEXICA TEPĒTL (MÉXICO / TENOCHTITLAN / LA "M" SOBERANA) -->
+    <g id="sigil-tepetl-body">
+      <!-- Base Mountain Glyph Body (Doble cresta volcánica / Letra M) -->
+      <path fill-rule="evenodd" fill="url(#maclovia-sigil-light)" d="M 64 141 L 64 88 L 68 88 L 68 75 C 68 62, 84 62, 84 75 L 84 94 L 100 114 L 116 94 L 116 75 C 116 62, 132 62, 132 75 L 132 88 L 136 88 L 136 141 L 123 141 L 123 100 L 112 116 C 106 124, 94 124, 88 116 L 77 100 L 77 141 Z" />
 
-      <!-- Chiseled Shadow Facets (Right side of each pillar & wing depth) -->
-      <!-- Left Pillar Shadow -->
-      <path fill="url(#maclovia-sigil-dark)" opacity="0.85" d="M 75.6 62.6 L 79.1 64.3 L 79.1 71.5 L 75.6 73.0 Z M 75.6 100.9 L 79.1 100.9 L 79.1 141.0 L 75.6 141.0 Z" />
+      <!-- Shadow Facets (Obsidian Depth on Right Flanks & Valleys) -->
+      <path fill="url(#maclovia-sigil-dark)" opacity="0.88" d="M 76 75 L 84 75 C 84 62, 76 62, 76 62 Z M 80 88 L 84 94 L 100 114 L 96 114 L 80 94 Z M 123 100 L 136 88 L 136 141 L 123 141 Z M 116 75 C 116 62, 132 62, 132 75 L 132 88 L 124 88 L 124 75 Z" />
 
-      <!-- Middle Pillar Shadow -->
-      <path fill="url(#maclovia-sigil-dark)" opacity="0.85" d="M 91.2 76.8 L 94.9 79.3 L 94.9 100.9 L 91.2 100.9 Z M 91.2 106.8 L 94.9 106.8 L 94.9 141.0 L 91.2 141.0 Z" />
+      <!-- Inner Sacred Portal Arch (Ōztōtl / Womb of the Earth) -->
+      <path d="M 88 141 L 88 122 C 88 115, 112 115, 112 122 L 112 141 Z" fill="#0C0208" stroke="url(#maclovia-sigil-light)" stroke-width="1.5" />
 
-      <!-- Right Pillar Shadow -->
-      <path fill="url(#maclovia-sigil-dark)" opacity="0.85" d="M 107.0 75.5 L 110.8 75.5 L 110.8 141.0 L 107.0 141.0 Z" />
+      <!-- Pre-Hispanic Stepped Foundation Frieze (Cosmic Latte Accent) -->
+      <rect x="62" y="139" width="76" height="3" rx="1.5" fill="#FFF8E7" opacity="0.95" />
 
-      <!-- Right Wing Slanted Bevel -->
-      <path fill="url(#maclovia-sigil-dark)" opacity="0.9" d="M 110.8 75.5 L 127.8 76.3 L 125.1 82.6 L 110.8 78.8 Z" />
+      <!-- Sacred Sun Disc / Chalchihuite in Central Notch (Tonatiuh) -->
+      <circle cx="100" cy="80" r="5" fill="#FFF8E7" stroke="#FF4DA6" stroke-width="1.8" />
+      <circle cx="100" cy="80" r="2" fill="#E4007C" />
+      <!-- Cardinal Cross Ticks (Nahui Ollin Solar Rays) -->
+      <line x1="100" y1="71" x2="100" y2="74" stroke="#FFF8E7" stroke-width="1.2" />
+      <line x1="100" y1="86" x2="100" y2="89" stroke="#FFF8E7" stroke-width="1.2" />
+      <line x1="91" y1="80" x2="94" y2="80" stroke="#FFF8E7" stroke-width="1.2" />
+      <line x1="106" y1="80" x2="109" y2="80" stroke="#FFF8E7" stroke-width="1.2" />
 
-      <!-- Horizontal Structural Lintel Accent (Laser bar) -->
-      <rect x="72.2" y="102.5" width="38.6" height="2.5" fill="#FFA3D5" opacity="0.75" />
-
-      <!-- High-Precision Center Laser Etch Lines down each pillar -->
-      <line x1="75.6" y1="73.0" x2="75.6" y2="141.0" stroke="#FFFFFF" stroke-width="1.0" opacity="0.45" />
-      <line x1="91.2" y1="77.0" x2="91.2" y2="141.0" stroke="#FFFFFF" stroke-width="1.0" opacity="0.45" />
-      <line x1="107.0" y1="76.0" x2="107.0" y2="141.0" stroke="#FFFFFF" stroke-width="1.0" opacity="0.45" />
+      <!-- Laser Ridge Etch Lines (Peak Summits to Foundation) -->
+      <line x1="76" y1="75" x2="76" y2="139" stroke="#FFF8E7" stroke-width="1.2" opacity="0.9" />
+      <line x1="124" y1="75" x2="124" y2="139" stroke="#FFF8E7" stroke-width="1.2" opacity="0.9" />
     </g>
   </symbol>
 
@@ -311,14 +399,14 @@
     <use href="#icon-maclovia-mark"></use>
   </symbol>
 
-  <!-- Maclovia Signature Pentagonal Geometric Logo Mark (Light / Porcelana Theme) -->
+  <!-- Maclovia Signature Pentagonal Geometric Logo Mark (Light / Porcelana Theme with Mexica Glyph TEPĒTL "M") -->
   <symbol id="icon-maclovia-mark-light" viewBox="0 0 200 200">
     <defs>
-      <!-- Radial Light Medallion Background -->
+      <!-- Radial Light Medallion Background in Cosmic Latte -->
       <radialGradient id="maclovia-light-medallion" cx="50%" cy="45%" r="65%">
-        <stop offset="0%" stop-color="#FFF0F7" />
-        <stop offset="65%" stop-color="#FFE4F0" />
-        <stop offset="100%" stop-color="#FFFFFF" />
+        <stop offset="0%" stop-color="#FFFDF7" />
+        <stop offset="50%" stop-color="#FFF8E7" />
+        <stop offset="100%" stop-color="#F2E6CE" />
       </radialGradient>
 
       <!-- Outer Pentagon Bevel Gradient (Light) -->
@@ -328,14 +416,14 @@
         <stop offset="100%" stop-color="#A60058" />
       </linearGradient>
 
-      <!-- Sigil MAT ꂵ - Light Facet (Light Theme High Contrast) -->
+      <!-- Sigil Tepētl M - Light Facet (Light Theme High Contrast) -->
       <linearGradient id="maclovia-light-sigil-light" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="#E4007C" />
         <stop offset="40%" stop-color="#D10070" />
         <stop offset="100%" stop-color="#A80058" />
       </linearGradient>
 
-      <!-- Sigil MAT ꂵ - Depth Facet (Light Theme Shadow) -->
+      <!-- Sigil Tepētl M - Depth Facet (Light Theme Shadow) -->
       <linearGradient id="maclovia-light-sigil-dark" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="#7D003F" />
         <stop offset="50%" stop-color="#57002C" />
@@ -343,37 +431,44 @@
       </linearGradient>
     </defs>
 
-    <!-- Outer Pentagonal Contour Shield (Light) -->
+    <!-- Outer Pentagonal Contour Shield (Light Cosmic Latte Medallion) -->
     <polygon points="100,14 182,73 151,170 49,170 18,73" fill="url(#maclovia-light-medallion)" stroke="url(#maclovia-light-pentagon-stroke)" stroke-width="4.5" stroke-linejoin="round" />
 
     <!-- Inner Architectural Inset Pentagon -->
     <polygon points="100,26 170,77 144,160 56,160 30,77" fill="none" stroke="#E4007C" stroke-width="1.5" stroke-dasharray="5 3.5" opacity="0.55" stroke-linejoin="round" />
 
-    <!-- 5 Blueprint Vertex Pivot Nodes -->
-    <circle cx="100" cy="14" r="3.5" fill="#FF2B92" />
+    <!-- 5 Blueprint Vertex Pivot Nodes with Cosmic Latte Crown -->
+    <circle cx="100" cy="14" r="4.2" fill="#FFF8E7" stroke="#FF2B92" stroke-width="1.5" />
     <circle cx="182" cy="73" r="3.5" fill="#FF2B92" />
     <circle cx="151" cy="170" r="3.5" fill="#C2006A" />
     <circle cx="49" cy="170" r="3.5" fill="#C2006A" />
     <circle cx="18" cy="73" r="3.5" fill="#FF2B92" />
 
-    <!-- CHISELED SIGIL MAT (ꂵ) - LIGHT THEME OPTIMIZED -->
+    <!-- GLIFO MEXICA TEPĒTL - LIGHT THEME OPTIMIZED -->
     <g>
-      <!-- Base Glyph Structure -->
-      <path fill-rule="evenodd" fill="url(#maclovia-light-sigil-light)" d="M 72.2 141.0 L 72.2 61.0 L 103.3 75.6 L 103.3 63.5 L 127.8 76.3 L 125.1 82.6 L 110.8 75.5 L 110.8 141.0 L 103.3 141.0 L 103.3 106.8 L 94.9 106.8 L 94.9 141.0 L 87.5 141.0 L 87.5 106.8 L 79.1 106.8 L 79.1 141.0 Z M 79.1 100.9 L 87.5 100.9 L 87.5 75.1 L 79.1 71.5 Z M 94.9 100.9 L 103.3 100.9 L 103.3 83.4 L 94.9 79.3 Z" />
+      <!-- Base Mountain Glyph Body -->
+      <path fill-rule="evenodd" fill="url(#maclovia-light-sigil-light)" d="M 64 141 L 64 88 L 68 88 L 68 75 C 68 62, 84 62, 84 75 L 84 94 L 100 114 L 116 94 L 116 75 C 116 62, 132 62, 132 75 L 132 88 L 136 88 L 136 141 L 123 141 L 123 100 L 112 116 C 106 124, 94 124, 88 116 L 77 100 L 77 141 Z" />
 
       <!-- Chiseled Shadow Facets -->
-      <path fill="url(#maclovia-light-sigil-dark)" opacity="0.85" d="M 75.6 62.6 L 79.1 64.3 L 79.1 71.5 L 75.6 73.0 Z M 75.6 100.9 L 79.1 100.9 L 79.1 141.0 L 75.6 141.0 Z" />
-      <path fill="url(#maclovia-light-sigil-dark)" opacity="0.85" d="M 91.2 76.8 L 94.9 79.3 L 94.9 100.9 L 91.2 100.9 Z M 91.2 106.8 L 94.9 106.8 L 94.9 141.0 L 91.2 141.0 Z" />
-      <path fill="url(#maclovia-light-sigil-dark)" opacity="0.85" d="M 107.0 75.5 L 110.8 75.5 L 110.8 141.0 L 107.0 141.0 Z" />
-      <path fill="url(#maclovia-light-sigil-dark)" opacity="0.9" d="M 110.8 75.5 L 127.8 76.3 L 125.1 82.6 L 110.8 78.8 Z" />
+      <path fill="url(#maclovia-light-sigil-dark)" opacity="0.88" d="M 76 75 L 84 75 C 84 62, 76 62, 76 62 Z M 80 88 L 84 94 L 100 114 L 96 114 L 80 94 Z M 123 100 L 136 88 L 136 141 L 123 141 Z M 116 75 C 116 62, 132 62, 132 75 L 132 88 L 124 88 L 124 75 Z" />
 
-      <!-- Horizontal Structural Lintel Accent -->
-      <rect x="72.2" y="102.5" width="38.6" height="2.5" fill="#FFB3DC" opacity="0.8" />
+      <!-- Inner Sacred Portal Arch (Ōztōtl) in Light Theme -->
+      <path d="M 88 141 L 88 122 C 88 115, 112 115, 112 122 L 112 141 Z" fill="#FFFDF7" stroke="#E4007C" stroke-width="1.5" />
 
-      <!-- High-Precision Center Laser Etch Lines -->
-      <line x1="75.6" y1="73.0" x2="75.6" y2="141.0" stroke="#FFFFFF" stroke-width="1.0" opacity="0.75" />
-      <line x1="91.2" y1="77.0" x2="91.2" y2="141.0" stroke="#FFFFFF" stroke-width="1.0" opacity="0.75" />
-      <line x1="107.0" y1="76.0" x2="107.0" y2="141.0" stroke="#FFFFFF" stroke-width="1.0" opacity="0.75" />
+      <!-- Pre-Hispanic Stepped Foundation Frieze -->
+      <rect x="62" y="139" width="76" height="3" rx="1.5" fill="#FFF8E7" stroke="#E4007C" stroke-width="0.5" />
+
+      <!-- Sacred Sun Disc / Chalchihuite in Central Notch (Tonatiuh) -->
+      <circle cx="100" cy="80" r="5" fill="#FFF8E7" stroke="#E4007C" stroke-width="1.8" />
+      <circle cx="100" cy="80" r="2" fill="#E4007C" />
+      <line x1="100" y1="71" x2="100" y2="74" stroke="#E4007C" stroke-width="1.2" />
+      <line x1="100" y1="86" x2="100" y2="89" stroke="#E4007C" stroke-width="1.2" />
+      <line x1="91" y1="80" x2="94" y2="80" stroke="#E4007C" stroke-width="1.2" />
+      <line x1="106" y1="80" x2="109" y2="80" stroke="#E4007C" stroke-width="1.2" />
+
+      <!-- High-Precision Center Laser Etch Lines in Cosmic Latte -->
+      <line x1="76" y1="75" x2="76" y2="139" stroke="#FFF8E7" stroke-width="1.2" opacity="0.95" />
+      <line x1="124" y1="75" x2="124" y2="139" stroke="#FFF8E7" stroke-width="1.2" opacity="0.95" />
     </g>
   </symbol>
 
@@ -389,7 +484,10 @@
       <circle cx="151" cy="170" r="3.5" fill="#E4007C" />
       <circle cx="49" cy="170" r="3.5" fill="#E4007C" />
       <circle cx="18" cy="73" r="3.5" fill="#FF66B8" />
-      <path fill-rule="evenodd" fill="#FF4DA6" d="M 72.2 141.0 L 72.2 61.0 L 103.3 75.6 L 103.3 63.5 L 127.8 76.3 L 125.1 82.6 L 110.8 75.5 L 110.8 141.0 L 103.3 141.0 L 103.3 106.8 L 94.9 106.8 L 94.9 141.0 L 87.5 141.0 L 87.5 106.8 L 79.1 106.8 L 79.1 141.0 Z M 79.1 100.9 L 87.5 100.9 L 87.5 75.1 L 79.1 71.5 Z M 94.9 100.9 L 103.3 100.9 L 103.3 83.4 L 94.9 79.3 Z" />
+      <!-- Tepētl M Glyph -->
+      <path fill-rule="evenodd" fill="#FF4DA6" d="M 64 141 L 64 88 L 68 88 L 68 75 C 68 62, 84 62, 84 75 L 84 94 L 100 114 L 116 94 L 116 75 C 116 62, 132 62, 132 75 L 132 88 L 136 88 L 136 141 L 123 141 L 123 100 L 112 116 C 106 124, 94 124, 88 116 L 77 100 L 77 141 Z" />
+      <circle cx="100" cy="80" r="5" fill="#FFF8E7" />
+      <rect x="62" y="139" width="76" height="3" rx="1.5" fill="#FFF8E7" opacity="0.9" />
     </g>
     <!-- Brand Typography -->
     <text x="175" y="85" font-family="'Abril Fatface', Georgia, serif" font-size="52" fill="#FFFFFF" letter-spacing="1">MACLOVIA.</text>
@@ -401,19 +499,22 @@
   <!-- Logotipo Horizontal Completo (Light) -->
   <symbol id="icon-maclovia-lockup-light" viewBox="0 0 600 160">
     <g transform="translate(15, 10) scale(0.7)">
-      <polygon points="100,14 182,73 151,170 49,170 18,73" fill="#FFFFFF" stroke="#E4007C" stroke-width="4.5" stroke-linejoin="round" />
+      <polygon points="100,14 182,73 151,170 49,170 18,73" fill="#FFF8E7" stroke="#E4007C" stroke-width="4.5" stroke-linejoin="round" />
       <polygon points="100,26 170,77 144,160 56,160 30,77" fill="none" stroke="#E4007C" stroke-width="1.5" stroke-dasharray="5 3.5" opacity="0.6" stroke-linejoin="round" />
-      <circle cx="100" cy="14" r="3.5" fill="#FF2B92" />
+      <circle cx="100" cy="14" r="4.2" fill="#FFF8E7" stroke="#FF2B92" stroke-width="1.5" />
       <circle cx="182" cy="73" r="3.5" fill="#FF2B92" />
       <circle cx="151" cy="170" r="3.5" fill="#C2006A" />
       <circle cx="49" cy="170" r="3.5" fill="#C2006A" />
       <circle cx="18" cy="73" r="3.5" fill="#FF2B92" />
-      <path fill-rule="evenodd" fill="#E4007C" d="M 72.2 141.0 L 72.2 61.0 L 103.3 75.6 L 103.3 63.5 L 127.8 76.3 L 125.1 82.6 L 110.8 75.5 L 110.8 141.0 L 103.3 141.0 L 103.3 106.8 L 94.9 106.8 L 94.9 141.0 L 87.5 141.0 L 87.5 106.8 L 79.1 106.8 L 79.1 141.0 Z M 79.1 100.9 L 87.5 100.9 L 87.5 75.1 L 79.1 71.5 Z M 94.9 100.9 L 103.3 100.9 L 103.3 83.4 L 94.9 79.3 Z" />
+      <!-- Tepētl M Glyph Light -->
+      <path fill-rule="evenodd" fill="#E4007C" d="M 64 141 L 64 88 L 68 88 L 68 75 C 68 62, 84 62, 84 75 L 84 94 L 100 114 L 116 94 L 116 75 C 116 62, 132 62, 132 75 L 132 88 L 136 88 L 136 141 L 123 141 L 123 100 L 112 116 C 106 124, 94 124, 88 116 L 77 100 L 77 141 Z" />
+      <circle cx="100" cy="80" r="5" fill="#FFF8E7" stroke="#E4007C" stroke-width="1.5" />
+      <rect x="62" y="139" width="76" height="3" rx="1.5" fill="#FFF8E7" stroke="#E4007C" stroke-width="0.5" />
     </g>
     <!-- Brand Typography Light -->
-    <text x="175" y="85" font-family="'Abril Fatface', Georgia, serif" font-size="52" fill="#0A0A0A" letter-spacing="1">MACLOVIA.</text>
+    <text x="175" y="85" font-family="'Abril Fatface', Georgia, serif" font-size="52" fill="#181511" letter-spacing="1">MACLOVIA.</text>
     <text x="180" y="132" font-family="'Cookie', cursive" font-size="44" fill="#E4007C">Belleza Maldita</text>
-    <rect x="500" y="58" width="55" height="24" rx="4" fill="none" stroke="#E4007C" stroke-width="1.5" />
+    <rect x="500" y="58" width="55" height="24" rx="4" fill="#FFF8E7" stroke="#E4007C" stroke-width="1.5" />
     <text x="527" y="74" font-family="'Fira Code', monospace" font-size="11" fill="#E4007C" font-weight="700" text-anchor="middle">CDMX</text>
   </symbol>
 
@@ -428,7 +529,7 @@
 
   <!-- Monograma Editorial CDMX (Light) -->
   <symbol id="icon-maclovia-wordmark-light" viewBox="0 0 450 140">
-    <text x="20" y="82" font-family="'Abril Fatface', Georgia, serif" font-size="70" fill="#070707" letter-spacing="-0.5">MACLOVIA.</text>
+    <text x="20" y="82" font-family="'Abril Fatface', Georgia, serif" font-size="70" fill="#181511" letter-spacing="-0.5">MACLOVIA.</text>
     <text x="24" y="118" font-family="'Fira Code', monospace" font-size="12" fill="#E4007C" font-weight="700" letter-spacing="3.5">DEVELOPMENT GROUP • CIUDAD DE MÉXICO</text>
     <circle cx="430" cy="74" r="5" fill="#E4007C" />
   </symbol>
@@ -450,44 +551,75 @@
         ✦ HIGH-SCALE RESILIENT SYSTEMS ✦ CIUDAD DE MÉXICO • SLA 99.98%
       </textPath>
     </text>
-    <!-- Centered Scaled Pentagonal Mark -->
+    <!-- Centered Scaled Pentagonal Mark with Cosmic Latte Apex -->
     <g transform="translate(68, 68) scale(0.52)">
       <polygon points="100,14 182,73 151,170 49,170 18,73" fill="#070709" stroke="#E4007C" stroke-width="4.5" stroke-linejoin="round" />
       <polygon points="100,26 170,77 144,160 56,160 30,77" fill="none" stroke="#E4007C" stroke-width="1.5" stroke-dasharray="5 3.5" opacity="0.6" stroke-linejoin="round" />
-      <circle cx="100" cy="14" r="3.5" fill="#FF66B8" />
+      <circle cx="100" cy="14" r="4.2" fill="#FFF8E7" stroke="#FF4DA6" stroke-width="1.5" />
       <circle cx="182" cy="73" r="3.5" fill="#FF66B8" />
       <circle cx="151" cy="170" r="3.5" fill="#E4007C" />
       <circle cx="49" cy="170" r="3.5" fill="#E4007C" />
       <circle cx="18" cy="73" r="3.5" fill="#FF66B8" />
-      <path fill-rule="evenodd" fill="#FF4DA6" d="M 72.2 141.0 L 72.2 61.0 L 103.3 75.6 L 103.3 63.5 L 127.8 76.3 L 125.1 82.6 L 110.8 75.5 L 110.8 141.0 L 103.3 141.0 L 103.3 106.8 L 94.9 106.8 L 94.9 141.0 L 87.5 141.0 L 87.5 106.8 L 79.1 106.8 L 79.1 141.0 Z M 79.1 100.9 L 87.5 100.9 L 87.5 75.1 L 79.1 71.5 Z M 94.9 100.9 L 103.3 100.9 L 103.3 83.4 L 94.9 79.3 Z" />
+      <!-- Tepētl M Glyph -->
+      <path fill-rule="evenodd" fill="#FF4DA6" d="M 64 141 L 64 88 L 68 88 L 68 75 C 68 62, 84 62, 84 75 L 84 94 L 100 114 L 116 94 L 116 75 C 116 62, 132 62, 132 75 L 132 88 L 136 88 L 136 141 L 123 141 L 123 100 L 112 116 C 106 124, 94 124, 88 116 L 77 100 L 77 141 Z" />
+      <circle cx="100" cy="80" r="5" fill="#FFF8E7" />
+      <rect x="62" y="139" width="76" height="3" rx="1.5" fill="#FFF8E7" opacity="0.9" />
+      <line x1="76" y1="75" x2="76" y2="139" stroke="#FFF8E7" stroke-width="1.2" opacity="0.9" />
+      <line x1="124" y1="75" x2="124" y2="139" stroke="#FFF8E7" stroke-width="1.2" opacity="0.9" />
     </g>
   </symbol>
 
-  <!-- Insignia de Certificación (Light) -->
+  <!-- Insignia de Certificación (Light Cosmic Latte) -->
   <symbol id="icon-maclovia-badge-light" viewBox="0 0 240 240">
     <defs>
       <path id="badge-circle-path-light" d="M 120, 120 m -95, 0 a 95,95 0 1,1 190,0 a 95,95 0 1,1 -190,0" />
     </defs>
     <!-- Outer Shield Rings Light -->
-    <circle cx="120" cy="120" r="115" fill="#FAF8F8" stroke="#E4007C" stroke-width="2.5" />
+    <circle cx="120" cy="120" r="115" fill="#FFF8E7" stroke="#E4007C" stroke-width="2.5" />
     <circle cx="120" cy="120" r="105" fill="none" stroke="#E4007C" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.6" />
-    <circle cx="120" cy="120" r="82" fill="#FFFFFF" stroke="rgba(0,0,0,0.08)" stroke-width="1" />
+    <circle cx="120" cy="120" r="82" fill="#FFFDF7" stroke="rgba(120,95,60,0.18)" stroke-width="1" />
     <!-- Circular Text Light -->
     <text font-family="'Fira Code', monospace" font-size="9" font-weight="700" fill="#C2006A" letter-spacing="2.2">
       <textPath href="#badge-circle-path-light">
         ✦ HIGH-SCALE RESILIENT SYSTEMS ✦ CIUDAD DE MÉXICO • SLA 99.98%
       </textPath>
     </text>
-    <!-- Centered Scaled Pentagonal Mark -->
+    <!-- Centered Scaled Pentagonal Mark in Cosmic Latte -->
     <g transform="translate(68, 68) scale(0.52)">
-      <polygon points="100,14 182,73 151,170 49,170 18,73" fill="#FFFFFF" stroke="#E4007C" stroke-width="4.5" stroke-linejoin="round" />
+      <polygon points="100,14 182,73 151,170 49,170 18,73" fill="#FFF8E7" stroke="#E4007C" stroke-width="4.5" stroke-linejoin="round" />
       <polygon points="100,26 170,77 144,160 56,160 30,77" fill="none" stroke="#E4007C" stroke-width="1.5" stroke-dasharray="5 3.5" opacity="0.6" stroke-linejoin="round" />
-      <circle cx="100" cy="14" r="3.5" fill="#FF2B92" />
+      <circle cx="100" cy="14" r="4.2" fill="#FFF8E7" stroke="#FF2B92" stroke-width="1.5" />
       <circle cx="182" cy="73" r="3.5" fill="#FF2B92" />
       <circle cx="151" cy="170" r="3.5" fill="#C2006A" />
       <circle cx="49" cy="170" r="3.5" fill="#C2006A" />
       <circle cx="18" cy="73" r="3.5" fill="#FF2B92" />
-      <path fill-rule="evenodd" fill="#E4007C" d="M 72.2 141.0 L 72.2 61.0 L 103.3 75.6 L 103.3 63.5 L 127.8 76.3 L 125.1 82.6 L 110.8 75.5 L 110.8 141.0 L 103.3 141.0 L 103.3 106.8 L 94.9 106.8 L 94.9 141.0 L 87.5 141.0 L 87.5 106.8 L 79.1 106.8 L 79.1 141.0 Z M 79.1 100.9 L 87.5 100.9 L 87.5 75.1 L 79.1 71.5 Z M 94.9 100.9 L 103.3 100.9 L 103.3 83.4 L 94.9 79.3 Z" />
+      <!-- Tepētl M Glyph Light -->
+      <path fill-rule="evenodd" fill="#E4007C" d="M 64 141 L 64 88 L 68 88 L 68 75 C 68 62, 84 62, 84 75 L 84 94 L 100 114 L 116 94 L 116 75 C 116 62, 132 62, 132 75 L 132 88 L 136 88 L 136 141 L 123 141 L 123 100 L 112 116 C 106 124, 94 124, 88 116 L 77 100 L 77 141 Z" />
+      <circle cx="100" cy="80" r="5" fill="#FFF8E7" stroke="#E4007C" stroke-width="1.5" />
+      <rect x="62" y="139" width="76" height="3" rx="1.5" fill="#FFF8E7" stroke="#E4007C" stroke-width="0.5" />
+      <line x1="76" y1="75" x2="76" y2="139" stroke="#FFF8E7" stroke-width="1.2" opacity="0.95" />
+      <line x1="124" y1="75" x2="124" y2="139" stroke="#FFF8E7" stroke-width="1.2" opacity="0.95" />
     </g>
+  </symbol>
+
+  <!-- GitHub Stars Symbol -->
+  <symbol id="icon-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+  </symbol>
+
+  <!-- GitHub Forks Symbol -->
+  <symbol id="icon-git-fork" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="18" r="3"></circle>
+    <circle cx="6" cy="6" r="3"></circle>
+    <circle cx="18" cy="6" r="3"></circle>
+    <path d="M18 9v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9"></path>
+    <path d="M12 12v3"></path>
+  </symbol>
+
+  <!-- Refresh / Real-Time Sync Symbol -->
+  <symbol id="icon-refresh-cw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="23 4 23 10 17 10"></polyline>
+    <polyline points="1 20 1 14 7 14"></polyline>
+    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
   </symbol>
 </svg>

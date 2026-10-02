@@ -5,34 +5,34 @@
       <div class="footer-pillars-grid">
         <!-- Pillar 1: Brand Anchor & Purpose -->
         <div>
-          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
-            <svg class="text-rosa footer-brand-logo" style="width: 2rem; height: 2rem;" viewBox="0 0 200 200">
+          <div class="footer-brand-header">
+            <svg class="text-rosa site-brand-logo footer-brand-logo" viewBox="0 0 200 200">
               <use href="assets/icons/sprite.svg#icon-maclovia-mark"></use>
             </svg>
             <div>
-              <div style="display: flex; align-items: baseline; gap: 0.35rem;">
-                <span class="font-abril" style="font-size: 1.25rem;">MACLOVIA.</span>
-                <span class="font-cookie text-rosa" style="font-size: 1.35rem;">Belleza Maldita</span>
+              <div class="flex-row-center gap-xs">
+                <span class="font-abril footer-brand-title">MACLOVIA.</span>
+                <span class="font-cookie footer-brand-subtitle">Belleza Maldita</span>
               </div>
-              <span class="font-mono text-rosa" style="font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;">
+              <span class="footer-tagline-text">
                 Development Group & Studio CDMX
               </span>
             </div>
           </div>
 
-          <p data-i18n="footer.manifesto" style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem; max-width: 28rem;">
+          <p data-i18n="footer.manifesto" class="footer-manifesto-text">
             No construimos software genérico. Fusionamos ingeniería estricta de sistemas distribuidos con una sensibilidad visual audaz e inconfundible.
           </p>
 
           <!-- Live Operational Badges -->
-          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+          <div class="flex-wrap-center gap-sm">
             <div class="footer-status-pill">
               <span class="footer-status-dot"></span>
               <span>99.98% SLA • Operacional</span>
             </div>
             <div class="footer-status-pill">
-              <svg class="icon icon-stroke text-rosa" style="width: 0.85em; height: 0.85em;"><use href="assets/icons/sprite.svg#icon-clock"></use></svg>
-              <span>CDMX: <strong id="footer-cdmx-clock" style="color: var(--text-primary);">--:--:--</strong></span>
+              <svg class="icon icon-stroke text-rosa icon-xs"><use href="assets/icons/sprite.svg#icon-clock"></use></svg>
+              <span>CDMX: <strong id="footer-cdmx-clock" class="footer-clock-val">--:--:--</strong></span>
             </div>
           </div>
         </div>
@@ -40,24 +40,24 @@
         <!-- Pillar 2: Dirección General & Liderazgo -->
         <div>
           <span class="footer-pillar-title">Dirección & Liderazgo</span>
-          <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.8rem;">
+          <div class="footer-leadership-list">
             <div>
-              <span class="font-mono text-rosa" style="font-size: 0.65rem; display: block; text-transform: uppercase;">CEO & Arquitecto Principal</span>
-              <strong style="color: var(--text-primary); font-size: 0.95rem;">Erick Jonathan Aguilar García</strong>
-              <span class="font-mono text-muted" style="font-size: 0.65rem; display: block;">Fundador • Maclovia / Belleza Maldita</span>
+              <span class="footer-role-label">CEO & Arquitecto Principal</span>
+              <strong class="footer-ceo-name">Erick Jonathan Aguilar García</strong>
+              <span class="footer-sub-meta">Fundador • Maclovia / Belleza Maldita</span>
             </div>
 
             <div>
-              <span class="font-mono text-muted" style="font-size: 0.65rem; display: block;">SEDE CENTRAL</span>
-              <div style="display: flex; align-items: center; gap: 0.35rem; margin-top: 0.15rem;">
+              <span class="footer-sub-meta">SEDE CENTRAL</span>
+              <div class="flex-row-center gap-xs">
                 <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-map-pin"></use></svg>
-                <span style="color: var(--text-secondary);">Ciudad de México, CDMX</span>
+                <span class="text-secondary">Ciudad de México, CDMX</span>
               </div>
-              <span class="font-mono text-muted" style="font-size: 0.6rem;">19.4326° N, 99.1332° W • México</span>
+              <span class="footer-sub-coords">19.4326° N, 99.1332° W • México</span>
             </div>
 
             <div>
-              <button class="btn btn-secondary" data-copy-text="AUGE1405@gmail.com" style="padding: 0.35rem 0.75rem; font-size: 0.7rem; width: 100%;">
+              <button class="btn btn-secondary footer-mail-btn" data-copy-text="AUGE1405@gmail.com">
                 <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-mail"></use></svg>
                 <span>AUGE1405@gmail.com</span>
                 <svg class="icon icon-stroke text-muted"><use href="assets/icons/sprite.svg#icon-copy"></use></svg>
@@ -69,22 +69,22 @@
         <!-- Pillar 3: Capacidades & Arquitectura -->
         <div>
           <span class="footer-pillar-title">Ecosistema & SLA</span>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem; font-family: var(--font-mono); font-size: 0.75rem;">
+          <ul class="footer-capabilities-list">
             <li>
-              <span class="text-rosa">✦</span> <strong style="color: var(--text-primary);">Arquitectura Cloud</strong>
-              <span class="text-muted" style="font-size: 0.6rem; display: block; margin-left: 0.9rem;">Microservicios & Clusters</span>
+              <span class="text-rosa">✦</span> <strong class="text-primary">Arquitectura Cloud</strong>
+              <span class="footer-cap-sub">Microservicios & Clusters</span>
             </li>
             <li>
-              <span class="text-rosa">✦</span> <strong style="color: var(--text-primary);">Compresión LLM</strong>
-              <span class="text-muted" style="font-size: 0.6rem; display: block; margin-left: 0.9rem;">Rust & Q4_0 Quant</span>
+              <span class="text-rosa">✦</span> <strong class="text-primary">Compresión LLM</strong>
+              <span class="footer-cap-sub">Rust & Q4_0 Quant</span>
             </li>
             <li>
-              <span class="text-rosa">✦</span> <strong style="color: var(--text-primary);">WebAssembly Engine</strong>
-              <span class="text-muted" style="font-size: 0.6rem; display: block; margin-left: 0.9rem;">Inferencia en Browser</span>
+              <span class="text-rosa">✦</span> <strong class="text-primary">WebAssembly Engine</strong>
+              <span class="footer-cap-sub">Inferencia en Browser</span>
             </li>
             <li>
-              <span class="text-rosa">✦</span> <strong style="color: var(--text-primary);">Open Source CLI</strong>
-              <span class="text-muted" style="font-size: 0.6rem; display: block; margin-left: 0.9rem;">$ npx maclovia-bm</span>
+              <span class="text-rosa">✦</span> <strong class="text-primary">Open Source CLI</strong>
+              <span class="footer-cap-sub">$ npx maclovia-bm</span>
             </li>
           </ul>
         </div>
@@ -92,30 +92,30 @@
         <!-- Pillar 4: Canales Digitales & Código -->
         <div>
           <span class="footer-pillar-title">Código & Redes</span>
-          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <div class="footer-leadership-list">
             <!-- CLI Copier -->
-            <button class="btn btn-secondary" data-copy-text="npx maclovia-bm init" style="display: flex; flex-direction: column; align-items: flex-start; padding: 0.5rem 0.75rem; width: 100%;">
-              <span class="font-mono text-muted" style="font-size: 0.6rem;">PAQUETE CLI</span>
-              <span class="font-mono text-rosa" style="font-size: 0.7rem; font-weight: 600;">$ npx maclovia-bm init</span>
+            <button class="btn btn-secondary footer-cli-card-btn" data-copy-text="npx maclovia-bm init">
+              <span class="footer-cli-tag">PAQUETE CLI</span>
+              <span class="footer-cli-cmd">$ npx maclovia-bm init</span>
             </button>
 
             <!-- GitHub link -->
-            <a href="https://github.com/erickaguilar" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="justify-content: flex-start; padding: 0.35rem 0.5rem;">
+            <a href="https://github.com/erickaguilar" target="_blank" rel="noopener noreferrer" class="btn btn-ghost footer-social-link">
               <svg class="icon text-rosa"><use href="assets/icons/sprite.svg#icon-github"></use></svg>
               <span>@erickaguilar</span>
-              <svg class="icon icon-stroke text-muted" style="margin-left: auto;"><use href="assets/icons/sprite.svg#icon-arrow-up-right"></use></svg>
+              <svg class="icon icon-stroke text-muted ml-auto"><use href="assets/icons/sprite.svg#icon-arrow-up-right"></use></svg>
             </a>
 
             <!-- LinkedIn link -->
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="justify-content: flex-start; padding: 0.35rem 0.5rem;">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn btn-ghost footer-social-link">
               <svg class="icon text-rosa"><use href="assets/icons/sprite.svg#icon-linkedin"></use></svg>
               <span>LinkedIn Studio</span>
-              <svg class="icon icon-stroke text-muted" style="margin-left: auto;"><use href="assets/icons/sprite.svg#icon-arrow-up-right"></use></svg>
+              <svg class="icon icon-stroke text-muted ml-auto"><use href="assets/icons/sprite.svg#icon-arrow-up-right"></use></svg>
             </a>
 
             <!-- Token badge -->
-            <div style="padding: 0.4rem 0.6rem; border-radius: 6px; background-color: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.6rem;">
-              <span class="text-rosa" style="font-weight: 600;">TOKEN HEX:</span> #E4007C Rosa Chilango
+            <div class="footer-token-badge">
+              <span class="text-rosa footer-token-hex-title">TOKEN HEX:</span> #E4007C Rosa Chilango
             </div>
           </div>
         </div>
@@ -128,16 +128,16 @@
 
       <!-- Lower Copyright Bar -->
       <div class="footer-bottom">
-        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;">
-          <span>© 2024–2026 MACLOVIA. Belleza Maldita.</span>
+        <div class="flex-wrap-center gap-sm">
+          <span>© 2026 MACLOVIA. Belleza Maldita.</span>
           <span>•</span>
           <span data-i18n="footer.ceoCredit">CEO & Fundador: Erick Jonathan Aguilar García</span>
           <span>•</span>
           <span class="text-rosa">CDMX</span>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 1rem;">
-          <div style="display: flex; gap: 0.75rem; color: var(--text-muted); font-size: 0.65rem;">
+        <div class="flex-row-center gap-lg">
+          <div class="footer-legal-links">
             <span>MIT License</span>
             <span>/</span>
             <span>Privacy</span>
@@ -146,7 +146,7 @@
           </div>
 
           <!-- Smooth Back to Top Button -->
-          <button id="btn-back-to-top" class="btn btn-ghost" style="border-radius: var(--radius-full); padding: 0.35rem 0.75rem;" title="Volver al inicio">
+          <button id="btn-back-to-top" class="btn btn-ghost footer-back-to-top-btn" title="Volver al inicio">
             <span>Inicio</span>
             <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-arrow-up"></use></svg>
           </button>

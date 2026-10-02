@@ -2,13 +2,20 @@
   "name": "maclovia-belleza-maldita-vanilla",
   "private": true,
   "version": "1.2.0",
+  "license": "MIT",
+  "author": "Erick Jonathan Aguilar García",
   "type": "module",
+  "bin": {
+    "maclovia-bm": "./bin/maclovia-bm.js"
+  },
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist",
-    "lint": "node --check js/*.js js/data/*.js"
+    "lint": "node --check js/*.js js/modules/*.js js/data/*.js bin/*.js",
+    "cli": "node bin/maclovia-bm.js",
+    "init": "node bin/maclovia-bm.js init"
   },
   "dependencies": {
     "vite": "^6.2.3"

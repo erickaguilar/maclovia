@@ -1,4 +1,4 @@
-# ✦ MACLOVIA. Belleza Maldita
+# MACLOVIA. Belleza Maldita
 
 > **Development Group & Software Studio • Ciudad de México**  
 > *Arquitectura de sistemas escalables, compresión de modelos y software de alto impacto.*  
@@ -13,19 +13,19 @@
 
 ---
 
-## ⚡ Manifiesto de Ingeniería
+## Manifiesto de Ingeniería
 
 Maclovia representa una filosofía de software enfocada en **rendimiento extremo, autonomía arquitectónica y cero obsolescencia programada**:
 
 * **Zero-Runtime Framework:** Sin dependencias de cliente (React, Vue, Angular o jQuery). Cero tiempo de hidratación, cero polyfills innecesarios y arranque instantáneo (FCP < 0.4s).
 * **CSS Puro con Design Tokens Nativos:** Paleta semántica controlada mediante CSS Custom Properties (`--bg-primary`, `--color-rosa-mexicano`, `--border-subtle`), soportando temas dinámicos (*Obsidiana* y *Porcelana*) con cambio de clase en tiempo real.
-* **Vectorización Absoluta (Zero-Emojis):** Todo el sistema iconográfico se apoya en un **SVG Sprite Sheet unificado** (`assets/icons/sprite.svg`), con más de 34 símbolos trazados con precisión matemática.
-* **Identidad Geométrica Sigilo MAT (`ꂵ`):** Logotipo esculpido con proporciones arquitectónicas en un pentágono regular con versiones calibradas para temas claros y oscuros.
-* **Internacionalización Nativa (i18n):** Motor reactivo bilingüe (Español / Inglés) de 0 KB de dependencias externas.
+* **Vectorización Absoluta (Zero-Emojis):** Todo el sistema iconográfico se apoya en un **SVG Sprite Sheet unificado** (`assets/icons/sprite.svg`), con más de 55 símbolos trazados con precisión matemática y cero dependencia de fuentes emoji del sistema operativo.
+* **Identidad Geométrica Glifo Mexica Tepētl ('M'):** Logotipo esculpido con proporciones arquitectónicas en un pentágono regular con versiones calibradas para temas claros y oscuros, inspirado en los códices de la Gran Tenochtitlan.
+* **Internacionalización Nativa (i18n):** Motor reactivo bilingüe (Español / Inglés / Chino) de 0 KB de dependencias externas.
 
 ---
 
-## 📐 Estructura del Repositorio
+## Estructura del Repositorio
 
 ```text
 maclovia-belleza-maldita/
@@ -48,8 +48,20 @@ maclovia-belleza-maldita/
 │   └── style.css                # Sistema de diseño completo (Variables CSS, tipografía, layouts)
 ├── js/
 │   ├── main.js                  # Orquestador del DOM (Brand switcher, SVG toolkit, animaciones)
-│   ├── i18n.js                  # Motor reactivo de internacionalización (ES / EN)
-│   ├── mockups.js               # Visualizador de interfaces, snippets de código y CLI interactivo
+│   ├── i18n.js                  # Motor reactivo de internacionalización (ES / EN / ZH)
+│   ├── mockups.js               # Fachada pública de mockups y emulación interactiva
+│   ├── modules/                 # Arquitectura desacoplada en 11 módulos especializados
+│   │   ├── clipboard.js         # Gestor nativo de portapapeles y retroalimentación SVG
+│   │   ├── terminal.js          # Consola UNIX Shell interactiva y ejecutor de Rust
+│   │   ├── browser-mockup.js    # Emulador de navegador web y rutas activas
+│   │   ├── guidelines.js        # Orquestador de vistas (Manual vs Mockups)
+│   │   ├── navigation.js        # Menú móvil, conmutador de marcas y sticky nav
+│   │   ├── portfolio.js         # Filtrado reactivo de proyectos y métricas
+│   │   ├── team.js              # Perfil ejecutivo y credenciales de autor
+│   │   ├── telemetry.js         # Telemetría de GitHub en vivo y caché local
+│   │   ├── theme.js             # Gestor de temas Obsidiana / Porcelana
+│   │   ├── toolkit.js           # Workbench de activos SVG y generador de wallpapers
+│   │   └── utils.js             # Reloj de zona horaria CDMX y botón back-to-top
 │   └── data/
 │       ├── projects.js          # Portafolio de productos de software y especificaciones técnicas
 │       ├── team.js              # Perfil ejecutivo y credenciales de ingeniería
@@ -59,17 +71,12 @@ maclovia-belleza-maldita/
 │       └── sprite.svg           # Sprite SVG vectorial con símbolos y marcas de identidad
 ├── vanilla-dist/                # Distribución lista para producción (despliegue estático autónomo)
 ├── dist-vanilla-packages/       # Paquetes tar.gz portables para distribución offline
-└── eggs/                        # Documentación técnica interna y guías de arquitectura
-    ├── 01_FASES_DE_MIGRACION.md
-    ├── 02_EQUIVALENCIAS_Y_ARQUITECTURA.md
-    ├── 03_CHECKLIST_Y_ESTIMACION.md
-    ├── 04_BIBLIOTECA_SVG_Y_CSS_PURO.md
-    └── README.md
+└── bin/                         # CLI de andamiaje oficial (maclovia-bm)
 ```
 
 ---
 
-## 🛠️ Herramientas y Desarrollo Local
+## Herramientas y Desarrollo Local
 
 ### Requisitos Previos
 * **Node.js** v18+ (opcional para desarrollo local con Vite)
@@ -93,7 +100,34 @@ npm run build
 
 ---
 
-## 🎨 Sistema de Identidad: Sigilo MAT (`ꂵ`) & SVG Toolkit
+## CLI de Andamiaje Oficial: `npx maclovia-bm init`
+
+Puedes crear una nueva aplicación web monolítica con la arquitectura de diseño de **Maclovia. Belleza Maldita** en segundos mediante el comando interactivo:
+
+```bash
+# Inicializar un nuevo proyecto
+npx maclovia-bm init mi-aplicacion
+
+# O de forma local en este repositorio
+npm run cli -- init mi-aplicacion
+```
+
+### ¿Qué genera el andamiaje?
+* **Arquitectura Zero-Runtime:** HTML5 semántico puro sin dependencias pesadas de cliente.
+* **Sistema de Tokens CSS Nativo:** Variables CSS para modo *Obsidiana* (Dark) y *Porcelana* (Light), acentuadas con **Rosa Chilango** (`#E4007C`).
+* **Sprite Sheet SVG Unificado:** Más de 55 símbolos vectoriales trazados con precisión geométrica (Zero-Emojis).
+* **Vercel & Vite Ready:** Configuración lista con `vercel.json` y scripts de servidor de desarrollo en puerto 3000.
+
+---
+
+## Sistema de Identidad: Glifo Mexica Tepētl ('M') & SVG Toolkit
+
+### Herencia Iconográfica & Arqueológica: Códices de la Gran Tenochtitlan
+El isotipo oficial de **Maclovia / Belleza Maldita** utiliza el glifo mexica **Tepētl** (Cerro Sagrado / Montaña de la Civilización):
+* **Sistema Iconográfico:** Códices Pictográficos Mexicas / Náhuatl (Códice Mendoza y Matrícula de Tributos).
+* **Civilización & Era:** Mexica / Tenochca (Postclásico Tardío, Cuenca del Anáhuac).
+* **Origen Geográfico:** Ciudad de México (19.4326° N, 99.1332° W • Tenochtitlan).
+* **Morfología Arquitectónica:** Doble cresta volcánica que evoca al Popocatépetl e Iztaccíhuatl, formando de manera natural la **letra 'M'** monumental de Maclovia y México, con el portal primordial *Ōztōtl* en su base y el disco solar *Chalchihuite* (Tonatiuh) en su vértice central.
 
 El proyecto incluye un banco de pruebas interactivo (**SVG Toolkit Workbench**) integrado en la interfaz web:
 
@@ -103,7 +137,7 @@ El proyecto incluye un banco de pruebas interactivo (**SVG Toolkit Workbench**) 
    * Iluminación y sombras optimizadas para pantallas OLED de alto contraste.
 2. **Variante Porcelana (Light Mode):**
    * Medallón en gradiente marfil translúcido (`#FFF0F7` → `#FFFFFF`).
-   * Sigilo cincelado con alto contraste cromático y sombras profundas en magenta oscuro (`#7D003F`).
+   * Glifo cincelado con alto contraste cromático y sombras profundas en magenta oscuro (`#7D003F`).
 3. **Exportación Inmediata:**
    * Escalado en tiempo real (32px, 48px, 64px, 96px, 128px, 180px, 256px).
    * Descarga de SVG autónomo con un clic (`.svg`).
@@ -111,7 +145,7 @@ El proyecto incluye un banco de pruebas interactivo (**SVG Toolkit Workbench**) 
 
 ---
 
-## 🚀 Despliegue en Producción
+## Despliegue en Producción
 
 El proyecto se puede alojar en cualquier plataforma de computación perimetral o servidor web tradicional:
 
@@ -163,7 +197,7 @@ server {
 
 ---
 
-## 📊 Métricas de Desempeño (Lighthouse Audit)
+## Métricas de Desempeño (Lighthouse Audit)
 
 | Dimensión | Puntuación | Detalle |
 | :--- | :---: | :--- |
@@ -174,7 +208,7 @@ server {
 
 ---
 
-## 👤 Autor y Liderazgo
+## Autor y Liderazgo
 
 **Erick Jonathan Aguilar García**  
 *Fundador, CEO & Software Architect*  
@@ -184,6 +218,6 @@ MACLOVIA. Belleza Maldita — Ciudad de México
 
 ---
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto está bajo la Licencia **MIT**. Consulta el archivo de licencia para más detalles.

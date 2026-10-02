@@ -1,0 +1,317 @@
+/* ==========================================================================
+   MACLOVIA. Belleza Maldita — Hero Showcase & 3-Way Brand Stages
+   ========================================================================== */
+
+/* --- Hero 3-Way Brand Showcase & Stages --- */
+.hero-brand-stage {
+  width: 100%;
+  max-width: 900px;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.brand-view {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brand-view.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.brand-switcher-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem;
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  margin-bottom: 2rem;
+}
+
+.brand-switch-btn {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.brand-switch-btn:hover {
+  color: var(--text-primary);
+}
+
+.brand-switch-btn.active {
+  background-color: var(--color-rosa-chilango);
+  color: #ffffff;
+  border-color: var(--color-rosa-chilango);
+  box-shadow: 0 0 12px rgba(228, 0, 124, 0.45);
+  font-weight: 600;
+}
+
+.horizon-divider {
+  width: 3.5rem;
+  height: 1px;
+  background-color: var(--border-medium);
+  margin: 1.5rem auto;
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-brand-stage:hover .horizon-divider {
+  width: 14rem;
+  background: linear-gradient(90deg, transparent, var(--color-rosa-chilango), transparent);
+  box-shadow: 0 0 16px rgba(228, 0, 124, 0.8);
+}
+
+.hero-scroll-hint {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.scroll-mouse-pill {
+  width: 1.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-medium);
+  display: flex;
+  justify-content: center;
+  padding-top: 0.35rem;
+}
+
+.scroll-mouse-dot {
+  width: 0.25rem;
+  height: 0.45rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-rosa-chilango);
+  box-shadow: 0 0 8px var(--color-rosa-chilango);
+  animation: mouseScroll 2s infinite ease-in-out;
+}
+
+@keyframes mouseScroll {
+  0% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0.3; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 7rem;
+  padding-bottom: 4rem;
+  position: relative;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-medium);
+  background-color: var(--bg-surface-elevated);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.hero-titles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.hero-h1 {
+  font-family: var(--font-editorial);
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.hero-h2 {
+  font-family: var(--font-script);
+  font-size: clamp(3.5rem, 8vw, 7.5rem);
+  color: var(--color-rosa-chilango);
+  line-height: 0.9;
+  margin-top: 0.25rem;
+  filter: drop-shadow(0 0 25px rgba(228, 0, 124, 0.4));
+}
+
+.hero-desc {
+  max-width: 44rem;
+  font-size: clamp(0.9rem, 1.8vw, 1.15rem);
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.hero-ambient-glow {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75vw;
+  height: 75vw;
+  max-width: 800px;
+  max-height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(228, 0, 124, 0.16) 0%, rgba(20, 8, 18, 0.8) 50%, transparent 75%);
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-content-wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-rosa-chilango);
+}
+
+.hero-logo-box {
+  margin-bottom: 1.5rem;
+}
+
+.hero-logo-svg {
+  width: 90px;
+  height: 90px;
+}
+
+.hero-logo-svg-maclovia {
+  width: 100px;
+  height: 100px;
+}
+
+.hero-subtitle-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.hero-subtitle-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-rosa-chilango);
+}
+
+.hero-subtitle-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.hero-subtitle-text-spaced {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.hero-cdmx-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--color-rosa-chilango);
+  border: 1px solid var(--color-rosa-border);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+.hero-h1-maclovia {
+  font-size: clamp(3.5rem, 8vw, 7.5rem);
+  letter-spacing: 0.05em;
+}
+
+.hero-h2-belleza {
+  font-size: clamp(4.5rem, 10vw, 9rem);
+}
+
+.hero-beads-wrap {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.hero-bead {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #E4007C;
+}
+
+.hero-bead-1 { box-shadow: 0 0 10px #E4007C; }
+.hero-bead-2 { background-color: rgba(228, 0, 124, 0.7); box-shadow: 0 0 8px #E4007C; }
+.hero-bead-3 { background-color: rgba(228, 0, 124, 0.4); box-shadow: 0 0 6px #E4007C; }
+
+.hero-cta-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.hero-ceo-badge-wrap {
+  margin-top: 2rem;
+}
+
+.hero-ceo-pill-link {
+  border-color: var(--color-rosa-border);
+  color: var(--color-rosa-chilango);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero-scroll-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}

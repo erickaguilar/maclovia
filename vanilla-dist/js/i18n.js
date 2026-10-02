@@ -1,16 +1,24 @@
 /**
  * Maclovia / Belleza Maldita — Native i18n Engine (Vanilla)
- * Cero dependencias • Reactivo • Persistencia en localStorage • Soporte ES / EN
+ * Cero dependencias • Reactivo • Persistencia en localStorage • Soporte ES / EN / ZH
  */
 
 import { translations } from './data/translations.js';
 
 export { translations };
 
-let currentLang = localStorage.getItem('maclovia_lang') || 'es';
+const SUPPORTED_LANGS = ['es', 'en', 'zh'];
+
+// Check URL query param first, then localStorage, then default to 'es'
+const urlParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
+const paramLang = urlParams ? urlParams.get('lang') : null;
+
+let currentLang = (paramLang && SUPPORTED_LANGS.includes(paramLang))
+  ? paramLang
+  : (localStorage.getItem('maclovia_lang') || 'es');
 
 /**
- * Obtiene el idioma actualmente seleccionado ('es' o 'en')
+ * Obtiene el idioma actualmente seleccionado ('es', 'en', o 'zh')
  */
 export function getLanguage() {
   return currentLang;
@@ -27,7 +35,7 @@ export function getTranslation(keyPath, lang = currentLang) {
     if (current && typeof current === 'object' && part in current) {
       current = current[part];
     } else {
-      // Fallback a español si la clave no existe en inglés
+      // Fallback a español si la clave no existe en el idioma seleccionado
       let fallback = translations['es'];
       for (const fPart of parts) {
         if (fallback && typeof fallback === 'object' && fPart in fallback) {
@@ -44,13 +52,13 @@ export function getTranslation(keyPath, lang = currentLang) {
 
 /**
  * Establece el idioma activo, traduce los nodos del DOM y persiste la selección en localStorage
- * @param {'es' | 'en'} newLang
+ * @param {'es' | 'en' | 'zh'} newLang
  */
 export function setLanguage(newLang) {
-  if (newLang !== 'es' && newLang !== 'en') return;
+  if (!SUPPORTED_LANGS.includes(newLang)) return;
   currentLang = newLang;
   localStorage.setItem('maclovia_lang', newLang);
-  document.documentElement.lang = newLang;
+  document.documentElement.lang = newLang === 'zh' ? 'zh-CN' : newLang;
 
   // Actualizar todos los elementos con atributo data-i18n
   document.querySelectorAll('[data-i18n]').forEach((el) => {
@@ -77,17 +85,40 @@ export function setLanguage(newLang) {
     }
   });
 
-  // Actualizar etiqueta del botón de alternancia en la barra de navegación
+  // Actualizar etiqueta del botón de alternancia en la barra de navegación (ES -> EN -> ZH)
   const toggleBtn = document.getElementById('lang-toggle-btn');
   if (toggleBtn) {
     const label = toggleBtn.querySelector('.lang-label');
     if (label) {
       label.textContent = newLang.toUpperCase();
     }
-    toggleBtn.setAttribute(
-      'title',
-      newLang === 'es' ? 'Cambiar a Inglés (Switch to English)' : 'Switch to Spanish (Cambiar a Español)'
-    );
+    const titles = {
+      es: 'Cambiar a Inglés (Switch to English)',
+      en: 'Switch to Chinese (切换为中文)',
+      zh: '切换为西班牙语 (Cambiar a Español)',
+    };
+    toggleBtn.setAttribute('title', titles[newLang] || 'Cambiar idioma');
+  }
+
+  // Actualizar metadatos SEO en vivo
+  const descMeta = document.querySelector('meta[name="description"]');
+  const ogDesc = document.querySelector('meta[property="og:description"]');
+
+  if (newLang === 'zh') {
+    document.title = 'Maclovia / Belleza Maldita — 高精度软件工作室 • 墨西哥城 (CDMX)';
+    const zhDesc = '高精度软件工程、Rust语义模型压缩与分布式系统，兼具独特审美特质与技术严谨性，锻造于墨西哥城。';
+    if (descMeta) descMeta.setAttribute('content', zhDesc);
+    if (ogDesc) ogDesc.setAttribute('content', zhDesc);
+  } else if (newLang === 'en') {
+    document.title = 'Maclovia / Belleza Maldita — Software Studio & Systems Craft • CDMX';
+    const enDesc = 'High-precision software engineering, semantic compression in Rust, and distributed architectures forged in Mexico City.';
+    if (descMeta) descMeta.setAttribute('content', enDesc);
+    if (ogDesc) ogDesc.setAttribute('content', enDesc);
+  } else {
+    document.title = 'Maclovia / Belleza Maldita — Studio de Software • CDMX';
+    const esDesc = 'Studio de software de alta precisión, compresión de modelos en Rust y sistemas distribuidos con artesanía de autor en la Ciudad de México.';
+    if (descMeta) descMeta.setAttribute('content', esDesc);
+    if (ogDesc) ogDesc.setAttribute('content', esDesc);
   }
 
   // Notificar a todos los módulos y componentes para re-renderizado
@@ -103,7 +134,8 @@ export function initI18n() {
   const toggleBtn = document.getElementById('lang-toggle-btn');
   if (toggleBtn) {
     toggleBtn.addEventListener('click', () => {
-      const nextLang = currentLang === 'es' ? 'en' : 'es';
+      const currentIndex = SUPPORTED_LANGS.indexOf(currentLang);
+      const nextLang = SUPPORTED_LANGS[(currentIndex + 1) % SUPPORTED_LANGS.length];
       setLanguage(nextLang);
     });
   }

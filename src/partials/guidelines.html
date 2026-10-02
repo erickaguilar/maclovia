@@ -1,15 +1,15 @@
     <div id="guidelines"></div>
     <!-- Brand Guidelines & Interactive Real Mockups -->
     <section id="guidelines-section" class="container section-padding">
-      <div class="section-header" style="flex-direction: row; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;">
+      <div class="section-header section-header-row">
         <div>
           <div class="section-tag">
-            <span style="width: 14px; height: 2px; background-color: var(--color-rosa-chilango);"></span>
+            <span class="section-tag-line"></span>
             <span data-i18n="guidelines.badge">BRAND GUIDELINES & REAL MOCKUPS</span>
           </div>
           <h2 class="section-title">
             <span data-i18n="guidelines.title">Manual de Marca &</span>
-            <span class="font-cookie text-rosa" style="font-size: 2.25rem;" data-i18n="guidelines.titleAccent">Escenarios Reales</span>
+            <span class="font-cookie text-rosa title-accent-script" data-i18n="guidelines.titleAccent">Escenarios Reales</span>
           </h2>
           <p class="section-desc" data-i18n="guidelines.desc">
             El ecosistema de identidad de MACLOVIA. Belleza Maldita aplicado a producción: redes, CLI, navegador web y papelería física.
@@ -30,7 +30,7 @@
       </div>
 
       <!-- VIEW 1: INTERACTIVE MOCKUPS -->
-      <div id="mockups-sub-section" class="guidelines-view-content" style="display: block;">
+      <div id="mockups-sub-section" class="guidelines-view-content active">
         <div class="mockup-container">
           <!-- Mockup Sub-Tabs -->
           <div class="mockup-tabs">
@@ -54,23 +54,23 @@
 
           <div class="mockup-content">
             <!-- Sub-Panel 1: Interactive Terminal CLI -->
-            <div id="tab-terminal" class="mockup-panel" style="display: block;">
-              <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem;">
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                  <span class="font-mono text-muted" style="font-size: 0.7rem; text-transform: uppercase;">
+            <div id="tab-terminal" class="mockup-panel active">
+              <div class="mockup-header-row">
+                <div class="flex-row-center gap-sm">
+                  <span class="mockup-sub-title">
                     Consola Interactiva Shell Unix / Bash
                   </span>
-                  <span class="font-mono text-emerald-400" style="font-size: 0.65rem; display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.15rem 0.45rem; border-radius: 4px; background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.25); color: #34d399;">
-                    <span style="width: 5px; height: 5px; border-radius: 50%; background-color: #34d399;" class="animate-pulse"></span>
+                  <span class="cli-status-badge">
+                    <span class="cli-status-dot animate-pulse"></span>
                     <span>SHELL ACTIVO</span>
                   </span>
                 </div>
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                  <button id="cli-clear-btn" class="btn btn-ghost" style="font-size: 0.7rem; padding: 0.35rem 0.65rem;" title="Limpiar salida de la terminal">
+                <div class="flex-row-center gap-sm">
+                  <button id="cli-clear-btn" class="btn btn-ghost btn-compact" title="Limpiar salida de la terminal">
                     <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-refresh"></use></svg>
                     <span>Limpiar</span>
                   </button>
-                  <button class="btn btn-secondary" data-copy-text="npx maclovia-bm init my-app" style="font-size: 0.7rem; padding: 0.35rem 0.75rem;">
+                  <button class="btn btn-secondary btn-compact" data-copy-text="npx maclovia-bm init my-app">
                     <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-copy"></use></svg>
                     <span>Copiar Comando</span>
                   </button>
@@ -84,17 +84,30 @@
                     <div class="browser-dot dot-yellow" id="term-dot-yellow" title="Reiniciar sesión"></div>
                     <div class="browser-dot dot-green" id="term-dot-green" title="Alternar altura"></div>
                   </div>
-                  <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;">
-                    <span>maclovia-bm — bash — 80×24 • node v22.14.0</span>
-                    <span class="text-rosa">✦</span>
-                    <span class="font-mono text-muted" style="font-size: 0.65rem;">Terminal Interactiva</span>
+                  <div class="terminal-chrome-meta">
+                    <span>maclovia-bm — bash — 80×24 • node v22.14.0 • rustc 1.85.0</span>
+                    <span class="text-rosa font-mono">✦</span>
+                    <span class="font-mono text-muted text-xs-muted">Terminal Interactiva (JS + Rust)</span>
                   </div>
                 </div>
 
                 <div class="terminal-interactive-viewport" id="cli-viewport" tabindex="0" role="region" aria-label="Terminal interactiva">
                   <!-- Quick Command Suggestions Bar -->
                   <div class="cli-chips-bar">
-                    <span style="color: var(--text-muted); font-size: 0.65rem; margin-right: 0.25rem;">Comandos rápidos:</span>
+                    <span class="cli-chips-label">Comandos rápidos:</span>
+                    <button type="button" class="cli-chip text-rosa cli-chip-primary" data-cli-cmd="npx maclovia-bm init my-app">
+                      <svg class="icon icon-stroke icon-xs"><use href="assets/icons/sprite.svg#icon-terminal"></use></svg>
+                      <span>npx maclovia-bm init my-app</span>
+                    </button>
+                    <button type="button" class="cli-chip cli-chip-cargo" data-cli-cmd="cargo run">
+                      <span>cargo run</span>
+                    </button>
+                    <button type="button" class="cli-chip" data-cli-cmd="cargo test">
+                      <span>cargo test</span>
+                    </button>
+                    <button type="button" class="cli-chip" data-cli-cmd="./gaje-server">
+                      <span>./gaje-server</span>
+                    </button>
                     <button type="button" class="cli-chip" data-cli-cmd="help">
                       <span>help</span>
                     </button>
@@ -127,7 +140,7 @@
                   <!-- Active Input Line -->
                   <form id="cli-form" class="cli-input-form" autocomplete="off" onsubmit="return false;">
                     <label for="cli-input" class="cli-prompt-label">
-                      <span class="text-rosa font-bold">erick@cdmx</span>:<span style="color: #60a5fa;">~/projects</span><span class="text-rosa">$</span>
+                      <span class="text-rosa font-bold">erick@cdmx</span>:<span class="text-blue">~/projects</span><span class="text-rosa">$</span>
                     </label>
                     <input 
                       type="text" 
@@ -146,12 +159,12 @@
             </div>
 
             <!-- Sub-Panel 2: OpenGraph Card -->
-            <div id="tab-opengraph" class="mockup-panel" style="display: none;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
-                <span class="font-mono text-muted" style="font-size: 0.7rem; text-transform: uppercase;">
+            <div id="tab-opengraph" class="mockup-panel">
+              <div class="mockup-header-row">
+                <span class="mockup-sub-title">
                   Vista Previa para Redes Sociales & Metadata (Twitter, LinkedIn, Slack)
                 </span>
-                <span class="font-mono text-rosa" style="font-size: 0.65rem; border: 1px solid var(--color-rosa-border); padding: 0.2rem 0.5rem; border-radius: 4px;">
+                <span class="og-spec-badge">
                   1200 × 630 PX • ASPECT 1.91:1
                 </span>
               </div>
@@ -161,40 +174,40 @@
                 <div class="og-grid-overlay"></div>
 
                 <!-- Top Row -->
-                <div style="position: relative; z-index: 10; display: flex; align-items: center; justify-content: space-between;">
-                  <div style="display: flex; align-items: center; gap: 0.75rem;">
-                    <svg class="text-rosa glow-rosa" style="width: 2rem; height: 2rem;" viewBox="0 0 200 200">
+                <div class="og-row-top">
+                  <div class="flex-row-center gap-md">
+                    <svg class="text-rosa glow-rosa site-brand-logo" viewBox="0 0 200 200">
                       <use href="assets/icons/sprite.svg#icon-maclovia-mark"></use>
                     </svg>
-                    <span class="font-mono text-muted" style="font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;">
+                    <span class="og-brand-text">
                       Maclovia. Belleza Maldita
                     </span>
-                    <span class="font-mono text-rosa" style="font-size: 0.6rem; border: 1px solid var(--color-rosa-border); padding: 0.1rem 0.35rem; border-radius: 4px;">
+                    <span class="hero-cdmx-tag">
                       CDMX
                     </span>
                   </div>
-                  <span class="font-mono text-muted" style="font-size: 0.65rem;">maclovia.mx</span>
+                  <span class="font-mono text-muted text-xs-muted">maclovia.mx</span>
                 </div>
 
                 <!-- Center Lockup -->
-                <div style="position: relative; z-index: 10; margin: auto 0; padding: 1.5rem 0;">
-                  <div style="display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;">
-                    <h3 class="font-abril" style="font-size: clamp(2rem, 5vw, 4rem); letter-spacing: -0.01em;">
+                <div class="og-row-center">
+                  <div class="flex-row-center gap-lg flex-wrap">
+                    <h3 class="og-title-h3 font-abril">
                       MACLOVIA.
                     </h3>
-                    <h4 class="font-cookie text-rosa" style="font-size: clamp(2.5rem, 6vw, 4.5rem); filter: drop-shadow(0 0 20px rgba(228,0,124,0.6));">
+                    <h4 class="og-title-h4 font-cookie text-rosa">
                       Belleza Maldita
                     </h4>
                   </div>
-                  <p style="font-size: clamp(0.8rem, 1.8vw, 1.05rem); color: var(--text-secondary); max-width: 38rem; margin-top: 0.5rem; line-height: 1.5;">
+                  <p class="og-desc-p">
                     Development Group & Studio de Software. Arquitectura de sistemas escalables con artesanía y estética de la Ciudad de México.
                   </p>
                 </div>
 
                 <!-- Bottom Row -->
-                <div style="position: relative; z-index: 10; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-subtle); padding-top: 1rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted);">
-                  <div style="display: flex; align-items: center; gap: 0.5rem;">
-                    <span style="width: 6px; height: 6px; border-radius: 50%; background-color: var(--color-rosa-chilango);"></span>
+                <div class="og-row-bottom">
+                  <div class="flex-row-center gap-sm">
+                    <span class="hero-badge-dot"></span>
                     <span>CEO & Fundador: Erick Jonathan Aguilar García</span>
                   </div>
                   <span>INGENIERÍA & ARTESANÍA DIGITAL</span>
@@ -203,21 +216,21 @@
             </div>
 
             <!-- Sub-Panel 3: Browser Mockup -->
-            <div id="tab-browser" class="mockup-panel" style="display: none;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
-                <span class="font-mono text-muted" style="font-size: 0.7rem; text-transform: uppercase;">
+            <div id="tab-browser" class="mockup-panel">
+              <div class="mockup-header-row">
+                <span class="mockup-sub-title">
                   Navegador Web & Banner de Producción (Inspiración Terminal CLI)
                 </span>
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                  <span class="font-mono text-muted" style="font-size: 0.65rem; display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.25rem 0.6rem; border-radius: 4px; background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle);">
-                    <span style="width: 6px; height: 6px; border-radius: 50%; background-color: #34d399;"></span>
+                <div class="flex-row-center gap-sm">
+                  <span class="browser-latency-badge">
+                    <span class="browser-latency-dot"></span>
                     <span>12ms CDMX</span>
                   </span>
-                  <button id="browser-devtools-toggle" class="btn btn-ghost" style="font-size: 0.7rem; padding: 0.35rem 0.65rem;">
+                  <button id="browser-devtools-toggle" class="btn btn-ghost btn-compact">
                     <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-code"></use></svg>
                     <span>Consola DevTools</span>
                   </button>
-                  <button class="btn btn-secondary" data-copy-text="https://maclovia.mx/" style="font-size: 0.7rem; padding: 0.35rem 0.65rem;">
+                  <button class="btn btn-secondary btn-compact" data-copy-text="https://maclovia.mx/">
                     <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-copy"></use></svg>
                     <span>Copiar URL</span>
                   </button>
@@ -232,34 +245,34 @@
                     <div class="browser-dot dot-green" title="Expandir / Ancho Completo"></div>
                   </div>
 
-                  <div style="display: flex; align-items: center; gap: 0.5rem;">
-                    <button class="btn btn-ghost active text-rosa" data-mockup-route="/" style="padding: 0.2rem 0.5rem; font-size: 0.65rem;">
+                  <div class="flex-row-center gap-sm">
+                    <button class="btn btn-ghost active text-rosa browser-nav-btn" data-mockup-route="/">
                       <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-maclovia-mark"></use></svg>
                       <span>MACLOVIA.</span>
                     </button>
-                    <button class="btn btn-ghost" data-mockup-route="/specs" style="padding: 0.2rem 0.5rem; font-size: 0.65rem;">
+                    <button class="btn btn-ghost browser-nav-btn" data-mockup-route="/specs">
                       <span>systems.cdmx.dev</span>
                     </button>
                   </div>
 
-                  <div style="margin-left: auto; display: flex; align-items: center; gap: 0.5rem;">
+                  <div class="ml-auto flex-row-center gap-sm">
                     <button id="browser-refresh-btn" class="copy-btn" title="Recargar página">
                       <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-sparkles"></use></svg>
                     </button>
                   </div>
                 </div>
 
-                <div class="browser-header" style="background-color: #111114; padding: 0.4rem 0.85rem;">
+                <div class="browser-sub-header">
                   <div class="browser-url-bar">
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                      <svg class="icon icon-stroke" style="color: #34d399;"><use href="assets/icons/sprite.svg#icon-shield-check"></use></svg>
-                      <input type="text" id="mockup-url-input" value="https://maclovia.mx/studio" readonly style="background: transparent; border: none; color: inherit; width: 220px; font-family: inherit; font-size: inherit; outline: none;" />
+                    <div class="flex-row-center gap-sm">
+                      <svg class="icon icon-stroke text-emerald"><use href="assets/icons/sprite.svg#icon-shield-check"></use></svg>
+                      <input type="text" id="mockup-url-input" class="browser-url-input" value="https://maclovia.mx/studio" readonly />
                     </div>
 
-                    <div style="display: flex; align-items: center; gap: 0.35rem;">
-                      <button class="btn btn-ghost active text-rosa" data-mockup-route="/" style="font-size: 0.65rem; padding: 0.15rem 0.4rem;">/studio</button>
-                      <button class="btn btn-ghost" data-mockup-route="/manifesto" style="font-size: 0.65rem; padding: 0.15rem 0.4rem;">/manifesto</button>
-                      <button class="btn btn-ghost" data-mockup-route="/specs" style="font-size: 0.65rem; padding: 0.15rem 0.4rem;">/specs</button>
+                    <div class="flex-row-center gap-xs">
+                      <button class="btn btn-ghost active text-rosa browser-route-btn" data-mockup-route="/">/studio</button>
+                      <button class="btn btn-ghost browser-route-btn" data-mockup-route="/manifesto">/manifesto</button>
+                      <button class="btn btn-ghost browser-route-btn" data-mockup-route="/specs">/specs</button>
                     </div>
                   </div>
                 </div>
@@ -267,50 +280,50 @@
                 <div class="browser-viewport">
                   <!-- Route 1: /studio (and /) -->
                   <div class="browser-route-view" data-route="/studio">
-                    <div style="position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;">
+                    <div class="flex-between flex-wrap gap-lg w-full">
                       <!-- Top Web Telemetry Ribbon -->
-                      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted);">
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                          <span style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--color-rosa-chilango); box-shadow: 0 0 10px var(--color-rosa-chilango);"></span>
+                      <div class="browser-telemetry-ribbon w-full">
+                        <div class="flex-row-center gap-sm">
+                          <span class="browser-telemetry-dot"></span>
                           <span>NODO CDMX-01</span>
                           <span>/</span>
-                          <span style="color: #34d399; font-weight: 600;">STATUS: 200 OK</span>
+                          <span class="text-emerald font-bold">STATUS: 200 OK</span>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 0.75rem;">
-                          <span>ARQUITECTURA: <strong style="color: #ffffff;">ERICK JONATHAN AGUILAR GARCÍA</strong></span>
+                        <div class="flex-row-center gap-md">
+                          <span>ARQUITECTURA: <strong class="text-primary">ERICK JONATHAN AGUILAR GARCÍA</strong></span>
                           <span>|</span>
                           <span class="text-rosa">CORE #E4007C</span>
                         </div>
                       </div>
 
                       <!-- Center Main Lockup -->
-                      <div style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1rem 0;">
-                        <div style="margin-bottom: 1.25rem;">
-                          <svg class="text-rosa glow-rosa animate-pulse-glow" style="width: 72px; height: 72px;" viewBox="0 0 200 200">
+                      <div class="browser-lockup-center w-full">
+                        <div class="browser-lockup-logo">
+                          <svg class="text-rosa glow-rosa animate-pulse-glow browser-lockup-svg" viewBox="0 0 200 200">
                             <use href="assets/icons/sprite.svg#icon-maclovia-mark"></use>
                           </svg>
                         </div>
-                        <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-                          <h3 class="font-abril" style="font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: 0.02em;">MACLOVIA.</h3>
-                          <h4 class="font-cookie text-rosa" style="font-size: clamp(2.5rem, 6vw, 4.5rem); filter: drop-shadow(0 0 20px rgba(228,0,124,0.6));">Belleza Maldita</h4>
+                        <div class="flex-wrap-center justify-center gap-md mb-xs">
+                          <h3 class="font-abril browser-h3-title">MACLOVIA.</h3>
+                          <h4 class="font-cookie text-rosa browser-h4-script">Belleza Maldita</h4>
                         </div>
-                        <p style="font-size: 0.85rem; color: var(--text-secondary); max-width: 36rem; line-height: 1.6; margin-bottom: 1.25rem;">
+                        <p class="browser-desc-p">
                           Ingeniería de software de alta resiliencia &amp; estudio de diseño de autor. Nacidos en la Ciudad de México para crear productos memorables.
                         </p>
-                        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.75rem;">
-                          <button class="btn btn-primary" data-copy-text="npx maclovia-bm init" style="font-size: 0.75rem; padding: 0.45rem 1rem;">
+                        <div class="flex-wrap-center justify-center gap-md">
+                          <button class="btn btn-primary toolkit-theme-btn-size" data-copy-text="npx maclovia-bm init">
                             <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-terminal"></use></svg>
                             <span>$ npx maclovia-bm init</span>
                           </button>
-                          <button class="btn btn-secondary" data-mockup-route="/manifesto" style="font-size: 0.75rem; padding: 0.45rem 1rem;">
+                          <button class="btn btn-secondary toolkit-theme-btn-size" data-mockup-route="/manifesto">
                             <span>Ver Manifiesto CDMX →</span>
                           </button>
                         </div>
                       </div>
 
                       <!-- Bottom Status Ribbon -->
-                      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem; padding-top: 0.75rem; border-top: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted);">
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                      <div class="browser-bottom-ribbon w-full">
+                        <div class="flex-row-center gap-sm">
                           <span class="text-rosa">maclovia.mx</span>
                           <span>—</span>
                           <span>Favicon Vectorial SVG 16×16 / 32×32 Activo</span>
@@ -321,9 +334,9 @@
                   </div>
 
                   <!-- Route 2: /manifesto -->
-                  <div class="browser-route-view" data-route="/manifesto" style="display: none;">
-                    <div style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 44rem; margin: 0 auto; padding: 1rem 0;">
-                      <pre class="text-rosa" style="font-family: var(--font-mono); font-weight: 700; font-size: clamp(0.48rem, 1.1vw, 0.7rem); line-height: 1.15; margin-bottom: 1.25rem; text-shadow: 0 0 15px rgba(228,0,124,0.5); overflow: hidden; max-width: 100%;">
+                  <div class="browser-route-view" data-route="/manifesto">
+                    <div class="browser-manifesto-wrap">
+                      <pre class="text-rosa browser-ascii-banner">
   ███╗   ███╗ █████╗  ██████╗██╗      ██████╗ ██╗   ██╗██╗ █████╗ 
   ████╗ ████║██╔══██╗██╔════╝██║     ██╔═══██╗██║   ██║██║██╔══██╗
   ██╔████╔██║███████║██║     ██║     ██║   ██║██║   ██║██║███████║
@@ -331,70 +344,106 @@
   ██║ ╚═╝ ██║██║  ██║╚██████╗███████╗╚██████╔╝ ╚████╔╝ ██║██║  ██║
   ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝  ╚═╝
              ✦ B E L L E Z A   M A L D I T A ✦</pre>
-                      <h3 class="font-abril" style="font-size: 1.75rem; color: #ffffff; margin-bottom: 0.75rem;">
+                      <h3 class="font-abril browser-manifesto-h3">
                         "El Pulso de la Bestia"
                       </h3>
-                      <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-                        Rechazamos el software insípido y genérico. Nuestra identidad une la disciplina matemática del escudo pentagonal con el sigilo cincelado 'ꂵ' (MAT) en Rosa Chilango y obsidiana: tres pilares arquitectónicos, un dintel horizontal estructural y compuertas de luz que simbolizan la Belleza Maldita de la ingeniería de autor.
+                      <p class="browser-manifesto-desc">
+                        Rechazamos el software insípido y genérico. Nuestra identidad une la disciplina matemática del escudo pentagonal con el glifo mexica cincelado <strong>Tepētl ('M')</strong> en Rosa Chilango y obsidiana: dos volcanes tutelares del Valle de México (Iztaccíhuatl y Popocatépetl), el portal sagrado de origen <em>Ōztōtl</em> y el chalchihuite solar que simbolizan la Belleza Maldita de la ingeniería de autor.
                       </p>
-                      <div class="specialty-pill" style="border-color: var(--color-rosa-border); color: var(--text-primary); display: inline-flex; align-items: center; gap: 0.5rem;">
-                        <span class="text-rosa">✦</span>
+
+                      <!-- Ficha Iconográfica & Arqueológica del Glifo Mexica Tepētl (La 'M' de Tenochtitlan) -->
+                      <div class="liangshan-spec-box">
+                        <div class="flex-between flex-wrap gap-sm mb-sm">
+                          <div class="flex-row-center gap-md">
+                            <span class="liangshan-sigil-large text-rosa" style="font-family: var(--font-editorial); font-size: 2.2rem; line-height: 1;">M</span>
+                            <div>
+                              <strong class="text-primary font-size-base-sm block">Origen Iconográfico: Glifo Mexica Tepētl (La 'M' Sagrada)</strong>
+                              <span class="text-xs-muted">Códice Mendoza &amp; Matrícula de Tributos • Cuenca del Anáhuac, Tenochtitlan (CDMX)</span>
+                            </div>
+                          </div>
+                          <span class="font-mono text-rosa toolkit-pill-badge">Códices Mexicas (Tenochtitlan)</span>
+                        </div>
+                        <p class="footer-manifesto-text">
+                          El glifo central de nuestra insignia corresponde a <strong>Tepētl</strong> (cerro o montaña sagrada en lengua náhuatl), origen del concepto político y civilizatorio mexica <em>Āltepētl</em> (de <em>in atl, in tepētl</em>: el agua y la montaña, es decir, la ciudad y el pueblo). En los códices prehispánicos del Valle de México, su silueta bicéfala dibuja con exactitud la <strong>letra 'M'</strong> monumental de <strong>Maclovia, México y Belleza Maldita</strong>, resguardando en su base el portal primordial (<em>Ōztōtl</em>) y en su cúspide el disco solar (<em>Chalchihuite</em>).
+                        </p>
+                        <div class="liangshan-spec-grid">
+                          <div>
+                            <span class="text-xs-muted block">SISTEMA ICONOGRÁFICO:</span>
+                            <strong class="text-primary">Códices Pictográficos Mexicas / Náhuatl</strong>
+                          </div>
+                          <div>
+                            <span class="text-xs-muted block">CIVILIZACIÓN &amp; ERA:</span>
+                            <strong class="text-primary">Mexica / Tenochca (Postclásico Tardío, Anáhuac)</strong>
+                          </div>
+                          <div>
+                            <span class="text-xs-muted block">GEOGRAFÍA &amp; ORIGEN:</span>
+                            <strong class="text-primary">Valle de México (19.4326° N, 99.1332° W • CDMX)</strong>
+                          </div>
+                          <div>
+                            <span class="text-xs-muted block">MORFOLOGÍA SOBERANA:</span>
+                            <span class="text-rosa font-bold">Silueta 'M' • Doble volcán sagrado &amp; portal Ōztōtl</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="specialty-pill hero-ceo-pill-link">
+                        <span class="text-rosa font-mono">✦</span>
                         <span>CEO &amp; Dirección General: <strong class="text-rosa">Erick Jonathan Aguilar García</strong></span>
                       </div>
                     </div>
                   </div>
 
                   <!-- Route 3: /specs -->
-                  <div class="browser-route-view" data-route="/specs" style="display: none;">
-                    <div style="max-width: 48rem; margin: 0 auto; width: 100%; padding: 0.5rem 0;">
-                      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-                        <span class="font-mono text-rosa" style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase;">
+                  <div class="browser-route-view" data-route="/specs">
+                    <div class="w-full">
+                      <div class="flex-between mb-sm">
+                        <span class="font-mono text-rosa font-bold text-xs-muted uppercase">
                           Especificaciones de Arquitectura Técnica
                         </span>
-                        <span class="font-mono text-emerald-400" style="font-size: 0.7rem; color: #34d399;">
+                        <span class="font-mono text-emerald">
                           99.99% Uptime SLA
                         </span>
                       </div>
-                      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                        <div style="padding: 1rem; border-radius: var(--radius-md); background-color: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.7rem;">
-                          <span class="text-rosa" style="font-weight: 700; display: block; margin-bottom: 0.25rem;">01 / ENGINE &amp; RUNTIME</span>
-                          <div style="color: #ffffff; font-weight: 600; margin-bottom: 0.25rem;">Node.js 22 LTS + TypeScript 5.8</div>
-                          <div style="color: var(--text-muted); font-size: 0.65rem;">Rust soberano y compresión zero-copy mmap.</div>
+                      <div class="browser-specs-grid">
+                        <div class="browser-spec-card">
+                          <span class="text-rosa font-bold block mb-xs">01 / ENGINE &amp; RUNTIME</span>
+                          <div class="text-primary font-bold mb-xs">Node.js 22 LTS + TypeScript 5.8</div>
+                          <div class="text-xs-muted">Rust soberano y compresión zero-copy mmap.</div>
                         </div>
-                        <div style="padding: 1rem; border-radius: var(--radius-md); background-color: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.7rem;">
-                          <span class="text-rosa" style="font-weight: 700; display: block; margin-bottom: 0.25rem;">02 / IDENTITY TOKENS</span>
-                          <div style="color: #ffffff; font-weight: 600; margin-bottom: 0.25rem;">Rosa Chilango (#E4007C) + Azabache</div>
-                          <div style="color: var(--text-muted); font-size: 0.65rem;">Contraste de alta legibilidad WCAG AAA verificado.</div>
+                        <div class="browser-spec-card">
+                          <span class="text-rosa font-bold block mb-xs">02 / IDENTITY TOKENS</span>
+                          <div class="text-primary font-bold mb-xs">Rosa Chilango (#E4007C) + Azabache</div>
+                          <div class="text-xs-muted">Contraste de alta legibilidad WCAG AAA verificado.</div>
                         </div>
-                        <div style="padding: 1rem; border-radius: var(--radius-md); background-color: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.7rem;">
-                          <span class="text-rosa" style="font-weight: 700; display: block; margin-bottom: 0.25rem;">03 / INFRAESTRUCTURA CDMX</span>
-                          <div style="color: #ffffff; font-weight: 600; margin-bottom: 0.25rem;">Multi-Region Edge Routing</div>
-                          <div style="color: var(--text-muted); font-size: 0.65rem;">Latencia ultra-baja (&lt;15ms promedio en México).</div>
+                        <div class="browser-spec-card">
+                          <span class="text-rosa font-bold block mb-xs">03 / INFRAESTRUCTURA CDMX</span>
+                          <div class="text-primary font-bold mb-xs">Multi-Region Edge Routing</div>
+                          <div class="text-xs-muted">Latencia ultra-baja (&lt;15ms promedio en México).</div>
                         </div>
-                        <div style="padding: 1rem; border-radius: var(--radius-md); background-color: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.7rem;">
-                          <span class="text-rosa" style="font-weight: 700; display: block; margin-bottom: 0.25rem;">04 / DIRECCIÓN EJECUTIVA</span>
-                          <div style="color: #ffffff; font-weight: 600; margin-bottom: 0.25rem;">Erick Jonathan Aguilar García</div>
-                          <div style="color: var(--text-muted); font-size: 0.65rem;">CEO &amp; Principal Software Architect.</div>
+                        <div class="browser-spec-card">
+                          <span class="text-rosa font-bold block mb-xs">04 / DIRECCIÓN EJECUTIVA</span>
+                          <div class="text-primary font-bold mb-xs">Erick Jonathan Aguilar García</div>
+                          <div class="text-xs-muted">CEO &amp; Principal Software Architect.</div>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <!-- Collapsible DevTools Console Panel -->
-                  <div id="browser-devtools-panel" style="display: none; margin-top: 1.5rem; border-top: 1px solid var(--border-subtle); padding-top: 1rem; font-family: var(--font-mono); font-size: 0.7rem;">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.5rem;">
-                      <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span style="color: var(--color-rosa-chilango); font-weight: 600;">DevTools: Console</span>
-                        <span style="color: var(--text-muted);">|</span>
-                        <span style="color: var(--text-muted); font-size: 0.65rem;">Filter: All logs (4)</span>
+                  <div id="browser-devtools-panel" class="browser-devtools-console">
+                    <div class="flex-between mb-sm pb-xs border-b">
+                      <div class="flex-row-center gap-sm">
+                        <span class="text-rosa font-bold">DevTools: Console</span>
+                        <span class="text-muted">|</span>
+                        <span class="text-xs-muted">Filter: All logs (4)</span>
                       </div>
-                      <button id="browser-devtools-close" class="btn btn-ghost" style="font-size: 0.65rem; padding: 0.15rem 0.4rem;">× Cerrar</button>
+                      <button id="browser-devtools-close" class="btn btn-ghost browser-route-btn">× Cerrar</button>
                     </div>
-                    <div style="color: var(--text-muted); display: flex; flex-direction: column; gap: 0.35rem; line-height: 1.5;">
-                      <div><span style="color: #34d399;">[info]</span> &gt; maclovia-bm runtime initialized at <span style="color: #ffffff;">https://maclovia.mx/studio</span></div>
-                      <div><span class="text-rosa">[auth]</span> &gt; CEO &amp; Chief Architect: <strong style="color: #ffffff;">Erick Jonathan Aguilar García</strong></div>
-                      <div><span style="color: var(--text-secondary);">[css]</span> &gt; Injected theme tokens: Rosa Chilango (#E4007C) &amp; Abril Fatface Display</div>
-                      <div><span style="color: #34d399;">[status]</span> &gt; 200 OK — Ready for high-throughput production</div>
+                    <div class="flex flex-col gap-xs leading-normal text-muted">
+                      <div><span class="text-emerald">[info]</span> &gt; maclovia-bm runtime initialized at <span class="text-primary">https://maclovia.mx/studio</span></div>
+                      <div><span class="text-rosa">[auth]</span> &gt; CEO &amp; Chief Architect: <strong class="text-primary">Erick Jonathan Aguilar García</strong></div>
+                      <div><span class="text-secondary">[css]</span> &gt; Injected theme tokens: Rosa Chilango (#E4007C) &amp; Abril Fatface Display</div>
+                      <div><span class="text-emerald">[status]</span> &gt; 200 OK — Ready for high-throughput production</div>
                     </div>
                   </div>
                 </div>
@@ -402,41 +451,41 @@
             </div>
 
             <!-- Sub-Panel 4: Luxury Business Card -->
-            <div id="tab-card" class="mockup-panel" style="display: none;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
-                <span class="font-mono text-muted" style="font-size: 0.7rem; text-transform: uppercase;">
+            <div id="tab-card" class="mockup-panel">
+              <div class="mockup-header-row">
+                <span class="mockup-sub-title">
                   Tarjeta Editorial / Papelería de Lujo con Canto Rosa Chilango
                 </span>
-                <span class="font-mono text-rosa" style="font-size: 0.7rem;">600g Cotton Matte</span>
+                <span class="font-mono text-rosa font-mono-xs">600g Cotton Matte</span>
               </div>
 
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; padding: 1rem 0;">
+              <div class="stationery-cards-grid stationery-cards-layout">
                 <!-- Front Side -->
-                <div style="border-radius: var(--radius-md); background: #070707; border: 1px solid var(--border-medium); padding: 2rem; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5);">
-                  <div style="position: absolute; top: 0; right: 0; width: 6px; height: 100%; background: #E4007C; box-shadow: 0 0 15px #E4007C;"></div>
-                  <div style="display: flex; align-items: center; justify-content: space-between;">
-                    <svg class="text-rosa" style="width: 2rem; height: 2rem;" viewBox="0 0 200 200">
+                <div class="stationery-card stationery-card-front">
+                  <div class="stationery-card-edge-right"></div>
+                  <div class="flex-between">
+                    <svg class="text-rosa site-brand-logo" viewBox="0 0 200 200">
                       <use href="assets/icons/sprite.svg#icon-maclovia-mark"></use>
                     </svg>
-                    <span class="font-mono text-muted" style="font-size: 0.6rem; letter-spacing: 0.15em;">STUDIO CDMX</span>
+                    <span class="stationery-card-tag">STUDIO CDMX</span>
                   </div>
                   <div>
-                    <h4 class="font-abril" style="font-size: 1.35rem;">MACLOVIA. <span class="font-cookie text-rosa" style="font-size: 1.5rem;">Belleza Maldita</span></h4>
-                    <span class="font-mono text-muted" style="font-size: 0.65rem; letter-spacing: 0.1em;">DEVELOPMENT GROUP & SOFTWARE CRAFT</span>
+                    <h4 class="stationery-card-title stationery-card-title-lg">MACLOVIA. <span class="stationery-card-subtitle-script text-rosa">Belleza Maldita</span></h4>
+                    <span class="stationery-card-craft-label">DEVELOPMENT GROUP & SOFTWARE CRAFT</span>
                   </div>
                 </div>
 
                 <!-- Back Side -->
-                <div style="border-radius: var(--radius-md); background: #070707; border: 1px solid var(--border-medium); padding: 2rem; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5);">
-                  <div style="position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: #E4007C; box-shadow: 0 0 15px #E4007C;"></div>
+                <div class="stationery-card stationery-card-back">
+                  <div class="stationery-card-edge-left"></div>
                   <div>
-                    <span class="font-mono text-rosa" style="font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;">CEO & CHIEF ARCHITECT</span>
-                    <h5 class="font-abril" style="font-size: 1.15rem; color: #ffffff; margin-top: 0.25rem;">Erick Jonathan Aguilar García</h5>
+                    <span class="stationery-role-tag text-rosa">CEO & CHIEF ARCHITECT</span>
+                    <h5 class="stationery-card-title stationery-ceo-name">Erick Jonathan Aguilar García</h5>
                   </div>
-                  <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.25rem; border-top: 1px solid var(--border-subtle); padding-top: 0.75rem;">
-                    <div style="display: flex; justify-content: space-between;"><span>EMAIL:</span><span style="color: #ffffff;">AUGE1405@gmail.com</span></div>
-                    <div style="display: flex; justify-content: space-between;"><span>GITHUB:</span><span class="text-rosa">@erickaguilar</span></div>
-                    <div style="display: flex; justify-content: space-between;"><span>SEDE:</span><span>Ciudad de México, CDMX</span></div>
+                  <div class="stationery-card-meta stationery-card-meta-list">
+                    <div class="flex-between"><span>EMAIL:</span><span class="stationery-card-primary-text font-bold text-primary">AUGE1405@gmail.com</span></div>
+                    <div class="flex-between"><span>GITHUB:</span><span class="text-rosa">@erickaguilar</span></div>
+                    <div class="flex-between"><span>SEDE:</span><span>Ciudad de México, CDMX</span></div>
                   </div>
                 </div>
               </div>
@@ -446,34 +495,34 @@
       </div>
 
       <!-- VIEW 2: MANUAL & NORMATIVA -->
-      <div id="guidelines-sub-section" class="guidelines-view-content" style="display: none;">
-        <div style="display: flex; flex-direction: column; gap: 3rem;">
+      <div id="guidelines-sub-section" class="guidelines-view-content">
+        <div class="guidelines-stack">
           <!-- 01 / Narrativa Unificada -->
-          <div class="mockup-container" style="padding: clamp(1.5rem, 4vw, 2.5rem);">
-            <div class="section-tag" style="margin-bottom: 0.75rem;">
-              <span style="width: 14px; height: 2px; background-color: var(--color-rosa-chilango);"></span>
+          <div class="mockup-container mockup-container-padded">
+            <div class="section-tag mb-sm">
+              <span class="section-tag-line"></span>
               <span>01 / Narrativa Unificada</span>
             </div>
-            <h3 class="font-abril" style="font-size: 1.75rem; margin-bottom: 1rem;">El Monolito Técnico y el Alma Rebelde</h3>
-            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; max-width: 48rem; margin-bottom: 1.5rem;">
+            <h3 class="guidelines-h3">El Monolito Técnico y el Alma Rebelde</h3>
+            <p class="guidelines-narrative-p">
               <strong>Maclovia. Belleza Maldita</strong> unifica dos fuerzas complementarias: el rigor matemático de la arquitectura distribuida con la pasión visual mexicana.
             </p>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-              <div style="padding: 1.5rem; border-radius: var(--radius-md); background-color: var(--bg-surface-elevated); border: 1px solid var(--border-subtle);">
-                <span class="font-mono text-rosa" style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">
+            <div class="narrative-grid">
+              <div class="narrative-card">
+                <span class="narrative-card-tag">
                   MACLOVIA (La Estructura)
                 </span>
-                <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;">
+                <p class="narrative-card-desc">
                   Representa el rigor arquitectónico, la resiliencia del software, las bases de datos de alto volumen y la disciplina matemática del octágono. Es la columna vertebral de cada sistema.
                 </p>
               </div>
 
-              <div style="padding: 1.5rem; border-radius: var(--radius-md); background-color: var(--bg-surface-elevated); border: 1px solid var(--border-subtle);">
-                <span class="font-mono text-rosa" style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">
+              <div class="narrative-card">
+                <span class="narrative-card-tag">
                   BELLEZA MALDITA (El Alma)
                 </span>
-                <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;">
+                <p class="narrative-card-desc">
                   Representa la poesía interactiva, la emoción estética de los años 50, el pulso del Rosa Chilango y la negativa a crear software aburrido o genérico.
                 </p>
               </div>
@@ -482,24 +531,24 @@
 
           <!-- 02 / Sistema Cromático Técnico -->
           <div>
-            <div class="section-tag" style="margin-bottom: 0.75rem;">
-              <span style="width: 14px; height: 2px; background-color: var(--color-rosa-chilango);"></span>
+            <div class="section-tag mb-sm">
+              <span class="section-tag-line"></span>
               <span>02 / Sistema Cromático Técnico</span>
             </div>
-            <h3 class="font-abril" style="font-size: 1.75rem; margin-bottom: 1.5rem;">Tokens y Muestras de Color Oficiales</h3>
+            <h3 class="guidelines-h3-spaced">Tokens y Muestras de Color Oficiales</h3>
 
             <div class="color-swatches-grid">
               <!-- Swatch 1: Rosa Chilango -->
               <div class="color-swatch-card">
-                <div class="color-swatch-preview" style="background-color: #E4007C;">
+                <div class="color-swatch-preview swatch-bg-rosa">
                   <button class="color-swatch-copy" data-copy-text="#E4007C">
                     <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-copy"></use></svg>
                     <span>#E4007C</span>
                   </button>
-                  <strong style="color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem;">#E4007C</strong>
+                  <strong class="swatch-hex-white">#E4007C</strong>
                 </div>
                 <div class="color-swatch-meta">
-                  <h4 style="color: var(--text-primary); font-size: 0.85rem; font-family: var(--font-sans);">Rosa Chilango</h4>
+                  <h4 class="swatch-meta-title">Rosa Chilango</h4>
                   <span class="text-rosa">Acento Primario Unificador</span>
                   <div>RGB: 228, 0, 124</div>
                   <div>CMYK: 0, 100, 45, 11</div>
@@ -509,52 +558,52 @@
 
               <!-- Swatch 2: Azabache Void -->
               <div class="color-swatch-card">
-                <div class="color-swatch-preview" style="background-color: #070707;">
+                <div class="color-swatch-preview swatch-bg-azabache">
                   <button class="color-swatch-copy" data-copy-text="#070707">
                     <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-copy"></use></svg>
                     <span>#070707</span>
                   </button>
-                  <strong style="color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem;">#070707</strong>
+                  <strong class="swatch-hex-white">#070707</strong>
                 </div>
                 <div class="color-swatch-meta">
-                  <h4 style="color: var(--text-primary); font-size: 0.85rem; font-family: var(--font-sans);">Azabache Void</h4>
-                  <span style="color: var(--text-secondary);">Fondo Monolítico Oscuro</span>
+                  <h4 class="swatch-meta-title">Azabache Void</h4>
+                  <span class="text-secondary">Fondo Monolítico Oscuro</span>
                   <div>RGB: 7, 7, 7</div>
                   <div>CMYK: 75, 68, 67, 90</div>
                   <div>Pantone Black 6 C</div>
                 </div>
               </div>
 
-              <!-- Swatch 3: Alabastro Editorial -->
+              <!-- Swatch 3: Cosmic Latte -->
               <div class="color-swatch-card">
-                <div class="color-swatch-preview" style="background-color: #FAF8F8; border-bottom: 1px solid var(--border-subtle);">
-                  <button class="color-swatch-copy" data-copy-text="#FAF8F8" style="background: rgba(0,0,0,0.7);">
+                <div class="color-swatch-preview swatch-bg-cosmic">
+                  <button class="color-swatch-copy swatch-copy-dark" data-copy-text="#FFF8E7">
                     <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-copy"></use></svg>
-                    <span>#FAF8F8</span>
+                    <span>#FFF8E7</span>
                   </button>
-                  <strong style="color: #050505; font-family: var(--font-mono); font-size: 0.8rem;">#FAF8F8</strong>
+                  <strong class="swatch-hex-dark">#FFF8E7</strong>
                 </div>
                 <div class="color-swatch-meta">
-                  <h4 style="color: var(--text-primary); font-size: 0.85rem; font-family: var(--font-sans);">Alabastro Editorial</h4>
-                  <span style="color: var(--text-secondary);">Fondo Claro de Alta Costura</span>
-                  <div>RGB: 250, 248, 248</div>
-                  <div>CMYK: 0, 1, 1, 2</div>
-                  <div>Pantone Cool Gray 1 C</div>
+                  <h4 class="swatch-meta-title">Cosmic Latte</h4>
+                  <span class="text-secondary">Color Promedio del Universo • Fondo Claro</span>
+                  <div>RGB: 255, 248, 231</div>
+                  <div>CMYK: 0, 3, 9, 0</div>
+                  <div>Astrophysics JHU • Karl Glazebrook</div>
                 </div>
               </div>
 
               <!-- Swatch 4: Pizarra Grafito -->
               <div class="color-swatch-card">
-                <div class="color-swatch-preview" style="background-color: #27272A;">
+                <div class="color-swatch-preview swatch-bg-pizarra">
                   <button class="color-swatch-copy" data-copy-text="#27272A">
                     <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-copy"></use></svg>
                     <span>#27272A</span>
                   </button>
-                  <strong style="color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem;">#27272A</strong>
+                  <strong class="swatch-hex-white">#27272A</strong>
                 </div>
                 <div class="color-swatch-meta">
-                  <h4 style="color: var(--text-primary); font-size: 0.85rem; font-family: var(--font-sans);">Pizarra Grafito</h4>
-                  <span style="color: var(--text-secondary);">Líneas & Estructura Mecánica</span>
+                  <h4 class="swatch-meta-title">Pizarra Grafito</h4>
+                  <span class="text-secondary">Líneas & Estructura Mecánica</span>
                   <div>RGB: 39, 39, 42</div>
                   <div>CMYK: 65, 55, 50, 60</div>
                   <div>Pantone 426 C</div>
@@ -565,49 +614,49 @@
 
           <!-- 03 / Jerarquía Tipográfica -->
           <div>
-            <div class="section-tag" style="margin-bottom: 0.75rem;">
-              <span style="width: 14px; height: 2px; background-color: var(--color-rosa-chilango);"></span>
+            <div class="section-tag mb-sm">
+              <span class="section-tag-line"></span>
               <span>03 / Sistema Tipográfico de 4 Niveles</span>
             </div>
-            <h3 class="font-abril" style="font-size: 1.75rem; margin-bottom: 1.5rem;">Familias Tipográficas Oficiales</h3>
+            <h3 class="guidelines-h3-spaced">Familias Tipográficas Oficiales</h3>
 
             <div class="typography-specs-grid">
               <div class="typography-spec-card">
                 <div>
-                  <span class="font-mono text-rosa" style="font-size: 0.65rem;">NIVEL 1 — DISPLAY / TITULARES</span>
-                  <h4 class="font-abril" style="font-size: 2rem; margin: 0.5rem 0;">Abril Fatface</h4>
+                  <span class="font-mono-xs text-rosa">NIVEL 1 — DISPLAY / TITULARES</span>
+                  <h4 class="font-abril spec-sample-abril">Abril Fatface</h4>
                 </div>
-                <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">
+                <p class="typography-spec-desc">
                   Uso exclusivo para el monograma "MACLOVIA.", números de orden y encabezados de máxima jerarquía.
                 </p>
               </div>
 
               <div class="typography-spec-card">
                 <div>
-                  <span class="font-mono text-rosa" style="font-size: 0.65rem;">NIVEL 2 — FIRMA & ACENTO</span>
-                  <h4 class="font-cookie text-rosa" style="font-size: 2.5rem; margin: 0.25rem 0;">Cookie Script</h4>
+                  <span class="font-mono-xs text-rosa">NIVEL 2 — FIRMA & ACENTO</span>
+                  <h4 class="font-cookie text-rosa spec-sample-cookie">Cookie Script</h4>
                 </div>
-                <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">
+                <p class="typography-spec-desc">
                   Uso para el complemento "Belleza Maldita", firmas editoriales y acentos líricos en Rosa Chilango.
                 </p>
               </div>
 
               <div class="typography-spec-card">
                 <div>
-                  <span class="font-mono text-rosa" style="font-size: 0.65rem;">NIVEL 3 — CUERPO & INTERFAZ (UI)</span>
-                  <h4 class="font-sans" style="font-size: 1.35rem; font-weight: 600; margin: 0.5rem 0;">Inter / Sans-Serif</h4>
+                  <span class="font-mono-xs text-rosa">NIVEL 3 — CUERPO & INTERFAZ (UI)</span>
+                  <h4 class="font-sans spec-sample-inter">Inter / Sans-Serif</h4>
                 </div>
-                <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">
+                <p class="typography-spec-desc">
                   Diseñada para pantallas retina y legibilidad a alta densidad. Utilizada para párrafos, botones y menús.
                 </p>
               </div>
 
               <div class="typography-spec-card">
                 <div>
-                  <span class="font-mono text-rosa" style="font-size: 0.65rem;">NIVEL 4 — DATOS & CÓDIGO</span>
-                  <h4 class="font-mono text-rosa" style="font-size: 1.15rem; margin: 0.5rem 0;">Fira Code / Space Grotesk</h4>
+                  <span class="font-mono-xs text-rosa">NIVEL 4 — DATOS & CÓDIGO</span>
+                  <h4 class="font-mono text-rosa spec-sample-fira">Fira Code / Space Grotesk</h4>
                 </div>
-                <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">
+                <p class="typography-spec-desc">
                   Uso para comandos de terminal, especificaciones de color, coordenadas geográficas y fragmentos de código.
                 </p>
               </div>
@@ -616,50 +665,50 @@
 
           <!-- 04 / Normativa Do's & Don'ts -->
           <div>
-            <div class="section-tag" style="margin-bottom: 0.75rem;">
-              <span style="width: 14px; height: 2px; background-color: var(--color-rosa-chilango);"></span>
+            <div class="section-tag mb-sm">
+              <span class="section-tag-line"></span>
               <span>04 / Normativa de Uso (Do's & Don'ts)</span>
             </div>
-            <h3 class="font-abril" style="font-size: 1.75rem; margin-bottom: 1.5rem;">Reglas de Aplicación de Identidad</h3>
+            <h3 class="guidelines-h3-spaced">Reglas de Aplicación de Identidad</h3>
 
             <div class="dos-donts-grid">
               <div class="dos-card">
-                <div style="display: flex; align-items: center; gap: 0.5rem; color: #34d399; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem;">
+                <div class="dos-title">
                   <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-check"></use></svg>
                   <span>USOS CORRECTOS (DO'S)</span>
                 </div>
-                <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5;">
-                  <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
-                    <span style="color: #34d399; font-weight: 700;">✓</span>
+                <ul class="dos-list">
+                  <li class="dos-item">
+                    <span class="text-emerald-bold">✓</span>
                     <span>Mantener siempre el Rosa Chilango (#E4007C) como único color de acento vibrante sobre fondos neutros.</span>
                   </li>
-                  <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
-                    <span style="color: #34d399; font-weight: 700;">✓</span>
+                  <li class="dos-item">
+                    <span class="text-emerald-bold">✓</span>
                     <span>Conservar el tamaño mínimo de isotipo en 18px en pantalla para asegurar la visibilidad del octágono.</span>
                   </li>
-                  <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
-                    <span style="color: #34d399; font-weight: 700;">✓</span>
+                  <li class="dos-item">
+                    <span class="text-emerald-bold">✓</span>
                     <span>Escribir siempre "Maclovia. Belleza Maldita" con el punto separador entre el monolito y el alma.</span>
                   </li>
                 </ul>
               </div>
 
               <div class="donts-card">
-                <div style="display: flex; align-items: center; gap: 0.5rem; color: #f43f5e; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem;">
+                <div class="donts-title">
                   <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-x"></use></svg>
                   <span>USOS PROHIBIDOS (DON'TS)</span>
                 </div>
-                <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5;">
-                  <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
-                    <span style="color: #f43f5e; font-weight: 700;">✗</span>
+                <ul class="dos-list">
+                  <li class="dos-item">
+                    <span class="text-rose-bold">✗</span>
                     <span>No sustituir el Rosa Chilango por magentas genéricos, fucsias fluorescentes o colores neón discordantes.</span>
                   </li>
-                  <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
-                    <span style="color: #f43f5e; font-weight: 700;">✗</span>
+                  <li class="dos-item">
+                    <span class="text-rose-bold">✗</span>
                     <span>No deformar, estirar ni alterar la proporción geométrica octagonal de 8 pétalos en el isotipo vectorial.</span>
                   </li>
-                  <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
-                    <span style="color: #f43f5e; font-weight: 700;">✗</span>
+                  <li class="dos-item">
+                    <span class="text-rose-bold">✗</span>
                     <span>No escribir "Belleza Maldita" en mayúsculas sostenidas ("BELLEZA MALDITA"); respetar el estilo caligráfico.</span>
                   </li>
                 </ul>

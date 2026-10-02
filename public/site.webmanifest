@@ -1,0 +1,19 @@
+{
+  "name": "MACLOVIA. Belleza Maldita",
+  "short_name": "Maclovia",
+  "description": "Studio de software de alta precisión, compresión de modelos y sistemas distribuidos en Rust.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070709",
+  "theme_color": "#E4007C",
+  "icons": [
+    {
+      "src": "/assets/icons/sprite.svg#icon-sigil",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["developer", "productivity", "utilities"],
+  "lang": "es-MX"
+}
