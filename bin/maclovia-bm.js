@@ -164,7 +164,8 @@ function scaffoldProject(projectName, options = {}) {
 
   --font-sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
   --font-serif: 'Abril Fatface', Georgia, serif;
-  --font-script: 'Cookie', cursive;
+  --font-script: 'Tipo Movin CDMX', 'Space Grotesk', sans-serif;
+  --font-movin: 'Tipo Movin CDMX', 'Space Grotesk', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   --radius-sm: 4px;
@@ -319,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <title>${projectName} — Belleza Maldita</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cookie&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>

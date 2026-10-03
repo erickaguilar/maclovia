@@ -128,7 +128,7 @@ body {
 
 /* --- Typography Utilities --- */
 .font-abril { font-family: var(--font-editorial); }
-.font-cookie { font-family: var(--font-script); }
+.font-movin, .font-cookie { font-family: var(--font-script); }
 .font-mono { font-family: var(--font-mono); }
 .font-sans { font-family: var(--font-sans); }
 

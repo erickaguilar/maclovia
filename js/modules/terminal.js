@@ -572,8 +572,8 @@ rustc 1.85.0 (4d91de4e4 2025-02-17)</pre>
               <td>Abril Fatface (Serif / Titulares)</td>
             </tr>
             <tr>
-              <td>Tipografía Script</td>
-              <td>Cookie Script (Firma / Belleza Maldita)</td>
+              <td>Tipografía Nivel 2</td>
+              <td>Tipo Movin CDMX (Firma / Belleza Maldita • Lance Wyman / SEMOVI)</td>
             </tr>
             <tr>
               <td>Tipografía Código</td>

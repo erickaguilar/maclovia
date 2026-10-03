@@ -115,7 +115,7 @@ export const MACLOVIA_ASSETS = {
     id: 'lockup',
     badge: 'ASSET 02 · LOCKUP MAESTRO',
     title: 'Logotipo Horizontal Completo',
-    desc: 'Composición horizontal equilibrada que une el isotipo pentagonal con la tipografía de alto impacto MACLOVIA. en Abril Fatface, la firma en Cookie Script y el sello de origen CDMX.',
+    desc: 'Composición horizontal equilibrada que une el isotipo pentagonal con la tipografía de alto impacto MACLOVIA. en Abril Fatface, la firma en Tipo Movin CDMX y el sello de origen CDMX.',
     viewBox: '0 0 600 160',
     aspectRatio: 600 / 160,
     symbolDark: 'icon-maclovia-lockup',
@@ -130,7 +130,7 @@ export const MACLOVIA_ASSETS = {
     <rect x="62" y="139" width="76" height="3" rx="1.5" fill="#FFF8E7" opacity="0.9" />
   </g>
   <text x="175" y="88" font-family="'Abril Fatface', Georgia, serif" font-size="54" font-weight="900" fill="#FFFFFF" letter-spacing="2">MACLOVIA.</text>
-  <text x="180" y="132" font-family="'Cookie', cursive" font-size="44" fill="#E4007C">Belleza Maldita</text>
+  <text x="180" y="130" font-family="'Tipo Movin CDMX', 'Space Grotesk', sans-serif" font-size="34" font-weight="700" letter-spacing="1.5" fill="#E4007C">Belleza Maldita</text>
   <line x1="435" y1="52" x2="435" y2="128" stroke="#E4007C" stroke-width="1.5" opacity="0.6" />
   <text x="450" y="78" font-family="'Space Grotesk', 'Fira Code', monospace" font-size="11" font-weight="700" fill="#E4007C" letter-spacing="3">STUDIO</text>
   <text x="450" y="98" font-family="'Space Grotesk', 'Fira Code', monospace" font-size="11" font-weight="700" fill="#A1A1AA" letter-spacing="3">CDMX</text>
@@ -145,7 +145,7 @@ export const MACLOVIA_ASSETS = {
     <rect x="62" y="139" width="76" height="3" rx="1.5" fill="#FFF8E7" stroke="#E4007C" stroke-width="0.5" />
   </g>
   <text x="175" y="88" font-family="'Abril Fatface', Georgia, serif" font-size="54" font-weight="900" fill="#181511" letter-spacing="2">MACLOVIA.</text>
-  <text x="180" y="132" font-family="'Cookie', cursive" font-size="44" fill="#E4007C">Belleza Maldita</text>
+  <text x="180" y="130" font-family="'Tipo Movin CDMX', 'Space Grotesk', sans-serif" font-size="34" font-weight="700" letter-spacing="1.5" fill="#E4007C">Belleza Maldita</text>
   <line x1="435" y1="52" x2="435" y2="128" stroke="#E4007C" stroke-width="1.5" opacity="0.6" />
   <text x="450" y="78" font-family="'Space Grotesk', 'Fira Code', monospace" font-size="11" font-weight="700" fill="#E4007C" letter-spacing="3">STUDIO</text>
   <text x="450" y="98" font-family="'Space Grotesk', 'Fira Code', monospace" font-size="11" font-weight="700" fill="#52525B" letter-spacing="3">CDMX</text>
@@ -202,7 +202,7 @@ export const MACLOVIA_ASSETS = {
   <text font-family="'Space Grotesk', monospace" font-size="8.5" font-weight="700" fill="#FFF8E7" letter-spacing="3.2">
     <textPath href="#badge-top-curve" startOffset="50%" text-anchor="middle">MACLOVIA • CDMX • 2026</textPath>
   </text>
-  <text font-family="'Cookie', cursive" font-size="14" fill="#E4007C" letter-spacing="1">
+  <text font-family="'Tipo Movin CDMX', 'Space Grotesk', sans-serif" font-size="11" font-weight="700" fill="#E4007C" letter-spacing="2">
     <textPath href="#badge-bottom-curve" startOffset="50%" text-anchor="middle">✦ Belleza Maldita ✦</textPath>
   </text>
 </svg>`,
@@ -220,7 +220,7 @@ export const MACLOVIA_ASSETS = {
   <text font-family="'Space Grotesk', monospace" font-size="8.5" font-weight="700" fill="#181511" letter-spacing="3.2">
     <textPath href="#badge-top-curve-light" startOffset="50%" text-anchor="middle">MACLOVIA • CDMX • 2026</textPath>
   </text>
-  <text font-family="'Cookie', cursive" font-size="14" fill="#E4007C" letter-spacing="1">
+  <text font-family="'Tipo Movin CDMX', 'Space Grotesk', sans-serif" font-size="11" font-weight="700" fill="#E4007C" letter-spacing="2">
     <textPath href="#badge-bottom-curve-light" startOffset="50%" text-anchor="middle">✦ Belleza Maldita ✦</textPath>
   </text>
 </svg>`
@@ -609,8 +609,9 @@ export function initSvgToolkitWorkbench() {
         ctx.letterSpacing = '4px';
         ctx.fillText('MACLOVIA.', width / 2, markY + markSize + (isMobile ? 100 : 90));
 
-        ctx.font = `${isMobile ? 46 : 48}px 'Cookie', cursive`;
+        ctx.font = `700 ${isMobile ? 38 : 42}px 'Tipo Movin CDMX', 'Space Grotesk', sans-serif`;
         ctx.fillStyle = '#E4007C';
+        ctx.letterSpacing = '2px';
         ctx.fillText('Belleza Maldita', width / 2, markY + markSize + (isMobile ? 160 : 145));
 
         ctx.font = `600 ${isMobile ? 18 : 20}px 'Space Grotesk', monospace`;
@@ -663,7 +664,7 @@ export function initSvgToolkitWorkbench() {
 
   /* Typography Stacks */
   --font-editorial: 'Abril Fatface', Georgia, serif;
-  --font-script: 'Cookie', cursive;
+  --font-script: 'Tipo Movin CDMX', 'Space Grotesk', sans-serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'Fira Code', ui-monospace, monospace;
 }
@@ -699,7 +700,7 @@ export function initSvgToolkitWorkbench() {
           },
           typography: {
             editorial: { font: "Abril Fatface", fallback: "Georgia, serif" },
-            script: { font: "Cookie", fallback: "cursive" },
+            script: { font: "Tipo Movin CDMX", fallback: "'Space Grotesk', sans-serif", note: "SEMOVI / Lance Wyman CDMX" },
             sans: { font: "Inter", fallback: "sans-serif" },
             mono: { font: "Fira Code", fallback: "monospace" }
           }
