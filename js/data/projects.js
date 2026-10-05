@@ -219,6 +219,7 @@ export const PROJECTS = [
     primaryLanguage: 'Python',
     techStack: ['Python', 'Network Analysis', 'Graph Theory', 'Cayley Graphs', 'Combinatorics'],
     githubUrl: 'https://github.com/erickaguilar/rubik-graph-visualizer',
+    demoUrl: 'https://rubik-graph-visualizer.vercel.app/',
     cloneCmd: 'git clone https://github.com/erickaguilar/rubik-graph-visualizer.git',
     architectureDetails: {
       runtime: 'Python Scientific & Graph Computing',
