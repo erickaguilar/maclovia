@@ -83,6 +83,16 @@
   box-shadow: none;
 }
 
+/* Sigue el tema global del sitio aunque el toggle interno difiera */
+[data-theme="light"] #toolkit-frame {
+  background-color: #fffdf7;
+  background-image:
+    linear-gradient(rgba(120, 95, 60, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 95, 60, 0.12) 1px, transparent 1px);
+  border-color: rgba(120, 95, 60, 0.32);
+  box-shadow: none;
+}
+
 /* Asset Switcher Bar - 2x2 on mobile, 4-col on tablet/desktop */
 .asset-switcher-grid {
   display: grid;

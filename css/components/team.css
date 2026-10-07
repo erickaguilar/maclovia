@@ -19,6 +19,14 @@
   box-shadow: 0 15px 40px rgba(120, 95, 60, 0.08);
 }
 
+[data-theme="light"] .ceo-avatar-wrap {
+  box-shadow: 6px 6px 0 rgba(120, 95, 60, 0.16);
+}
+
+[data-theme="light"] .ceo-avatar {
+  border-color: rgba(120, 95, 60, 0.4);
+}
+
 [data-theme="light"] .terminal-box {
   background-color: #1e1914;
   border-color: rgba(120, 95, 60, 0.32);

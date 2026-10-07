@@ -68,8 +68,11 @@ export const copyTextToClipboard = copyText;
 
 /**
  * Escucha global delegada para cualquier botón con [data-copy-text]
+ * Idempotente: el lazy-load de guidelines la invoca de nuevo sin duplicar.
  */
 export function initClipboardListeners() {
+  if (document.__macloviaClipboardBound) return;
+  document.__macloviaClipboardBound = true;
   document.addEventListener('click', (e) => {
     const copyTarget = e.target.closest('[data-copy-text]');
     if (copyTarget) {
