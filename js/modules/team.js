@@ -63,10 +63,10 @@ export function renderCeoProfile() {
               <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-arrow-up-right"></use></svg>
             </a>
 
-            <a href="mailto:${CEO_PROFILE.email}" class="btn btn-primary">
+            <button data-copy-text="${CEO_PROFILE.email}" class="btn btn-primary" title="Copiar email ejecutivo al portapapeles">
               <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-mail"></use></svg>
               <span>${isZh ? '业务联络' : (isEn ? 'Executive Contact' : 'Contacto Ejecutivo')}</span>
-            </a>
+            </button>
           </div>
         </div>
 
@@ -76,7 +76,11 @@ export function renderCeoProfile() {
             <img 
               src="${CEO_PROFILE.avatarUrl || 'https://github.com/AUGE1405.png'}" 
               alt="${CEO_PROFILE.name}" 
-              class="ceo-avatar" 
+              class="ceo-avatar"
+              width="104"
+              height="104"
+              loading="lazy"
+              decoding="async"
             />
             <span class="ceo-tag">CEO</span>
           </div>

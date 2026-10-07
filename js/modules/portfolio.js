@@ -129,27 +129,32 @@ export function renderProjects(filter = 'all') {
           </div>
         </div>
 
-        <!-- Action Links -->
+        <!-- Action Links: 1 CTA primario + links texto -->
         <div class="project-card-actions">
-          <a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
-            <svg class="icon"><use href="assets/icons/sprite.svg#icon-github"></use></svg>
-            <span>GitHub</span>
-            <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-arrow-up-right"></use></svg>
-          </a>
-
           ${p.demoUrl ? `
             <a href="${p.demoUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
               <span>Demo</span>
               <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-arrow-up-right"></use></svg>
             </a>
-          ` : ''}
-
-          ${p.huggingFaceUrl ? `
-            <a href="${p.huggingFaceUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-              <svg class="icon"><use href="assets/icons/sprite.svg#icon-cpu"></use></svg>
-              <span>Hugging Face</span>
+          ` : `
+            <a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <span>Ver código</span>
+              <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-arrow-up-right"></use></svg>
             </a>
-          ` : ''}
+          `}
+
+          <div class="project-links-row">
+            ${p.demoUrl ? `
+              <a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="project-link">
+                <span>GitHub</span>
+              </a>
+            ` : ''}
+            ${p.huggingFaceUrl ? `
+              <a href="${p.huggingFaceUrl}" target="_blank" rel="noopener noreferrer" class="project-link">
+                <span>Hugging Face</span>
+              </a>
+            ` : ''}
+          </div>
         </div>
       </div>
     `;
@@ -172,10 +177,12 @@ export function initPortfolioFilters() {
   const filterBtns = document.querySelectorAll('[data-filter]');
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach((b) => b.classList.remove('btn-primary'));
-      filterBtns.forEach((b) => b.classList.add('btn-secondary'));
-      btn.classList.remove('btn-secondary');
-      btn.classList.add('btn-primary');
+      filterBtns.forEach((b) => {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-pressed', 'true');
 
       const category = btn.getAttribute('data-filter');
       renderProjects(category);

@@ -2,34 +2,41 @@
    MACLOVIA. Belleza Maldita — 4-Pillar Studio Footer & Operational Badges
    ========================================================================== */
 
-/* --- Footer 4 Pillars Architecture --- */
+/* --- Footer 4 Pillars Architecture — plano y compacto --- */
 .site-footer {
   border-top: 1px solid var(--border-subtle);
-  padding-top: 4.5rem;
-  padding-bottom: 3rem;
+  padding-top: 3.5rem;
+  padding-bottom: 2.5rem;
   background-color: var(--bg-surface);
   position: relative;
-}
-
-.footer-ambient-line {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-rosa-glow), transparent);
 }
 
 .footer-pillars-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
-  margin-bottom: 3.5rem;
+  gap: 0;
+  margin-bottom: 2rem;
 }
 
+.footer-pillars-grid > div {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.footer-pillars-grid > div:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+/* Móvil: 1 columna con divisores — marca, luego contacto */
 @media (min-width: 768px) {
   .footer-pillars-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .footer-pillars-grid > div {
+    border-top: none;
+    padding-top: 0;
   }
 }
 
@@ -38,6 +45,10 @@
     grid-template-columns: 5fr 3fr 2fr 2fr;
     gap: 2rem;
   }
+  .footer-pillars-grid > div {
+    border-top: none;
+    padding-top: 0;
+  }
 }
 
 .footer-pillar-title {
@@ -45,8 +56,8 @@
   font-size: 0.65rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--color-rosa-chilango);
-  margin-bottom: 1.25rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
   display: block;
 }
 
@@ -55,41 +66,28 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-md);
+  border-radius: 0;
   border: 1px solid var(--border-subtle);
-  background-color: var(--bg-surface-elevated);
+  background-color: transparent;
   font-family: var(--font-mono);
   font-size: 0.65rem;
   color: var(--text-secondary);
 }
 
 .footer-status-dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 0;
   background-color: #34d399;
-  box-shadow: 0 0 8px rgba(52, 211, 153, 0.8);
-  animation: pulseGlow 2s infinite ease-in-out;
+  box-shadow: none;
+  animation: none;
 }
 
 .footer-mid-divider {
-  position: relative;
   width: 100%;
   height: 1px;
   background-color: var(--border-subtle);
-  margin: 2rem 0;
-}
-
-.footer-mid-dot {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  background-color: var(--color-rosa-chilango);
-  box-shadow: 0 0 8px var(--color-rosa-chilango);
+  margin: 1.5rem 0;
 }
 
 .footer-brand h4 {
@@ -138,7 +136,7 @@
   justify-content: space-between;
   gap: 1rem;
   border-top: 1px solid var(--border-subtle);
-  padding-top: 2rem;
+  padding-top: 1.5rem;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--text-muted);
@@ -273,8 +271,8 @@
 
 .footer-token-badge {
   padding: 0.4rem 0.6rem;
-  border-radius: 6px;
-  background-color: var(--bg-surface-elevated);
+  border-radius: 0;
+  background-color: transparent;
   border: 1px solid var(--border-subtle);
   font-family: var(--font-mono);
   font-size: 0.6rem;
@@ -292,7 +290,7 @@
 }
 
 .footer-back-to-top-btn {
-  border-radius: var(--radius-full);
+  border-radius: 0;
   padding: 0.35rem 0.75rem;
 }
 

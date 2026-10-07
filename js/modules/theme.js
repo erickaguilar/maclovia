@@ -34,6 +34,14 @@ export function applyTheme(theme) {
     iconUse.setAttribute('href', theme === 'dark' ? 'assets/icons/sprite.svg#icon-sun' : 'assets/icons/sprite.svg#icon-moon');
   }
 
+  const themeToggleBtn = document.getElementById('theme-toggle-btn');
+  if (themeToggleBtn) {
+    const isLight = theme === 'light';
+    themeToggleBtn.setAttribute('aria-pressed', isLight ? 'true' : 'false');
+    themeToggleBtn.setAttribute('title', isLight ? 'Activar tema oscuro' : 'Activar tema claro');
+    themeToggleBtn.setAttribute('aria-label', isLight ? 'Tema claro activo. Activar tema oscuro' : 'Tema oscuro activo. Activar tema claro');
+  }
+
   // Update site marks if they use the adaptive symbol
   const markSymbolId = theme === 'light' ? 'icon-maclovia-mark-light' : 'icon-maclovia-mark-dark';
   document.querySelectorAll(
@@ -48,7 +56,7 @@ export function applyTheme(theme) {
   // Sync meta theme-color
   const metaTheme = document.querySelector('meta[name="theme-color"]');
   if (metaTheme) {
-    metaTheme.setAttribute('content', theme === 'light' ? '#FFF8E7' : '#070709');
+    metaTheme.setAttribute('content', theme === 'light' ? '#FFF8E7' : '#0C0A0B');
   }
 
   // Broadcast theme change to decoupled modules (e.g. SVG toolkit)

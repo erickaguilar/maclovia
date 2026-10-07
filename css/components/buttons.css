@@ -1,5 +1,6 @@
 /* ==========================================================================
    MACLOVIA. Belleza Maldita — Interactive Action Buttons
+   Minimalismo extremo: cuadrados, 1px, sin glow, jerarquía por peso
    ========================================================================== */
 
 /* --- Interactive Action Buttons --- */
@@ -7,80 +8,97 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  line-height: 1.25;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
   box-sizing: border-box;
   vertical-align: middle;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-md);
+  min-height: 2.75rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 0;
   cursor: pointer;
   text-decoration: none;
   border: 1px solid transparent;
-  transition: all var(--transition-fast);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-rosa-chilango);
+  outline-offset: 2px;
 }
 
 .btn-sm {
-  height: 2rem;
-  min-height: 2rem;
-  max-height: 2rem;
-  padding: 0 0.75rem;
-  font-size: 0.7rem;
-  line-height: 1;
+  min-height: 2.25rem;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.68rem;
 }
 
 .btn-md {
-  height: 2.5rem;
-  min-height: 2.5rem;
-  max-height: 2.5rem;
-  padding: 0 1rem;
-  font-size: 0.75rem;
-  line-height: 1;
+  min-height: 2.75rem;
+  padding: 0.85rem 1.4rem;
 }
 
 .btn-lg {
-  height: 3rem;
-  min-height: 3rem;
-  max-height: 3rem;
-  padding: 0 1.5rem;
-  font-size: 0.85rem;
-  line-height: 1;
+  min-height: 3.25rem;
+  padding: 1rem 1.8rem;
+  font-size: 0.78rem;
 }
 
+/* Primario: bloque sólido cuadrado */
 .btn-primary {
   background-color: var(--color-rosa-chilango);
-  color: #ffffff;
+  color: #fff;
   border-color: var(--color-rosa-chilango);
-  box-shadow: 0 0 18px rgba(228, 0, 124, 0.3);
+  box-shadow: none;
 }
 
 .btn-primary:hover {
   background-color: var(--color-rosa-hover);
   border-color: var(--color-rosa-hover);
-  box-shadow: 0 0 25px rgba(228, 0, 124, 0.5);
-  transform: translateY(-1px);
+  box-shadow: none;
+  transform: none;
 }
 
+/* Secundario: línea 1px, fondo transparente */
 .btn-secondary {
-  background-color: var(--bg-surface-elevated);
+  background-color: transparent;
   color: var(--text-primary);
   border-color: var(--border-medium);
 }
 
 .btn-secondary:hover {
-  border-color: var(--color-rosa-chilango);
-  color: var(--color-rosa-chilango);
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+  background-color: transparent;
 }
 
+/* Ghost: solo texto + subrayado cuadrado al hover */
 .btn-ghost {
   background: transparent;
   color: var(--text-secondary);
-  border-color: var(--border-subtle);
+  border-color: transparent;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  min-height: 2.25rem;
 }
 
 .btn-ghost:hover {
   color: var(--text-primary);
-  border-color: var(--border-strong);
+  border-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+/* Compacto usado en toolbars densas */
+.btn-compact {
+  min-height: 2.25rem;
+  padding: 0.55rem 0.8rem;
 }

@@ -26,10 +26,10 @@
 <meta name="ICBM" content="19.4326, -99.1332">
 
 <!-- Brand Theming & PWA Manifest -->
-<meta name="theme-color" content="#070709">
+<meta name="theme-color" content="#0C0A0B">
 <meta name="application-name" content="Maclovia">
 <link rel="manifest" href="site.webmanifest">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20200%20200%27%3E%3Cpolygon%20points%3D%27100%2C14%20182%2C73%20151%2C170%2049%2C170%2018%2C73%27%20fill%3D%27%230A0207%27%20stroke%3D%27%23FF3B9D%27%20stroke-width%3D%276%27/%3E%3Cpath%20fill-rule%3D%27evenodd%27%20fill%3D%27%23FF3B9D%27%20d%3D%27M%2064%20141%20L%2064%2088%20L%2068%2088%20L%2068%2075%20C%2068%2062%2C%2084%2062%2C%2084%2075%20L%2084%2094%20L%20100%20114%20L%20116%2094%20L%20116%2075%20C%20116%2062%2C%20132%2062%2C%20132%2075%20L%20132%2088%20L%20136%2088%20L%20136%20141%20L%20123%20141%20L%20123%20100%20L%20112%20116%20C%20106%20124%2C%2094%20124%2C%2088%20116%20L%2077%20100%20L%2077%20141%20Z%27/%3E%3Ccircle%20cx%3D%27100%27%20cy%3D%2780%27%20r%3D%275%27%20fill%3D%27%23FFF8E7%27/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 <!-- OpenGraph / Facebook Metadata -->
 <meta property="og:type" content="website">
@@ -39,7 +39,7 @@
 <meta property="og:description" content="Studio de software de alta precisión, compresión de modelos en Rust y sistemas distribuidos con artesanía de autor en la Ciudad de México.">
 <meta property="og:locale" content="es_MX">
 <meta property="og:locale:alternate" content="en_US">
-<meta property="og:image" content="https://avatars.githubusercontent.com/u/8192280?v=4">
+<meta property="og:image" content="https://maclovia.mx/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Maclovia / Belleza Maldita — Isotipo Pentagonal & Sistema de Diseño">
@@ -51,7 +51,7 @@
 <meta name="twitter:creator" content="@AUGE1405">
 <meta name="twitter:title" content="Maclovia / Belleza Maldita — Studio de Software • CDMX">
 <meta name="twitter:description" content="Studio de software de alta precisión, compresión de modelos en Rust y sistemas distribuidos con artesanía de autor en la Ciudad de México.">
-<meta name="twitter:image" content="https://avatars.githubusercontent.com/u/8192280?v=4">
+<meta name="twitter:image" content="https://maclovia.mx/og-card.png">
 <meta name="twitter:image:alt" content="Maclovia / Belleza Maldita — Isotipo Sigilo MAT">
 
 <!-- Schema.org Rich Structured Data (JSON-LD Graph) -->
@@ -146,9 +146,9 @@
 }
 </script>
 
-<!-- Preconnect to Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Fuentes autohospedadas: preload crítico + stylesheet -->
+<link rel="preload" href="assets/fonts/abrilfatface-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/firacode-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 
 <!-- Pure CSS Stylesheet -->
 <link rel="stylesheet" href="css/style.css">

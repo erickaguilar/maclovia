@@ -10,9 +10,6 @@
           <span class="brand-name">MACLOVIA.</span>
           <span class="brand-subtitle">Belleza Maldita</span>
         </div>
-        <span class="brand-badge-cdmx font-mono text-rosa">
-          CDMX
-        </span>
       </a>
 
       <!-- Navigation Links -->
@@ -22,25 +19,25 @@
           <a href="#portfolio-section" class="nav-item-link" data-i18n="nav.engineering">Portafolio</a>
           <a href="#guidelines-section" class="nav-item-link" data-i18n="nav.guidelines">Guidelines</a>
           <a href="#toolkit-section" class="nav-item-link" data-i18n="nav.toolkit">SVG Kit</a>
-          <a href="#interactive-terminal-section" class="nav-item-link">CLI</a>
+          <a href="#guidelines-section" class="nav-item-link" data-mockup-tab="tab-terminal">CLI</a>
         </div>
 
         <div class="nav-actions">
           <!-- Language Switcher (ES / EN / ZH) -->
-          <button id="lang-toggle-btn" class="btn btn-ghost" title="Cambiar idioma / Switch Language" aria-label="Cambiar idioma">
-            <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-globe"></use></svg>
-            <span class="lang-label">ES</span>
-          </button>
+          <div class="lang-group" role="group" aria-label="Idioma / Language">
+            <button class="btn btn-ghost lang-btn" data-lang-btn="es" aria-pressed="true" title="Español">ES</button>
+            <button class="btn btn-ghost lang-btn" data-lang-btn="en" aria-pressed="false" title="English">EN</button>
+            <button class="btn btn-ghost lang-btn" data-lang-btn="zh" aria-pressed="false" title="中文">ZH</button>
+          </div>
 
           <!-- Theme Switcher (Dark / Light) -->
-          <button id="theme-toggle-btn" class="btn btn-ghost" title="Alternar tema claro / oscuro" aria-label="Alternar tema de color">
+          <button id="theme-toggle-btn" class="btn btn-ghost" title="Activar tema claro" aria-label="Alternar tema de color" aria-pressed="false">
             <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-sun"></use></svg>
           </button>
 
           <!-- GitHub Profile Link -->
-          <a href="https://github.com/erickaguilar" target="_blank" rel="noopener noreferrer" class="btn btn-secondary nav-github-btn" title="GitHub de Erick Jonathan Aguilar García" aria-label="GitHub Profile">
+          <a href="https://github.com/erickaguilar" target="_blank" rel="noopener noreferrer" class="btn btn-ghost nav-github-btn" title="GitHub de Erick Jonathan Aguilar García" aria-label="GitHub de Erick Jonathan Aguilar García">
             <svg class="icon"><use href="assets/icons/sprite.svg#icon-github"></use></svg>
-            <span class="nav-github-label">@erickaguilar</span>
           </a>
 
           <!-- Mobile Hamburger Toggle Button -->
@@ -53,7 +50,7 @@
     </div>
 
     <!-- Mobile Navigation Drawer -->
-    <div id="mobile-nav-drawer" class="mobile-nav-drawer" aria-hidden="true">
+    <div id="mobile-nav-drawer" class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Navegación móvil" aria-hidden="true">
       <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
       <div class="mobile-nav-content">
         <div class="mobile-nav-header">
@@ -84,10 +81,20 @@
             <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-download"></use></svg>
             <span>SVG Toolkit & Wallpapers</span>
           </a>
-          <a href="#interactive-terminal-section" class="mobile-nav-link">
+          <a href="#guidelines-section" class="mobile-nav-link" data-mockup-tab="tab-terminal">
             <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-terminal"></use></svg>
             <span>Terminal CLI Interactiva</span>
           </a>
+        </div>
+
+        <!-- Mobile Brand Mode Selector -->
+        <div class="mobile-nav-brand-section">
+          <span class="mobile-nav-section-title">Idioma / Language</span>
+          <div class="lang-group mobile-nav-lang-group" role="group" aria-label="Idioma / Language">
+            <button class="btn btn-ghost lang-btn" data-lang-btn="es" aria-pressed="true" title="Español">ES</button>
+            <button class="btn btn-ghost lang-btn" data-lang-btn="en" aria-pressed="false" title="English">EN</button>
+            <button class="btn btn-ghost lang-btn" data-lang-btn="zh" aria-pressed="false" title="中文">ZH</button>
+          </div>
         </div>
 
         <!-- Mobile Brand Mode Selector -->

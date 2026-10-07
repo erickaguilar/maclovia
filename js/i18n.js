@@ -85,7 +85,13 @@ export function setLanguage(newLang) {
     }
   });
 
-  // Actualizar etiqueta del botón de alternancia en la barra de navegación (ES -> EN -> ZH)
+  // Actualizar grupo segmentado de idioma (ES | EN | ZH)
+  document.querySelectorAll('[data-lang-btn]').forEach((btn) => {
+    const active = btn.getAttribute('data-lang-btn') === newLang;
+    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    btn.classList.toggle('is-active', active);
+  });
+  // Retrocompatibilidad con el botón cíclico anterior
   const toggleBtn = document.getElementById('lang-toggle-btn');
   if (toggleBtn) {
     const label = toggleBtn.querySelector('.lang-label');
@@ -131,6 +137,14 @@ export function setLanguage(newLang) {
 export function initI18n() {
   setLanguage(currentLang);
 
+  document.querySelectorAll('[data-lang-btn]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang-btn');
+      if (lang) setLanguage(lang);
+    });
+  });
+
+  // Retrocompatibilidad con el botón cíclico anterior
   const toggleBtn = document.getElementById('lang-toggle-btn');
   if (toggleBtn) {
     toggleBtn.addEventListener('click', () => {

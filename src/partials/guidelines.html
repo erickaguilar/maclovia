@@ -17,12 +17,12 @@
         </div>
 
         <!-- Main View Switcher: Mockups vs Manual -->
-        <div class="guidelines-view-switcher">
-          <button class="guidelines-view-btn active" data-view="mockups-sub-section">
+        <div class="guidelines-view-switcher" role="tablist" aria-label="Vistas de guidelines">
+          <button id="tabbtn-mockups" class="guidelines-view-btn active" role="tab" aria-selected="true" aria-controls="mockups-sub-section" data-view="mockups-sub-section">
             <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-layers"></use></svg>
             <span data-i18n="guidelines.tabMockups">Mockups en Vivo</span>
           </button>
-          <button class="guidelines-view-btn" data-view="guidelines-sub-section">
+          <button id="tabbtn-manual" class="guidelines-view-btn" role="tab" aria-selected="false" aria-controls="guidelines-sub-section" tabindex="-1" data-view="guidelines-sub-section">
             <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-file-text"></use></svg>
             <span data-i18n="guidelines.tabManual">Manual & Normativa</span>
           </button>
@@ -30,23 +30,23 @@
       </div>
 
       <!-- VIEW 1: INTERACTIVE MOCKUPS -->
-      <div id="mockups-sub-section" class="guidelines-view-content active">
+      <div id="mockups-sub-section" class="guidelines-view-content active" role="tabpanel" aria-labelledby="tabbtn-mockups" tabindex="0">
         <div class="mockup-container">
           <!-- Mockup Sub-Tabs -->
-          <div class="mockup-tabs">
-            <button class="mockup-tab-btn active" data-tab="tab-terminal">
+          <div class="mockup-tabs" role="tablist" aria-label="Mockups interactivos">
+            <button id="tabbtn-terminal" class="mockup-tab-btn active" role="tab" aria-selected="true" aria-controls="tab-terminal" data-tab="tab-terminal">
               <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-terminal"></use></svg>
               <span data-i18n="guidelines.mockupTabs.terminal">Terminal CLI Banner</span>
             </button>
-            <button class="mockup-tab-btn" data-tab="tab-opengraph">
+            <button id="tabbtn-opengraph" class="mockup-tab-btn" role="tab" aria-selected="false" aria-controls="tab-opengraph" tabindex="-1" data-tab="tab-opengraph">
               <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-globe"></use></svg>
               <span data-i18n="guidelines.mockupTabs.opengraph">OpenGraph Card (1200×630)</span>
             </button>
-            <button class="mockup-tab-btn" data-tab="tab-browser">
+            <button id="tabbtn-browser" class="mockup-tab-btn" role="tab" aria-selected="false" aria-controls="tab-browser" tabindex="-1" data-tab="tab-browser">
               <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-monitor"></use></svg>
               <span data-i18n="guidelines.mockupTabs.browser">Navegador Web & CLI</span>
             </button>
-            <button class="mockup-tab-btn" data-tab="tab-card">
+            <button id="tabbtn-card" class="mockup-tab-btn" role="tab" aria-selected="false" aria-controls="tab-card" tabindex="-1" data-tab="tab-card">
               <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-briefcase"></use></svg>
               <span data-i18n="guidelines.mockupTabs.businessCard">Tarjeta Foil Editorial</span>
             </button>
@@ -54,7 +54,7 @@
 
           <div class="mockup-content">
             <!-- Sub-Panel 1: Interactive Terminal CLI -->
-            <div id="tab-terminal" class="mockup-panel active">
+            <div id="tab-terminal" class="mockup-panel active" role="tabpanel" aria-labelledby="tabbtn-terminal" tabindex="0">
               <div class="mockup-header-row">
                 <div class="flex-row-center gap-sm">
                   <span class="mockup-sub-title">
@@ -159,7 +159,7 @@
             </div>
 
             <!-- Sub-Panel 2: OpenGraph Card -->
-            <div id="tab-opengraph" class="mockup-panel">
+            <div id="tab-opengraph" class="mockup-panel" role="tabpanel" aria-labelledby="tabbtn-opengraph" tabindex="0" hidden>
               <div class="mockup-header-row">
                 <span class="mockup-sub-title">
                   Vista Previa para Redes Sociales & Metadata (Twitter, LinkedIn, Slack)
@@ -216,7 +216,7 @@
             </div>
 
             <!-- Sub-Panel 3: Browser Mockup -->
-            <div id="tab-browser" class="mockup-panel">
+            <div id="tab-browser" class="mockup-panel" role="tabpanel" aria-labelledby="tabbtn-browser" tabindex="0" hidden>
               <div class="mockup-header-row">
                 <span class="mockup-sub-title">
                   Navegador Web & Banner de Producción (Inspiración Terminal CLI)
@@ -451,7 +451,7 @@
             </div>
 
             <!-- Sub-Panel 4: Luxury Business Card -->
-            <div id="tab-card" class="mockup-panel">
+            <div id="tab-card" class="mockup-panel" role="tabpanel" aria-labelledby="tabbtn-card" tabindex="0" hidden>
               <div class="mockup-header-row">
                 <span class="mockup-sub-title">
                   Tarjeta Editorial / Papelería de Lujo con Canto Rosa Chilango
@@ -495,7 +495,7 @@
       </div>
 
       <!-- VIEW 2: MANUAL & NORMATIVA -->
-      <div id="guidelines-sub-section" class="guidelines-view-content">
+      <div id="guidelines-sub-section" class="guidelines-view-content" role="tabpanel" aria-labelledby="tabbtn-manual" tabindex="0" hidden>
         <div class="guidelines-stack">
           <!-- 01 / Narrativa Unificada -->
           <div class="mockup-container mockup-container-padded">

@@ -49,13 +49,20 @@ export function initMobileMenu() {
 
   if (!menuBtn || !drawer) return;
 
+  let lastFocused = null;
+  const focusableSelector = 'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])';
+  const getFocusable = () => Array.from(drawer.querySelectorAll(focusableSelector)).filter((el) => el.offsetParent !== null);
+
   const openDrawer = () => {
+    lastFocused = document.activeElement;
     drawer.classList.add('open');
     drawer.setAttribute('aria-hidden', 'false');
     menuBtn.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
     if (openIcon) openIcon.style.display = 'none';
     if (closeIcon) closeIcon.style.display = 'inline-block';
+    const first = getFocusable()[0];
+    if (first) first.focus();
   };
 
   const closeDrawer = () => {
@@ -65,6 +72,7 @@ export function initMobileMenu() {
     document.body.style.overflow = '';
     if (openIcon) openIcon.style.display = 'inline-block';
     if (closeIcon) closeIcon.style.display = 'none';
+    if (lastFocused && document.contains(lastFocused)) lastFocused.focus();
   };
 
   menuBtn.addEventListener('click', () => {
@@ -85,7 +93,26 @@ export function initMobileMenu() {
     });
   });
 
-  // Close on Escape key
+  // Focus trap + Escape
+  drawer.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeDrawer();
+      return;
+    }
+    if (e.key !== 'Tab') return;
+    const focusable = getFocusable();
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && drawer.classList.contains('open')) {
       closeDrawer();

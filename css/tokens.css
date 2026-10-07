@@ -8,13 +8,30 @@
    Zero-Emojis • Cero Dependencias de Runtime • Optimizado para Producción
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+/* --- Fuentes autohospedadas (cero Google Fonts, cero bloqueo render) --- */
+@font-face {
+  font-family: 'Abril Fatface';
+  src: url('/assets/fonts/abrilfatface-400-normal-latin.woff2') format('woff2'),
+       url('../assets/fonts/abrilfatface-400-normal-latin.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
-/* --- Tipografía Nivel 2 Oficial: Tipo Movin CDMX (Lance Wyman / SEMOVI) --- */
+@font-face {
+  font-family: 'Fira Code';
+  src: url('/assets/fonts/firacode-variable-latin.woff2') format('woff2'),
+       url('../assets/fonts/firacode-variable-latin.woff2') format('woff2');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- Tipografía Nivel 2 Oficial: Tipo Movin CDMX (Lance Wyman / SEMOVI) — WOFF2 --- */
 @font-face {
   font-family: 'Tipo Movin CDMX';
-  src: url('/assets/fonts/TipoMovinCDMX-Regular.otf') format('opentype'),
-       url('../assets/fonts/TipoMovinCDMX-Regular.otf') format('opentype');
+  src: url('/assets/fonts/TipoMovinCDMX-Regular.woff2') format('woff2'),
+       url('../assets/fonts/TipoMovinCDMX-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -22,8 +39,8 @@
 
 @font-face {
   font-family: 'Tipo Movin CDMX';
-  src: url('/assets/fonts/TipoMovinCDMX-Bold.otf') format('opentype'),
-       url('../assets/fonts/TipoMovinCDMX-Bold.otf') format('opentype');
+  src: url('/assets/fonts/TipoMovinCDMX-Bold.woff2') format('woff2'),
+       url('../assets/fonts/TipoMovinCDMX-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -31,8 +48,8 @@
 
 @font-face {
   font-family: 'Tipo Movin CDMX';
-  src: url('/assets/fonts/TipoMovinCDMX-Light.otf') format('opentype'),
-       url('../assets/fonts/TipoMovinCDMX-Light.otf') format('opentype');
+  src: url('/assets/fonts/TipoMovinCDMX-Light.woff2') format('woff2'),
+       url('../assets/fonts/TipoMovinCDMX-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -40,8 +57,8 @@
 
 @font-face {
   font-family: 'Tipo Movin CDMX';
-  src: url('/assets/fonts/TipoMovinCDMX-Italic.otf') format('opentype'),
-       url('../assets/fonts/TipoMovinCDMX-Italic.otf') format('opentype');
+  src: url('/assets/fonts/TipoMovinCDMX-Italic.woff2') format('woff2'),
+       url('../assets/fonts/TipoMovinCDMX-Italic.woff2') format('woff2');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -49,9 +66,18 @@
 
 @font-face {
   font-family: 'Tipo Movin CDMX';
-  src: url('/assets/fonts/TipoMovinCDMX-BoldItalic.otf') format('opentype'),
-       url('../assets/fonts/TipoMovinCDMX-BoldItalic.otf') format('opentype');
+  src: url('/assets/fonts/TipoMovinCDMX-BoldItalic.woff2') format('woff2'),
+       url('../assets/fonts/TipoMovinCDMX-BoldItalic.woff2') format('woff2');
   font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tipo Movin CDMX';
+  src: url('/assets/fonts/TipoMovinCDMX-LightItalic.woff2') format('woff2'),
+       url('../assets/fonts/TipoMovinCDMX-LightItalic.woff2') format('woff2');
+  font-weight: 300;
   font-style: italic;
   font-display: swap;
 }
@@ -64,40 +90,50 @@
   --color-rosa-subtle: rgba(228, 0, 124, 0.1);
   --color-rosa-border: rgba(228, 0, 124, 0.3);
 
-  --bg-primary: #050505;
-  --bg-surface: #0a0a0a;
-  --bg-surface-elevated: #111111;
-  --bg-card: rgba(18, 18, 18, 0.85);
-  --bg-card-hover: rgba(24, 24, 24, 0.95);
+  --bg-primary: #0c0a0b;
+  --bg-surface: #141114;
+  --bg-surface-elevated: #1c191c;
+  --bg-card: rgba(24, 20, 24, 0.92);
+  --bg-card-hover: rgba(30, 26, 30, 0.96);
+  --bg-ink: #0c0a0b;
 
   --text-primary: #f5f5f5;
-  --text-secondary: #a3a3a3;
-  --text-muted: #737373;
-  --text-inverse: #050505;
+  --text-secondary: #c9c9c9;
+  --text-muted: #a8a8a8;
+  --text-inverse: #0c0a0b;
 
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-medium: rgba(255, 255, 255, 0.15);
-  --border-strong: rgba(255, 255, 255, 0.25);
+  --border-subtle: rgba(255, 240, 230, 0.09);
+  --border-medium: rgba(255, 240, 230, 0.16);
+  --border-strong: rgba(255, 240, 230, 0.26);
 
   --font-editorial: 'Abril Fatface', Georgia, serif;
-  --font-script: 'Tipo Movin CDMX', 'Space Grotesk', -apple-system, sans-serif;
-  --font-movin: 'Tipo Movin CDMX', 'Space Grotesk', -apple-system, sans-serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'Fira Code', 'Space Grotesk', monospace;
+  --font-script: 'Tipo Movin CDMX', 'Abril Fatface', sans-serif;
+  --font-movin: 'Tipo Movin CDMX', 'Abril Fatface', sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Fira Code', ui-monospace, monospace;
 
-  --shadow-neon: 0 0 25px rgba(228, 0, 124, 0.35);
-  --shadow-neon-lg: 0 0 45px rgba(228, 0, 124, 0.45);
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
-  --radius-full: 9999px;
+  --shadow-neon: none;
+  --shadow-neon-lg: none;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-full: 0;
+
+  /* Minimalismo extremo — ritmo, línea y aire */
+  --line: 1px solid var(--border-subtle);
+  --measure: 44rem;
+  --space-section: clamp(5rem, 10vw, 8rem);
+  --font-weight-strong: 600;
 
   --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --reveal-distance: 18px;
 }
 
 [data-theme="light"] {
+  --color-rosa-chilango: #ae0063;
+  --color-rosa-hover: #8f0051;
   --bg-primary: #fff8e7; /* Cosmic Latte • Color Promedio del Universo */
   --bg-surface: #fffdf7;
   --bg-surface-elevated: #f5eedb;
@@ -106,7 +142,7 @@
 
   --text-primary: #181511;
   --text-secondary: #484036;
-  --text-muted: #787063;
+  --text-muted: #5f574c;
   --text-inverse: #ffffff;
 
   --border-subtle: rgba(120, 95, 60, 0.12);

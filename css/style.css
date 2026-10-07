@@ -20,3 +20,6 @@
 @import "./components/guidelines.css";
 @import "./components/toolkit.css";
 @import "./components/footer.css";
+
+/* 04. Minimalismo extremo + narrativa scroll (override final) */
+@import "./components/narrative.css";

@@ -1,0 +1,364 @@
+/* ==========================================================================
+   MACLOVIA. Belleza Maldita — Minimalismo extremo + Narrativa por scroll
+   Cuadrado total • Sin glow • Claridad por aire, línea y número
+   ========================================================================== */
+
+/* --- 1. Cuadrado global quirúrgico (sin tocar iconos circulares de estado) --- */
+.btn,
+.brand-switcher-bar,
+.brand-switch-btn,
+.mobile-brand-mode-pill,
+.mobile-brand-btn,
+.hero-badge,
+.hero-cdmx-tag,
+.hero-ceo-pill-link,
+.specialty-pill,
+.ceo-badge,
+.ceo-avatar,
+.ceo-card,
+.project-card,
+.terminal-box,
+.copy-btn,
+.github-telemetry-panel,
+.github-telemetry-avatar,
+.telemetry-icon-box,
+.project-github-stat,
+.portfolio-count-chip,
+.footer-status-pill,
+.footer-token-badge,
+.footer-mail-btn,
+.footer-cli-card-btn,
+.footer-social-link,
+.footer-back-to-top-btn,
+.nav-item-link,
+.mobile-nav-link,
+.mobile-nav-content,
+.mockup-tabs,
+.mockup-tab-btn,
+.guidelines-view-btn,
+.guidelines-view-switcher,
+.cli-chip,
+.cli-status-badge,
+.og-spec-badge,
+.browser-latency-badge,
+.browser-chrome,
+.browser-url-bar,
+.toolkit-code-container,
+.color-swatch-card,
+.color-swatch-preview,
+.typography-spec-card,
+.narrative-card,
+.browser-spec-card,
+.stationery-card,
+.scroll-mouse-pill,
+.scroll-mouse-dot,
+.hero-bead,
+.hero-badge-dot,
+.hero-subtitle-dot,
+input,
+code {
+  border-radius: 0 !important;
+}
+
+/* --- 2. Apagar ruido: glows, sombras neón y blurs pesados --- */
+.hero-ambient-glow,
+.telemetry-ambient-glow,
+.footer-ambient-line,
+.og-ambient-glow,
+.glow-box-rosa {
+  display: none !important;
+}
+
+.glow-rosa,
+.hero-h2,
+.hero-h2-belleza {
+  filter: none !important;
+}
+
+.btn-primary,
+.brand-switch-btn.active,
+.mobile-brand-btn.active,
+.ceo-avatar,
+.project-card,
+.github-telemetry-panel,
+.ceo-card,
+.mobile-nav-content,
+.stationery-card {
+  box-shadow: none !important;
+}
+
+.site-header {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+[data-theme="light"] .site-header {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Dots de estado: cuadrados de 6px para coherencia brutalista */
+.hero-badge-dot,
+.hero-subtitle-dot,
+.hero-bead,
+.footer-status-dot,
+.telemetry-status-dot,
+.footer-mid-dot,
+.cli-status-dot,
+.browser-telemetry-dot,
+.browser-latency-dot {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.footer-mid-dot {
+  width: 8px;
+  height: 8px;
+}
+
+/* Scrollbar cuadrada */
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb,
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 0 !important;
+}
+
+/* --- 3. Claridad tipográfica y aire --- */
+.hero-desc,
+.section-desc,
+.ceo-bio,
+.project-desc,
+.footer-manifesto-text {
+  max-width: var(--measure);
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.hero-section {
+  min-height: 92vh;
+  padding-top: 6.5rem;
+}
+
+.hero-h1 {
+  letter-spacing: 0.01em;
+}
+
+.hero-h2,
+.hero-h2-belleza {
+  text-shadow: none;
+}
+
+.hero-cta-wrap {
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.hero-badge,
+.ceo-badge,
+.cli-status-badge {
+  letter-spacing: 0.14em;
+  border-radius: 0 !important;
+}
+
+.project-card:hover,
+.github-telemetry-panel:hover,
+.terminal-box:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.project-card {
+  border-left: 2px solid transparent;
+}
+
+.project-card:hover {
+  border-left-color: var(--color-rosa-chilango);
+}
+
+/* Nav: línea inferior cuadrada en lugar de pill hover */
+.nav-item-link {
+  position: relative;
+  border-radius: 0 !important;
+  padding: 0.4rem 0.15rem;
+  margin: 0 0.45rem;
+}
+
+.nav-item-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: var(--color-rosa-chilango);
+  transition: width var(--transition-fast);
+}
+
+.nav-item-link:hover::after,
+.nav-item-link.is-active::after {
+  width: 100%;
+}
+
+.nav-item-link.is-active {
+  color: var(--text-primary);
+}
+
+/* --- 4. Narrativa interactiva por scroll --- */
+
+/* Barra de progreso de lectura — 2px rosa arriba */
+.narrative-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  z-index: 100;
+  background: transparent;
+  pointer-events: none;
+}
+
+.narrative-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--color-rosa-chilango);
+  transition: width 0.1s linear;
+}
+
+/* Contador de capítulo — esquina inferior, mono, mínimo */
+.narrative-chapter {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  padding: 0.5rem 0.7rem;
+  pointer-events: none;
+}
+
+.narrative-chapter strong {
+  color: var(--color-rosa-chilango);
+  font-weight: 700;
+}
+
+.narrative-chapter-line {
+  width: 24px;
+  height: 1px;
+  background: var(--border-medium);
+}
+
+@media (max-width: 640px) {
+  .narrative-chapter {
+    display: none;
+  }
+}
+
+/* Reveal editorial: aparece + sube 18px, stagger por hijos */
+.reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Número de capítulo inyectado en cada sección */
+.section-index {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--color-rosa-chilango);
+  text-transform: uppercase;
+}
+
+/* Divisor narrativo mínimo entre actos */
+.narrative-rule {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 1.5rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.narrative-rule::before,
+.narrative-rule::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--border-subtle);
+}
+
+.narrative-rule i {
+  width: 6px;
+  height: 6px;
+  background: var(--color-rosa-chilango);
+  display: block;
+}
+
+/* Scroll-hint simplificado a línea + texto */
+.scroll-mouse-pill {
+  width: 1px !important;
+  height: 2.5rem !important;
+  border: none !important;
+  background: var(--border-medium);
+  padding: 0 !important;
+  display: block !important;
+  position: relative;
+  overflow: visible;
+}
+
+.scroll-mouse-dot {
+  width: 5px !important;
+  height: 5px !important;
+  background: var(--color-rosa-chilango) !important;
+  position: absolute;
+  left: -2px;
+  top: 0;
+  animation: narrativeDrop 2.2s infinite cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: none !important;
+}
+
+@keyframes narrativeDrop {
+  0% { transform: translateY(0); opacity: 1; }
+  70% { transform: translateY(28px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+/* Movimiento reducido: mostrar todo sin animar */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .narrative-progress-bar {
+    transition: none;
+  }
+  .scroll-mouse-dot {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
