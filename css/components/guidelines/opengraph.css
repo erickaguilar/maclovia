@@ -1,0 +1,114 @@
+/* OpenGraph Share Card 1200x630 (1.91:1 aspect) */
+.og-card-frame {
+  width: 100%;
+  aspect-ratio: 1.91 / 1;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-medium);
+  background: #070709;
+  color: #ffffff;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  transition: all var(--transition-smooth);
+}
+
+@media (max-width: 768px) {
+  .og-card-frame {
+    aspect-ratio: auto;
+    min-height: 400px;
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+.og-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  height: 85%;
+  background: radial-gradient(circle, rgba(228, 0, 124, 0.25) 0%, rgba(20, 8, 18, 0.6) 50%, transparent 75%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.og-grid-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image: linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+/* OpenGraph Card Elements */
+.og-spec-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-rosa-chilango);
+  border: 1px solid var(--color-rosa-border);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.og-row-top {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.og-row-center {
+  position: relative;
+  z-index: 10;
+  margin: auto 0;
+  padding: 1.5rem 0;
+}
+
+.og-row-bottom {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.og-brand-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.og-title-h3 {
+  font-family: var(--font-editorial);
+  font-size: clamp(2rem, 5vw, 4rem);
+  letter-spacing: -0.01em;
+}
+
+.og-title-h4 {
+  font-family: var(--font-script);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  filter: drop-shadow(0 0 20px rgba(228, 0, 124, 0.6));
+}
+
+.og-desc-p {
+  font-size: clamp(0.8rem, 1.8vw, 1.05rem);
+  color: var(--text-secondary);
+  max-width: 38rem;
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}

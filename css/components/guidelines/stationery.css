@@ -1,0 +1,106 @@
+/* Luxury Stationery & Business Cards Grid */
+.stationery-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.stationery-card {
+  border-radius: var(--radius-md);
+  background: #070709;
+  border: 1px solid var(--border-medium);
+  padding: clamp(1.5rem, 3.5vw, 2.25rem);
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.stationery-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-rosa-border);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(228, 0, 124, 0.15);
+}
+
+.stationery-card-edge-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--color-rosa-chilango);
+  box-shadow: 0 0 15px var(--color-rosa-chilango);
+}
+
+.stationery-card-edge-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--color-rosa-chilango);
+  box-shadow: 0 0 15px var(--color-rosa-chilango);
+}
+
+/* Stationery Card Elements */
+.stationery-cards-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+.stationery-card-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+.stationery-card-title-lg {
+  font-family: var(--font-editorial);
+  font-size: 1.35rem;
+}
+
+.stationery-card-subtitle-script {
+  font-family: var(--font-script);
+  font-size: 1.5rem;
+}
+
+.stationery-card-craft-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.stationery-role-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.stationery-ceo-name {
+  font-family: var(--font-editorial);
+  font-size: 1.15rem;
+  margin-top: 0.25rem;
+}
+
+.stationery-card-meta-list {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.75rem;
+}

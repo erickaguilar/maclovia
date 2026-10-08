@@ -471,3 +471,56 @@
   width: 0.9rem;
   height: 0.9rem;
 }
+
+/* --- Architecture Drawer & Benchmarks (movido de guidelines.css) --- */
+/* Portfolio Architecture Specs Accordion */
+[data-toggle-arch] svg:last-child {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-toggle-arch].open svg:last-child {
+  transform: rotate(180deg);
+}
+
+.architecture-drawer {
+  display: none;
+  border-top: 1px dashed var(--border-subtle);
+  padding-top: 1rem;
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.architecture-drawer.open {
+  display: block;
+  animation: panelFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.benchmark-badge-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.benchmark-pill {
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  word-break: break-word;
+}

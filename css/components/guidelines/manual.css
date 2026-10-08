@@ -1,0 +1,297 @@
+/* Color Tokens Grid */
+.color-swatches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.color-swatch-card {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.color-swatch-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-rosa-border);
+}
+
+.color-swatch-preview {
+  height: 7rem;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.85rem;
+}
+
+.color-swatch-copy {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all var(--transition-fast);
+}
+
+.color-swatch-copy:hover {
+  background: var(--color-rosa-chilango);
+  border-color: var(--color-rosa-chilango);
+}
+
+.color-swatch-meta {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+/* Typography Hierarchy Specimens */
+.typography-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.typography-spec-card {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-card);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Do's & Don'ts */
+.dos-donts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .dos-donts-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.dos-card {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  background-color: rgba(6, 78, 59, 0.12);
+  padding: 1.5rem;
+}
+
+.donts-card {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  background-color: rgba(136, 19, 55, 0.12);
+  padding: 1.5rem;
+}
+
+/* Manual & Normative Guidelines Classes */
+.guidelines-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.mockup-container-padded {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.guidelines-h3 {
+  font-family: var(--font-editorial);
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.guidelines-h3-spaced {
+  font-family: var(--font-editorial);
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.guidelines-narrative-p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 48rem;
+  margin-bottom: 1.5rem;
+}
+
+.narrative-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.narrative-card {
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+}
+
+.narrative-card-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-rosa-chilango);
+}
+
+.narrative-card-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Swatches */
+.swatch-bg-rosa {
+  background-color: #E4007C;
+}
+
+.swatch-bg-azabache {
+  background-color: #070707;
+}
+
+.swatch-bg-cosmic {
+  background-color: #FFF8E7;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.swatch-bg-pizarra {
+  background-color: #27272A;
+}
+
+.swatch-copy-dark {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.swatch-hex-white {
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.swatch-hex-dark {
+  color: #181511;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.swatch-meta-title {
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+}
+
+/* Typography Specimens */
+.font-mono-xs {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+}
+
+.spec-sample-abril {
+  font-family: var(--font-editorial);
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
+
+.spec-sample-cookie {
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0.25rem 0;
+}
+
+.spec-sample-inter {
+  font-family: var(--font-sans);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+.spec-sample-fira {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  margin: 0.5rem 0;
+}
+
+.typography-spec-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Dos & Don'ts */
+.dos-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #34d399;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.donts-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #f43f5e;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.dos-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+}
+
+.dos-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.text-emerald-bold {
+  color: #34d399;
+  font-weight: 700;
+}
+
+.text-rose-bold {
+  color: #f43f5e;
+  font-weight: 700;
+}

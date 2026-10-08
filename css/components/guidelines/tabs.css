@@ -1,0 +1,173 @@
+/* --- Brand Guidelines & Real Mockups — plano 1px --- */
+.mockup-container {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.mockup-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-subtle);
+  background-color: transparent;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mockup-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.mockup-tabs > * {
+  scroll-snap-align: start;
+}
+
+.mockup-tab-btn,
+.toolkit-code-tab-btn {
+  padding: 0.9rem 1.1rem;
+  min-height: 2.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.mockup-tab-btn:hover,
+.toolkit-code-tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.mockup-tab-btn.active,
+.toolkit-code-tab-btn.active {
+  color: var(--color-rosa-chilango);
+  border-bottom-color: var(--color-rosa-chilango);
+  background-color: transparent;
+}
+
+.mockup-content {
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+/* --- Brand Guidelines Main View Switcher (Mockups vs Manual) — texto secundario --- */
+.guidelines-view-switcher {
+  display: inline-flex;
+  padding: 0;
+  border-radius: 0;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-subtle);
+  gap: 0;
+}
+
+.guidelines-view-btn,
+.toolkit-theme-btn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.8rem 1.1rem;
+  min-height: 2.75rem;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.guidelines-view-btn:hover,
+.toolkit-theme-btn:hover {
+  color: var(--text-primary);
+}
+
+.guidelines-view-btn.active,
+.toolkit-theme-btn.active {
+  background-color: transparent;
+  color: var(--color-rosa-chilango);
+  border-bottom-color: var(--color-rosa-chilango);
+  box-shadow: none;
+  font-weight: 700;
+}
+
+/* Framer Motion Native CSS Replacements */
+.mockup-panel {
+  animation: panelFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.guidelines-view-content {
+  animation: panelFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.browser-route-view {
+  animation: panelFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   Refactored Semantic & Utility Classes (Guidelines Module)
+   ========================================================================== */
+
+.section-header-row {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.guidelines-view-content {
+  display: none;
+}
+
+.guidelines-view-content.active {
+  display: block;
+}
+
+.mockup-panel {
+  display: none;
+}
+
+.mockup-panel.active {
+  display: block;
+}
+
+/* hidden gana siempre: accesibilidad + SEO (paneles inactivos fuera del árbol) */
+.guidelines-view-content[hidden],
+.mockup-panel[hidden] {
+  display: none !important;
+}
+
+.mockup-header-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.mockup-sub-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}

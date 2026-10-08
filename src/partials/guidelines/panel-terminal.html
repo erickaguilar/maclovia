@@ -1,0 +1,104 @@
+            <!-- Sub-Panel 1: Interactive Terminal CLI -->
+            <div id="tab-terminal" class="mockup-panel active" role="tabpanel" aria-labelledby="tabbtn-terminal" tabindex="0">
+              <div class="mockup-header-row">
+                <div class="flex-row-center gap-sm">
+                  <span class="mockup-sub-title">
+                    Consola Interactiva Shell Unix / Bash
+                  </span>
+                  <span class="cli-status-badge">
+                    <span class="cli-status-dot animate-pulse"></span>
+                    <span>SHELL ACTIVO</span>
+                  </span>
+                </div>
+                <div class="flex-row-center gap-sm">
+                  <button id="cli-clear-btn" class="btn btn-ghost btn-compact" title="Limpiar salida de la terminal">
+                    <svg class="icon icon-stroke"><use href="assets/icons/sprite.svg#icon-refresh"></use></svg>
+                    <span>Limpiar</span>
+                  </button>
+                  <button class="btn btn-secondary btn-compact" data-copy-text="npx maclovia-bm init my-app">
+                    <svg class="icon icon-stroke text-rosa"><use href="assets/icons/sprite.svg#icon-copy"></use></svg>
+                    <span>Copiar Comando</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="browser-chrome" id="terminal-window">
+                <div class="browser-header">
+                  <div class="browser-dots">
+                    <div class="browser-dot dot-red" id="term-dot-red" title="Limpiar pantalla (clear)"></div>
+                    <div class="browser-dot dot-yellow" id="term-dot-yellow" title="Reiniciar sesión"></div>
+                    <div class="browser-dot dot-green" id="term-dot-green" title="Alternar altura"></div>
+                  </div>
+                  <div class="terminal-chrome-meta">
+                    <span>maclovia-bm — bash — 80×24 • node v22.14.0 • rustc 1.85.0</span>
+                    <span class="text-rosa font-mono">✦</span>
+                    <span class="font-mono text-muted text-xs-muted">Terminal Interactiva (JS + Rust)</span>
+                  </div>
+                </div>
+
+                <div class="terminal-interactive-viewport" id="cli-viewport" tabindex="0" role="region" aria-label="Terminal interactiva">
+                  <!-- Quick Command Suggestions Bar -->
+                  <div class="cli-chips-bar">
+                    <span class="cli-chips-label">Comandos rápidos:</span>
+                    <button type="button" class="cli-chip text-rosa cli-chip-primary" data-cli-cmd="npx maclovia-bm init my-app">
+                      <svg class="icon icon-stroke icon-xs"><use href="assets/icons/sprite.svg#icon-terminal"></use></svg>
+                      <span>npx maclovia-bm init my-app</span>
+                    </button>
+                    <button type="button" class="cli-chip cli-chip-cargo" data-cli-cmd="cargo run">
+                      <span>cargo run</span>
+                    </button>
+                    <button type="button" class="cli-chip" data-cli-cmd="cargo test">
+                      <span>cargo test</span>
+                    </button>
+                    <button type="button" class="cli-chip" data-cli-cmd="./gaje-server">
+                      <span>./gaje-server</span>
+                    </button>
+                    <button type="button" class="cli-chip" data-cli-cmd="help">
+                      <span>help</span>
+                    </button>
+                    <button type="button" class="cli-chip" data-cli-cmd="projects">
+                      <span>projects</span>
+                    </button>
+                    <button type="button" class="cli-chip" data-cli-cmd="ceo">
+                      <span>ceo</span>
+                    </button>
+                    <button type="button" class="cli-chip" data-cli-cmd="theme">
+                      <span>theme</span>
+                    </button>
+                    <button type="button" class="cli-chip" data-cli-cmd="tokens">
+                      <span>tokens</span>
+                    </button>
+                    <button type="button" class="cli-chip" data-cli-cmd="specs">
+                      <span>specs</span>
+                    </button>
+                    <button type="button" class="cli-chip" data-cli-cmd="bench">
+                      <span>bench</span>
+                    </button>
+                    <button type="button" class="cli-chip" data-cli-cmd="clear">
+                      <span>clear</span>
+                    </button>
+                  </div>
+
+                  <!-- Dynamic Terminal History Container -->
+                  <div id="cli-history"></div>
+
+                  <!-- Active Input Line -->
+                  <form id="cli-form" class="cli-input-form" autocomplete="off" onsubmit="return false;">
+                    <label for="cli-input" class="cli-prompt-label">
+                      <span class="text-rosa font-bold">erick@cdmx</span>:<span class="text-blue">~/projects</span><span class="text-rosa">$</span>
+                    </label>
+                    <input 
+                      type="text" 
+                      id="cli-input" 
+                      class="cli-input-field" 
+                      autocomplete="off" 
+                      autocorrect="off" 
+                      autocapitalize="off" 
+                      spellcheck="false" 
+                      placeholder="Escribe 'help' o un comando..."
+                      aria-label="Línea de comando interactiva"
+                    />
+                  </form>
+                </div>
+              </div>
+            </div>

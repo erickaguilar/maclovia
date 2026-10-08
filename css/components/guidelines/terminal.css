@@ -1,0 +1,189 @@
+/* --- Interactive Terminal CLI Engine --- */
+.terminal-interactive-viewport {
+  background-color: var(--bg-ink);
+  border-radius: 0;
+  padding: 1.25rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  max-height: 480px;
+  overflow-y: auto;
+  cursor: text;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-rosa-border) transparent;
+}
+
+.terminal-interactive-viewport::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminal-interactive-viewport::-webkit-scrollbar-thumb {
+  background: var(--color-rosa-border);
+  border-radius: 0;
+}
+
+.cli-chips-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.cli-chip {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  border-radius: 0;
+  padding: 0.6rem 0.8rem;
+  min-height: 2.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.cli-chip:hover {
+  background: transparent;
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+}
+
+.cli-input-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  width: 100%;
+}
+
+.cli-prompt-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.cli-input-field {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #ffffff;
+  caret-color: var(--color-rosa-chilango);
+  padding: 0;
+  min-width: 120px;
+}
+
+.cli-input-field::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+  font-style: italic;
+}
+
+.cli-log-entry {
+  margin-bottom: 0.85rem;
+}
+
+.cli-log-command {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.35rem;
+}
+
+.cli-log-command .command-text {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.cli-log-result {
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding-left: 0.25rem;
+}
+
+.cli-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5rem 0;
+  font-size: 0.7rem;
+}
+
+.cli-table td {
+  padding: 0.25rem 0.5rem;
+  vertical-align: top;
+}
+
+.cli-table td:first-child {
+  padding-left: 0;
+  font-weight: 600;
+  width: 110px;
+  color: var(--color-rosa-chilango);
+}
+
+.cli-status-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  color: #34d399;
+}
+
+.cli-status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #34d399;
+}
+
+.terminal-chrome-meta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cli-chips-label {
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  margin-right: 0.25rem;
+}
+
+.cli-chip-primary {
+  border-color: var(--color-rosa-border);
+  font-weight: 600;
+}
+
+.cli-chip-cargo {
+  border-color: rgba(249, 115, 22, 0.4);
+  color: #fb923c;
+}
+
+.text-blue {
+  color: #60a5fa;
+}
+
+.text-emerald {
+  color: #34d399;
+}
+
+.text-rose {
+  color: #f43f5e;
+}
