@@ -12,8 +12,10 @@
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
     "preview": "vite preview",
-    "clean": "rm -rf dist",
-    "lint": "node --check js/*.js js/modules/*.js js/data/*.js bin/*.js",
+    "clean": "node -e \"fs.rmSync('dist',{recursive:true,force:true})\"",
+    "lint": "node scripts/lint.mjs",
+    "validate:i18n": "node scripts/validate-i18n.mjs",
+    "test": "node --test --test-force-exit",
     "cli": "node bin/maclovia-bm.js",
     "init": "node bin/maclovia-bm.js init"
   },

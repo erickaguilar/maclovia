@@ -13,7 +13,7 @@ export const ASCII_BANNER = `  ███╗   ███╗ █████╗  �
 
 export const AVAILABLE_COMMANDS = [
   { name: 'help', desc: 'Muestra la lista de comandos disponibles' },
-  { name: 'npx maclovia-bm init <app>', desc: 'Andamiaje completo de arquitectura (alias: init <app>)' },
+  { name: 'npm run init <app>', desc: 'Andamiaje completo de arquitectura (alias: init <app>)' },
   { name: 'cargo', desc: 'Gestor y ejecutor de Rust: cargo run [código], build, test, clippy, check, new' },
   { name: 'rustc', desc: 'Compilador de Rust (rustc --version o rustc -e "código")' },
   { name: 'rustup', desc: 'Gestor oficial de toolchains de Rust (rustup show)' },

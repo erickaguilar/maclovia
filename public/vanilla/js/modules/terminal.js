@@ -19,7 +19,7 @@ export const ASCII_BANNER = `  ███╗   ███╗ █████╗  �
 
 export const AVAILABLE_COMMANDS = [
   { name: 'help', desc: 'Muestra la lista de comandos disponibles' },
-  { name: 'npx maclovia-bm init <app>', desc: 'Andamiaje completo de arquitectura (alias: init <app>)' },
+  { name: 'npm run init <app>', desc: 'Andamiaje completo de arquitectura (alias: init <app>)' },
   { name: 'cargo', desc: 'Gestor y ejecutor de Rust: cargo run [código], build, test, clippy, check, new' },
   { name: 'rustc', desc: 'Compilador de Rust (rustc --version o rustc -e "código")' },
   { name: 'rustup', desc: 'Gestor oficial de toolchains de Rust (rustup show)' },
@@ -143,7 +143,7 @@ export function initInteractiveTerminal() {
     let cmd = parts[0].toLowerCase();
     let args = parts.slice(1);
 
-    // Support: `npx maclovia-bm init <app>`, `npx maclovia-bm`, `maclovia-bm init <app>`
+    // Support: `npm run init <app>`, `npm run cli -- init <app>`, `npx maclovia-bm init <app>`, `maclovia-bm init <app>`
     if (cmd === 'npx') {
       const tool = (args[0] || '').toLowerCase();
       if (tool === 'maclovia-bm' || tool === 'maclovia' || tool === 'maclovia-belleza-maldita') {
@@ -154,9 +154,25 @@ export function initInteractiveTerminal() {
       }
     }
 
-    if (cmd === 'npm' && (args[0] || '').toLowerCase() === 'create' && (args[1] || '').toLowerCase().includes('maclovia')) {
-      cmd = 'maclovia-bm';
-      args = ['init', ...args.slice(2)];
+    if (cmd === 'npm') {
+      if (args[0] === 'create' && (args[1] || '').toLowerCase().includes('maclovia')) {
+        cmd = 'maclovia-bm';
+        args = ['init', ...args.slice(2)];
+      } else if (args[0] === 'run') {
+        const rest = args.slice(2);
+        if (rest[0] === '--') rest.shift();
+        const sub = (rest[0] || '').toLowerCase();
+        if (sub === 'init') {
+          cmd = 'init';
+          args = rest.slice(1);
+        } else if (sub === 'tokens') {
+          cmd = 'tokens';
+          args = rest.slice(1);
+        } else if (!sub) {
+          cmd = 'help';
+          args = [];
+        }
+      }
     }
 
     if (cmd === 'maclovia-bm') {
@@ -178,12 +194,12 @@ export function initInteractiveTerminal() {
         appendLog(`
           <div style="margin-bottom: 0.5rem; color: #ffffff; font-weight: 600;">✦ MACLOVIA. Belleza Maldita CLI (maclovia-bm)</div>
           <table class="cli-table">
-            <tr><td>npx maclovia-bm init &lt;nombre&gt;</td><td>Inicializa un proyecto nuevo con arquitectura pura</td></tr>
-            <tr><td>npx maclovia-bm tokens</td><td>Exporta el diccionario de tokens CSS &amp; JSON</td></tr>
-            <tr><td>npx maclovia-bm --version</td><td>Muestra la versión instalada (v1.2.0)</td></tr>
-          </table>
-          <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.5rem;">
-            Ejemplo: <span class="text-rosa">npx maclovia-bm init my-app</span>
+          <tr><td>npm run init &lt;nombre&gt;</td><td>Inicializa un proyecto nuevo con arquitectura pura</td></tr>
+          <tr><td>npm run cli -- tokens</td><td>Exporta el diccionario de tokens CSS &amp; JSON</td></tr>
+          <tr><td>npm run cli -- --version</td><td>Muestra la versión instalada</td></tr>
+        </table>
+        <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.5rem;">
+          Ejemplo: <span class="text-rosa">npm run init my-app</span>
           </div>
         `, trimmed);
         return;

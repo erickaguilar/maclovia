@@ -100,15 +100,17 @@ npm run build
 
 ---
 
-## CLI de Andamiaje Oficial: `npx maclovia-bm init`
+## CLI de Andamiaje Oficial (`npm run init`)
 
-Puedes crear una nueva aplicación web monolítica con la arquitectura de diseño de **Maclovia. Belleza Maldita** en segundos mediante el comando interactivo:
+> Esta CLI es local al repositorio (`"private": true`): **no se publica en npm**, por lo que se invoca mediante los scripts de `package.json`, no con `npx`.
+
+Puedes crear una nueva aplicación web monolítica con la arquitectura de diseño de **Maclovia. Belleza Maldita** en segundos:
 
 ```bash
-# Inicializar un nuevo proyecto
-npx maclovia-bm init mi-aplicacion
+# Inicializar un nuevo proyecto (script "init")
+npm run init mi-aplicacion
 
-# O de forma local en este repositorio
+# Equivalente explícito a través del runner de la CLI
 npm run cli -- init mi-aplicacion
 ```
 

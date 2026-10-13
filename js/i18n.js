@@ -60,17 +60,14 @@ export function setLanguage(newLang) {
   localStorage.setItem('maclovia_lang', newLang);
   document.documentElement.lang = newLang === 'zh' ? 'zh-CN' : newLang;
 
-  // Actualizar todos los elementos con atributo data-i18n
+  // Actualizar todos los elementos con atributo data-i18n.
+  // Convención: data-i18n reside SIEMPRE en la hoja de texto (span, p, a, button)
+  // que lo recibe, nunca en un contenedor con iconos SVG.
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     const key = el.getAttribute('data-i18n');
     const translated = getTranslation(key, newLang);
     if (translated && typeof translated === 'string') {
-      const textSpan = el.querySelector('span:not([class*="icon"])');
-      if (textSpan && el.querySelector('svg')) {
-        textSpan.textContent = translated;
-      } else {
-        el.textContent = translated;
-      }
+      el.textContent = translated;
     }
   });
 

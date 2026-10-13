@@ -5,6 +5,22 @@
  * ctx: { log(html, cmd?), esc(str), runRust(code), raw }
  */
 
+function renderPlaygroundError(result) {
+  const reasonMap = {
+    timeout: 'No se pudo ejecutar el código en línea: el tiempo de espera (6.5s) se agotó. Inténtalo de nuevo.',
+    offline: 'No se pudo ejecutar el código en línea: sin conexión de red con Rust Playground.',
+    http: `Rust Playground respondió con estado HTTP ${result.status ?? 'desconocido'}.`,
+    parse: 'Rust Playground devolvió una respuesta inválida.',
+  };
+  const reason = reasonMap[result.stage] || 'Rust Playground no está disponible en este momento.';
+  return `
+    <div style="color: #f59e0b; font-family: var(--font-mono); font-size: 0.72rem; line-height: 1.5;">
+      <div style="font-weight: 700;">[!] Servicio Rust Playground no disponible</div>
+      <div style="color: var(--text-muted);">${reason}</div>
+    </div>
+  `;
+}
+
 export async function handleCargo(args, { log, esc, runRust, raw }) {
   const sub = (args[0] || '').toLowerCase();
   const subArgs = args.slice(1);
@@ -54,27 +70,15 @@ export async function handleCargo(args, { log, esc, runRust, raw }) {
           </div>
         </div>
       `);
-    } else if (playgroundRes && !playgroundRes.success) {
+    } else if (playgroundRes && playgroundRes.ok && !playgroundRes.success) {
       log(`
         <div style="font-family: var(--font-mono); font-size: 0.72rem; line-height: 1.45;">
           <div style="color: #f87171; font-weight: 700; margin-bottom: 0.25rem;">Error del compilador rustc:</div>
           <pre style="color: #fca5a5; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); padding: 0.5rem 0.75rem; border-radius: 4px; white-space: pre-wrap; font-family: var(--font-mono); font-size: 0.68rem;">${esc(playgroundRes.stderr || 'Error de compilación')}</pre>
         </div>
       `);
-    } else {
-      // Local fallback simulation
-      log(`
-        <div style="font-family: var(--font-mono); font-size: 0.72rem; line-height: 1.45;">
-          <div><span style="color: #22c55e; font-weight: 700;">   Compiling</span> maclovia_engine v1.2.0 (/root/projects/maclovia)</div>
-          <div><span style="color: #22c55e; font-weight: 700;">    Finished</span> \`release\` profile [optimized + lto] target(s) in 0.42s</div>
-          <div><span style="color: #22c55e; font-weight: 700;">     Running</span> \`target/release/maclovia_engine\`</div>
-          <pre style="margin-top: 0.4rem; padding: 0.5rem 0.75rem; background: rgba(0,0,0,0.5); border-left: 2px solid var(--color-rosa-chilango); color: #f8fafc; font-family: var(--font-mono); white-space: pre-wrap; border-radius: 4px;">✦ MOTOR SOBERANO MACLOVIA (RUST 2021) ✦
->> Memoria zero-copy mmap: 2.24 GB cargados en 1.1 ms
->> SIMD Tensor Desquantizer (AVX-512): Activo
->> Latencia TTFT (Time to First Token): 13.8 ms
->> Rendimiento de inferencia: 192 tokens/segundo</pre>
-        </div>
-      `);
+    } else if (playgroundRes && !playgroundRes.ok) {
+      log(renderPlaygroundError(playgroundRes));
     }
     return;
   }
@@ -214,10 +218,12 @@ export async function handleRustc(args, { log, esc, runRust, raw }) {
       log(`
         <pre style="margin-top: 0.35rem; padding: 0.4rem 0.6rem; background: rgba(0,0,0,0.5); border-left: 2px solid #22c55e; color: #ffffff; font-family: var(--font-mono); font-size: 0.72rem;">${esc(res.stdout || '(Sin salida)')}</pre>
       `);
-    } else if (res && !res.success) {
+    } else if (res && res.ok && !res.success) {
       log(`
         <pre style="color: #f87171; font-family: var(--font-mono); font-size: 0.68rem;">${esc(res.stderr)}</pre>
       `);
+    } else if (res && !res.ok) {
+      log(renderPlaygroundError(res));
     } else {
       log(`
         <div style="color: #22c55e; font-family: var(--font-mono); font-size: 0.72rem;">[OK] Expresión evaluada con éxito en rustc 1.85.0.</div>

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * ✦ MACLOVIA. Belleza Maldita — Official Scaffolding CLI (npx maclovia-bm init)
+ * ✦ MACLOVIA. Belleza Maldita — Official Scaffolding CLI (npm run init)
  * Zero external dependencies • Pure native Node.js (fs, path)
  * Creates a production-grade, zero-runtime-framework web application with
  * Maclovia design tokens, SVG Sprite Sheet, and Vercel/Vite deployment ready.
@@ -15,7 +15,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '..');
 
-const PKG_VERSION = '1.2.0';
+const PKG_VERSION = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8')).version;
 
 // ANSI Colors for high-contrast CLI terminal
 const C = {
@@ -45,7 +45,7 @@ function printHelp() {
   console.log(ASCII_BANNER);
   console.log(`
 ${C.bold}${C.white}USO:${C.reset}
-  ${C.rosa}npx maclovia-bm${C.reset} <comando> [opciones]
+  ${C.rosa}npm run cli --${C.reset} <comando> [opciones]
 
 ${C.bold}${C.white}COMANDOS:${C.reset}
   ${C.green}init${C.reset} <nombre-del-proyecto>    Crea un nuevo proyecto Maclovia / Belleza Maldita
@@ -59,7 +59,7 @@ ${C.bold}${C.white}OPCIONES:${C.reset}
   ${C.cyan}--help, -h${C.reset}                  Muestra este menú
 
 ${C.bold}${C.white}EJEMPLO:${C.reset}
-  ${C.dim}$${C.reset} ${C.rosa}npx maclovia-bm init mi-aplicacion${C.reset}
+  ${C.dim}$${C.reset} ${C.rosa}npm run init mi-aplicacion${C.reset}
   ${C.dim}$${C.reset} ${C.white}cd mi-aplicacion && npm run dev${C.reset}
 `);
 }
@@ -403,7 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 8. Write README.md
   const readme = `# ✦ ${projectName}
 
-> Proyecto generado con **Maclovia Belleza Maldita CLI** (\`npx maclovia-bm init\`).
+> Proyecto generado con **Maclovia Belleza Maldita CLI** (\`npm run init\`).
 > Rendimiento extremo, cero dependencias de cliente y tokens oficiales.
 
 ## Inicio Rápido
@@ -459,7 +459,7 @@ function main() {
     const projectName = args[1];
     if (!projectName) {
       console.error(`\n${C.yellow}Error:${C.reset} Debes especificar un nombre para el proyecto.\n`);
-      console.log(`Ejemplo: ${C.rosa}npx maclovia-bm init mi-aplicacion${C.reset}\n`);
+      console.log(`Ejemplo: ${C.rosa}npm run init mi-aplicacion${C.reset}\n`);
       process.exit(1);
     }
     const force = args.includes('--force') || args.includes('-f');
@@ -469,7 +469,7 @@ function main() {
     const tokensFile = path.resolve(process.cwd(), 'maclovia-tokens.json');
     const tokens = {
       name: 'Maclovia Design Tokens',
-      version: '1.2.0',
+      version: PKG_VERSION,
       colors: {
         rosaChilango: '#E4007C',
         azabacheVoid: '#070707',
@@ -480,7 +480,7 @@ function main() {
     console.log(`${C.green}[OK] Tokens exportados a:${C.reset} ${tokensFile}`);
   } else {
     console.error(`\n${C.yellow}Comando no reconocido:${C.reset} ${command}`);
-    console.log(`Ejecuta ${C.rosa}npx maclovia-bm --help${C.reset} para ver la lista de comandos disponibles.\n`);
+    console.log(`Ejecuta ${C.rosa}npm run cli -- --help${C.reset} para ver la lista de comandos disponibles.\n`);
     process.exit(1);
   }
 }

@@ -1,6 +1,6 @@
 /**
  * Maclovia / Belleza Maldita — Terminal Commands: CLI Scaffold & Shell
- * Resolución de alias npx/npm/maclovia-bm · init · banner · echo · clear.
+ * Resolución de alias npm run/npx/maclovia-bm · init · banner · echo · clear.
  *
  * ctx: { log(html, cmd?), esc(str), clear(), raw }
  */
@@ -16,7 +16,7 @@ export function resolveCliAlias(trimmed, { log, raw }) {
   let cmd = parts[0].toLowerCase();
   let args = parts.slice(1);
 
-  // Support: `npx maclovia-bm init <app>`, `npx maclovia-bm`, `maclovia-bm init <app>`
+  // Support: `npm run init <app>`, `npm run cli -- init <app>`, `npx maclovia-bm init <app>`, `maclovia-bm init <app>`
   if (cmd === 'npx') {
     const tool = (args[0] || '').toLowerCase();
     if (tool === 'maclovia-bm' || tool === 'maclovia' || tool === 'maclovia-belleza-maldita') {
@@ -27,9 +27,29 @@ export function resolveCliAlias(trimmed, { log, raw }) {
     }
   }
 
-  if (cmd === 'npm' && (args[0] || '').toLowerCase() === 'create' && (args[1] || '').toLowerCase().includes('maclovia')) {
-    cmd = 'maclovia-bm';
-    args = ['init', ...args.slice(2)];
+  if (cmd === 'npm') {
+    if (args[0] === 'create' && (args[1] || '').toLowerCase().includes('maclovia')) {
+      cmd = 'maclovia-bm';
+      args = ['init', ...args.slice(2)];
+    } else if (args[0] === 'run') {
+      const rest = args.slice(2);
+      if (rest[0] === '--') rest = rest.slice(1);
+      const sub = (rest[0] || '').toLowerCase();
+      if (sub === 'init') return { cmd: 'init', args: rest.slice(1) };
+      if (sub === 'tokens') return { cmd: 'tokens', args: rest.slice(1) };
+      if (!sub) {
+        return { cmd: 'help', args: [] };
+      }
+      // para npm run cli -- ... ya lo maneja 'cli'? no, aquí cmd ya es npm y args[0] run; rest puede contener cli --
+      if (sub === 'cli') {
+        // pasar a maclovia-bm con lo que viene después de --
+        const cliRest = rest.slice(1);
+        if (cliRest[0] === '--') cliRest.shift();
+        cmd = 'maclovia-bm';
+        args = cliRest;
+        // continúa para que maclovia-bm maneje subcomandos
+      }
+    }
   }
 
   if (cmd === 'maclovia-bm') {
@@ -52,17 +72,27 @@ export function resolveCliAlias(trimmed, { log, raw }) {
       log(`
         <div style="margin-bottom: 0.5rem; color: #ffffff; font-weight: 600;">✦ MACLOVIA. Belleza Maldita CLI (maclovia-bm)</div>
         <table class="cli-table">
-          <tr><td>npx maclovia-bm init &lt;nombre&gt;</td><td>Inicializa un proyecto nuevo con arquitectura pura</td></tr>
-          <tr><td>npx maclovia-bm tokens</td><td>Exporta el diccionario de tokens CSS &amp; JSON</td></tr>
-          <tr><td>npx maclovia-bm --version</td><td>Muestra la versión instalada (v1.2.0)</td></tr>
+          <tr><td>npm run init &lt;nombre&gt;</td><td>Inicializa un proyecto nuevo con arquitectura pura</td></tr>
+          <tr><td>npm run cli -- tokens</td><td>Exporta el diccionario de tokens CSS &amp; JSON</td></tr>
+          <tr><td>npm run cli -- --version</td><td>Muestra la versión instalada</td></tr>
         </table>
         <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.5rem;">
-          Ejemplo: <span class="text-rosa">npx maclovia-bm init my-app</span>
+          Ejemplo: <span class="text-rosa">npm run init my-app</span>
         </div>
       `, raw);
       return { cmd: null, args: [] };
     }
   }
+
+  // Caso: solo "npm run" sin subcomando
+  if (cmd === 'npm' && args[0] === 'run') {
+    const rest = args.slice(1);
+    if (rest[0] === '--') rest.shift();
+    if (!rest[0]) return { cmd: 'help', args: [] };
+  }
+
+  // Caso: cadena vacía
+  if (trimmed.trim() === '') return { cmd: 'help', args: [] };
 
   return { cmd, args };
 }
