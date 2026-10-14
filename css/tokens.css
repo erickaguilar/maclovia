@@ -134,11 +134,12 @@
 [data-theme="light"] {
   --color-rosa-chilango: #ae0063;
   --color-rosa-hover: #8f0051;
-  --bg-primary: #fff8e7; /* Cosmic Latte • Color Promedio del Universo */
+  --bg-primary: #fff8e7; /* Cosmic Latte  Color Promedio del Universo */
   --bg-surface: #fffdf7;
   --bg-surface-elevated: #f5eedb;
   --bg-card: rgba(255, 252, 245, 0.94);
   --bg-card-hover: #ffffff;
+  --bg-ink: #fffdf7;
 
   --text-primary: #181511;
   --text-secondary: #484036;

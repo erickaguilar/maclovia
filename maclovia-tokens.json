@@ -1,0 +1,9 @@
+{
+  "name": "Maclovia Design Tokens",
+  "version": "1.2.0",
+  "colors": {
+    "rosaChilango": "#E4007C",
+    "azabacheVoid": "#070707",
+    "alabastroEditorial": "#FAF8F8"
+  }
+}
