@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="color-scheme" content="dark" />
+  <title>Alpine Linux en WebAssembly — Maclovia</title>
+  <!--
+    MACLOVIA. Belleza Maldita — Página limpia de arranque de Alpine Linux sobre v86 (WASM).
+    Documento autónomo: NO carga CSS/JS de la web principal (impacto cero en su FCP/Lighthouse).
+    Se abre en pestaña nueva desde la terminal de Maclovia ("Boot Alpine (WASM)").
+
+    CONTRATO DE ASSETS (en esta misma carpeta, servida como /wasm/v86/):
+      ./libv86.js               API + glue de hardware de v86
+      ./v86.wasm                núcleo Rust→WASM (JIT x86→wasm)
+      ./seabios.bin             BIOS
+      ./vgabios.bin             VGA BIOS
+      ./alpine-fs.json          índice del rootfs 9p
+      ./alpine-rootfs-flat/     árbol del rootfs de Alpine (9p)
+      ./alpine-state.bin.zst    (opcional) instantánea pre-arrancada → arranque casi instantáneo
+
+    Vía de arranque: rootfs 9p + virtio (equivale a examples/alpine.html de v86).
+    Ver ./README.md para instrucciones de obtención y cabeceras de servidor.
+  -->
+  <style>
+    :root { color-scheme: dark; --rosa: #E4007C; --bg: #070707; --panel: #0d0d0d; --line: #1f1f1f; --ink: #e8e8e8; --muted: #9aa0a6; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    body { display: flex; flex-direction: column; }
+    .bar { display: flex; align-items: center; gap: 1rem; padding: 0.6rem 1rem; border-bottom: 1px solid var(--line); background: var(--panel); }
+    .brand { color: var(--rosa); font-weight: 700; letter-spacing: 0.18em; text-decoration: none; }
+    .meta { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--muted); }
+    .dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: #555; box-shadow: 0 0 0 1px var(--line) inset; }
+    .dot.busy { background: #fbbf24; animation: pulse 1s ease-in-out infinite; }
+    .dot.ok { background: #34d399; }
+    .dot.warn { background: #f43f5e; }
+    @keyframes pulse { 50% { opacity: 0.35; } }
+    nav { margin-left: auto; display: flex; gap: 0.5rem; }
+    .btn { font: inherit; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); background: transparent; border: 1px solid var(--line); padding: 0.45rem 0.8rem; text-decoration: none; cursor: pointer; }
+    .btn:hover { border-color: var(--rosa); color: var(--rosa); }
+    main { flex: 1; min-height: 0; display: flex; }
+    #screen_container { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1rem; overflow: auto; outline: none; cursor: text; }
+    #screen_container > div { white-space: pre; font: 14px/14px ui-monospace, monospace; text-align: center; }
+    #screen_container > canvas { max-width: 100%; image-rendering: pixelated; }
+    #setup { flex: 1; overflow: auto; padding: 2.5rem 1.5rem; max-width: 62rem; margin: 0 auto; }
+    #setup h1 { color: var(--rosa); font-size: 1.1rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    #setup p, #setup li { color: var(--muted); line-height: 1.7; font-size: 0.85rem; }
+    #setup code { color: var(--ink); background: #141414; padding: 0.1rem 0.35rem; border: 1px solid var(--line); }
+    #setup table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.8rem; }
+    #setup th, #setup td { border: 1px solid var(--line); padding: 0.45rem 0.6rem; text-align: left; }
+    #setup th { color: var(--ink); background: #111; }
+    #setup .missing-wrap { border: 1px solid #f43f5e55; background: #f43f5e12; padding: 0.6rem 0.9rem; font-size: 0.82rem; }
+    #setup pre { background: #111; border: 1px solid var(--line); padding: 0.8rem 1rem; overflow-x: auto; font-size: 0.78rem; color: var(--ink); }
+    noscript div { padding: 2rem; color: var(--rosa); }
+  </style>
+</head>
+<body>
+  <header class="bar">
+    <a class="brand" href="/">✦ MACLOVIA</a>
+    <div class="meta">
+      <span class="dot" id="status-dot"></span>
+      <span id="status">Iniciando…</span>
+    </div>
+    <nav>
+      <button class="btn" id="reload" type="button">Reiniciar</button>
+      <a class="btn" href="/">Volver a Maclovia</a>
+    </nav>
+  </header>
+
+  <main>
+    <div id="screen_container" tabindex="0" aria-label="Pantalla del sistema operativo Alpine">
+      <!-- v86 renderiza aquí: nodo de texto (modo texto) + canvas (modo gráfico) -->
+      <div style="white-space: pre; font: 14px monospace; line-height: 14px"></div>
+      <canvas style="display: none"></canvas>
+    </div>
+
+    <section id="setup" hidden>
+      <h1>Faltan los binarios de v86</h1>
+      <p>
+        Esta página arranca <strong>Alpine Linux real</strong> dentro de WebAssembly mediante el
+        emulador <strong>v86</strong> (JIT x86→wasm). El código funciona desde ya, pero no se
+        incluyen binarios en el repositorio por su peso: hay que colocarlos en
+        <code>/wasm/v86/</code>.
+      </p>
+
+      <div class="missing-wrap" id="missing-wrap" hidden>
+        No encontrados: <strong id="missing-list"></strong>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>Archivo</th><th>Rol</th><th>Origen</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>libv86.js</code></td><td>API + glue de hardware</td><td>Releases de <code>copy/v86</code> o build del repo</td></tr>
+          <tr><td><code>v86.wasm</code></td><td>Núcleo Rust→WASM (JIT)</td><td>Releases de <code>copy/v86</code></td></tr>
+          <tr><td><code>seabios.bin</code></td><td>BIOS</td><td>Repositorio <code>copy/v86</code> (<code>bios/</code>)</td></tr>
+          <tr><td><code>vgabios.bin</code></td><td>VGA BIOS</td><td>Repositorio <code>copy/v86</code> (<code>bios/</code>)</td></tr>
+          <tr><td><code>alpine-fs.json</code></td><td>Índice del rootfs 9p</td><td><code>tools/docker/alpine/</code> (<code>build.sh</code>)</td></tr>
+          <tr><td><code>alpine-rootfs-flat/</code></td><td>Árbol del rootfs</td><td><code>tools/docker/alpine/</code> (<code>build.sh</code>)</td></tr>
+          <tr><td><code>alpine-state.bin.zst</code></td><td>Instantánea pre-arrancada (opcional)</td><td><code>tools/docker/alpine/build-state.js</code></td></tr>
+        </tbody>
+      </table>
+
+      <p>Resumen del procedimiento:</p>
+      <pre># 1) Motor v86 (libv86.js + v86.wasm)
+#    https://github.com/copy/v86/releases  (o: make all)
+
+# 2) BIOS
+#    cp bios/seabios.bin bios/vgabios.bin  ->  /wasm/v86/
+
+# 3) Rootfs de Alpine (9p) según tools/docker/alpine/
+#    ./build.sh          -> alpine-fs.json + alpine-rootfs-flat/
+#    ./build-state.js    -> alpine-state.bin.zst   (opcional, arranque instantáneo)</pre>
+
+      <p>
+        Servidor: sirve <code>.wasm</code> con <code>Content-Type: application/wasm</code> y
+        cachea los assets con <code>Cache-Control: immutable</code>. No se requieren cabeceras
+        <code>COOP</code>/<code>COEP</code> en este modo (sin Web Worker con memoria compartida).
+      </p>
+    </section>
+  </main>
+
+  <noscript><div>Se requiere JavaScript para ejecutar WebAssembly.</div></noscript>
+
+<script>
+(function () {
+  'use strict';
+
+  // --- Configuración -----------------------------------------------
+  var BASE = './'; // esta carpeta = /wasm/v86/
+  var REQUIRED = ['libv86.js', 'v86.wasm', 'seabios.bin', 'vgabios.bin', 'alpine-fs.json'];
+  var OPTIONAL_STATE = 'alpine-state.bin.zst';
+  var CMDLINE =
+    'rw root=host9p rootfstype=9p rootflags=trans=virtio,cache=loose modules=virtio_pci tsc=reliable';
+
+  // --- DOM ----------------------------------------------------------
+  var statusEl   = document.getElementById('status');
+  var dotEl      = document.getElementById('status-dot');
+  var stageEl    = document.getElementById('screen_container');
+  var setupEl    = document.getElementById('setup');
+
+  function setStatus(text, kind) {
+    statusEl.textContent = text;
+    dotEl.className = 'dot' + (kind ? ' ' + kind : '');
+  }
+
+  function headOk(url) {
+    return fetch(url, { method: 'HEAD', cache: 'no-store' })
+      .then(function (r) { return r.ok; })
+      .catch(function () { return false; });
+  }
+
+  function loadScript(src) {
+    return new Promise(function (resolve, reject) {
+      var s = document.createElement('script');
+      s.src = src;
+      s.onload = function () { resolve(); };
+      s.onerror = function () { reject(new Error('No se pudo cargar ' + src)); };
+      document.head.appendChild(s);
+    });
+  }
+
+  function showSetup(missing) {
+    setStatus('Binarios pendientes', 'warn');
+    stageEl.hidden = true;
+    setupEl.hidden = false;
+    if (missing && missing.length) {
+      document.getElementById('missing-list').textContent = missing.join(', ');
+      document.getElementById('missing-wrap').hidden = false;
+    }
+  }
+
+  async function boot() {
+    setStatus('Comprobando binarios…', 'busy');
+
+    var checks = await Promise.all(REQUIRED.map(function (f) {
+      return headOk(BASE + f).then(function (ok) { return ok ? null : f; });
+    }));
+    var missing = checks.filter(Boolean);
+    if (missing.length) { showSetup(missing); return; }
+
+    setStatus('Cargando motor v86…', 'busy');
+    try {
+      await loadScript(BASE + 'libv86.js');
+    } catch (err) {
+      showSetup(['libv86.js']);
+      return;
+    }
+    if (typeof window.V86 !== 'function') {
+      showSetup(['libv86.js (la API global V86 no está expuesta)']);
+      return;
+    }
+
+    var hasState = await headOk(BASE + OPTIONAL_STATE);
+
+    var config = {
+      wasm_path: BASE + 'v86.wasm',
+      memory_size: 512 * 1024 * 1024,
+      vga_memory_size: 8 * 1024 * 1024,
+      screen_container: stageEl,          // ← "ver el sistema operativo" (framebuffer VGA)
+      bios:     { url: BASE + 'seabios.bin' },
+      vga_bios: { url: BASE + 'vgabios.bin' },
+      filesystem: {
+        baseurl: BASE + 'alpine-rootfs-flat', // árbol del rootfs
+        basefs:  BASE + 'alpine-fs.json'      // índice del filesystem 9p
+      },
+      bzimage_initrd_from_filesystem: true,   // kernel+initrd salen del propio 9p
+      cmdline: CMDLINE,
+      autostart: true
+    };
+    if (hasState) config.initial_state = { url: BASE + OPTIONAL_STATE };
+
+    setStatus('Arrancando Alpine…', 'busy');
+    try {
+      var emulator = new window.V86(config);
+      window.__v86 = emulator; // referencia para depuración
+
+      emulator.add_listener('emulator-ready', function () {
+        setStatus('Alpine Linux en ejecución', 'ok');
+        stageEl.focus();
+      });
+
+      emulator.add_listener('download-progress', function (e) {
+        if (!e || !e.total) return;
+        var pct = Math.round((e.loaded / e.total) * 100);
+        setStatus('Descargando ' + (e.file_name || 'imagen') + ' — ' + pct + '%', 'busy');
+      });
+
+      stageEl.addEventListener('click', function () { stageEl.focus(); });
+    } catch (err) {
+      console.error('[v86] fallo al arrancar:', err);
+      showSetup(null);
+    }
+  }
+
+  document.getElementById('reload').addEventListener('click', function () { location.reload(); });
+  boot();
+})();
+</script>
+</body>
+</html>

@@ -33,6 +33,12 @@ Convertir la landing page y plataforma de directrices de marca de **Maclovia / B
    * Arquitectura de **CSS Puro**: compilación estática única (`style.css` minificado de ~14KB) sin usar CDN en tiempo de ejecución.
    * Sistema de **SVG Sprite Sheet** unificado (`assets/icons/sprite.svg`) con etiquetas `<use>`.
 
+5. [**05_ALPINE_WASM_EVALUACION.md**](./05_ALPINE_WASM_EVALUACION.md)
+   * Evaluación **R&D** de ejecutar Linux/Alpine dentro de WASM accionado desde una línea de comandos.
+   * Comparativa de las tres familias reales (VM x86 emulada, JIT x86→WASM, userland WASI/WASIX) con peso, arranque, licencia y fidelidad.
+   * Guía técnica de **v86** (§11): pipeline del JIT escrito en Rust, arranque de Alpine por 9p+virtio, conexión `serial0` ↔ terminal y arquitectura de integración *lazy* en Maclovia.
+   * Experimentos reproducibles, criterios de aceptación e impacto en los invariantes de Maclovia (FCP < 0.4s, Lighthouse 100/100, Zero-Runtime).
+
 ---
 
 ## 📊 Resumen Ejecutivo de Componentes a Migrar
