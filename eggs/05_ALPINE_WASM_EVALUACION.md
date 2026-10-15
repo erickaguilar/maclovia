@@ -217,7 +217,7 @@ Los invariantes del proyecto (README + `metadata.json`) son:
 
 Traducimos la **Familia A** a una implementación concreta sobre **v86** (`copy/v86`, BSD-2), que es la opción con kernel real sin ataduras de licencia.
 
-> **Estado:** la **página limpia** ya está implementada en `public/wasm/v86/alpine.html` (servida como `/wasm/v86/alpine.html`) y se lanza desde la terminal de Maclovia con el botón **"Boot Alpine (WASM)"** (`src/partials/guidelines/panel-terminal.html`). Los **binarios no se versionan** por su peso: `alpine.html` detecta su ausencia y muestra las instrucciones (ver `public/wasm/v86/README.md`). Lo descrito abajo es la referencia técnica del modo embebido en la propia web, aún no implementado.
+> **Estado:** la **página limpia** ya está implementada en `public/wasm/v86/alpine.html` (servida como `/wasm/v86/alpine.html`) y se lanza desde la terminal de Maclovia con el botón **"Boot Alpine (WASM)"** (`src/partials/guidelines/panel-terminal.html`). El **motor de v86 y las BIOS ya están versionados** en `public/wasm/v86/` (con procedencia y SHA-256 en `THIRD-PARTY-NOTICES.md`); el **rootfs de Alpine se construye con Docker y no se versiona** (peso y licencias). Mientras falte, `alpine.html` detecta su ausencia y muestra las instrucciones (ver `public/wasm/v86/README.md`). Lo descrito abajo es la referencia técnica del modo embebido en la propia web, aún no implementado.
 
 ### 11.1 Qué es
 
