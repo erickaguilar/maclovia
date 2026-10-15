@@ -70,16 +70,15 @@ function sha256(buf) {
   return createHash('sha256').update(buf).digest('hex');
 }
 
-// Descarga con `fetch` nativo. En redes con inspección TLS corporativa, Node
-// puede no confiar en el CA interno ("unable to get local issuer certificate").
+// Descarga con `fetch` nativo (Node >= 18).
 async function viaFetch(url) {
   const res = await fetch(url, { redirect: 'follow' });
   if (!res.ok) throw new Error(`HTTP ${res.status} al descargar ${url}`);
   return Buffer.from(await res.arrayBuffer());
 }
 
-// Plan B: `curl` del sistema, que en Windows usa el almacén de certificados del
-// SO y por tanto sí confía en el CA corporativo.
+// Plan B: `curl` del sistema, por si `fetch` no puede completar la descarga en
+// este entorno (p. ej. validación del certificado).
 function viaCurl(url) {
   const tmp = path.join(os.tmpdir(), `maclovia-v86-${process.pid}-${Date.now()}`);
   const res = spawnSync('curl', ['-fL', '--retry', '3', '--retry-delay', '1', '-s', '-o', tmp, url], {

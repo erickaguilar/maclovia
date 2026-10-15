@@ -48,6 +48,12 @@ cp -r /tmp/v86/images/alpine-rootfs-flat    <repo>/public/wasm/v86/
 > licencias variadas. Para producción, sírvelo desde un CDN, un *release asset* de GitHub o Git
 > LFS, y ajusta `baseurl`/`basefs` en `alpine.html` si cambias la ruta.
 
+> **Sin `--zstd` también es válido.** v86 solo descomprime cuando el nombre del archivo termina en
+> `.zst`; si construyes con `build.sh` tal cual, los archivos quedan como `*.bin` y se cargan en
+> crudo (más transferencia, cero dependencias). El *snapshot* `alpine-state.bin.zst` es **opcional**
+> y además exige compilar v86 desde fuente (`make all`, toolchain Rust/Emscripten), por lo que puede
+> omitirse: Alpine arranca igual, solo tarda unos segundos más.
+
 ## Servidor (cabeceras)
 
 - `.wasm` con `Content-Type: application/wasm`.
