@@ -1,0 +1,12 @@
+# Normalización de finales de línea.
+# Los assets de v86 se verifican por SHA-256: nunca deben convertirse (LF/CRLF).
+
+# Motor de v86: JS minificado de terceros, byte a byte como se publica.
+public/wasm/v86/libv86.js -text
+
+# Binarios de terceros.
+public/wasm/v86/*.wasm binary
+public/wasm/v86/*.bin  binary
+
+# Instantánea opcional (si se construye).
+public/wasm/v86/*.zst  binary

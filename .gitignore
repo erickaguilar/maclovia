@@ -9,3 +9,10 @@ coverage/
 .vercel
 .env*
 !.env.example
+
+# Assets de v86: el motor y las BIOS SÍ se versionan (ver public/wasm/v86/).
+# El rootfs de Alpine se construye con Docker y NO se versiona (tamaño + licencias).
+public/wasm/v86/alpine-fs.json
+public/wasm/v86/alpine-rootfs-flat/
+public/wasm/v86/alpine-rootfs.tar
+public/wasm/v86/alpine-state.bin.zst

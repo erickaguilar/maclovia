@@ -16,6 +16,15 @@
       ]
     },
     {
+      "source": "/wasm/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         {
@@ -35,7 +44,7 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!assets/|vanilla/|.*\\..*).*)",
+      "source": "/((?!assets/|vanilla/|wasm/|.*\\..*).*)",
       "destination": "/index.html"
     }
   ]
