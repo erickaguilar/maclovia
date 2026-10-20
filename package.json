@@ -16,6 +16,9 @@
     "lint": "node scripts/lint.mjs",
     "validate:i18n": "node scripts/validate-i18n.mjs",
     "wasm:assets": "node scripts/fetch-wasm-assets.mjs",
+    "wasm:rootfs": "node scripts/fetch-alpine-rootfs.mjs",
+    "wasm:rootfs:build": "node scripts/build-alpine-rootfs.mjs",
+    "wasm:rootfs:trim": "node scripts/trim-alpine-rootfs.mjs",
     "test": "node --test --test-force-exit",
     "cli": "node bin/maclovia-bm.js",
     "init": "node bin/maclovia-bm.js init"

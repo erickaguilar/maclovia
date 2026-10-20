@@ -1,0 +1,8 @@
+#!/bin/sh
+# ✦ Maclovia — arranque de i3 sobre v86
+# Se lanza desde la consola con: startx
+#
+# Marca en la consola serie que el escritorio arrancó (la usa la página y las
+# pruebas para saber que X/i3 están listos). Si no hay ttyS0, no pasa nada.
+printf '\nGUI_READY\n' > /dev/ttyS0 2>/dev/null || true
+exec i3

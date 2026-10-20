@@ -1,0 +1,14 @@
+✦ Maclovia — Alpine Linux (v86 / WebAssembly)
+
+Escribe  startx  para abrir el escritorio i3.
+
+  Mod4 + Enter        terminal (xterm)
+  Mod4 + d            lanzador (dmenu)
+  Mod4 + Shift + f    explorador de archivos (mc)
+  Mod4 + Shift + t    consola con tmux
+  Mod4 + 1..9         cambiar de workspace
+  Mod4 + Shift + q    cerrar ventana
+  Mod4 + Shift + e    salir de i3
+  Mod4 + Shift + r    reiniciar i3
+
+Sin red: el invitado no tiene conectividad salvo que se configure un proxy WISP.

@@ -45,9 +45,34 @@ function htmlPartialsPlugin() {
   };
 }
 
+/**
+ * Custom Vite Plugin to replicate Vercel's `cleanUrls` for the `public/` dir in
+ * dev: resolves extension-less routes (e.g. `/wasm/v86/alpine`) to their
+ * `.html` sibling under `public/`, so dev matches production.
+ */
+function cleanUrlsPublicPlugin() {
+  return {
+    name: 'maclovia-clean-urls-public',
+    apply: 'serve',
+    configureServer(server) {
+      const publicDir = path.resolve(__dirname, 'public');
+      server.middlewares.use((req, _res, next) => {
+        if (req.method !== 'GET' || !req.url) return next();
+        const [pathname, query] = req.url.split('?');
+        if (path.extname(pathname)) return next();
+        const candidate = path.resolve(publicDir, '.' + decodeURIComponent(pathname) + '.html');
+        if (candidate.startsWith(publicDir) && fs.existsSync(candidate)) {
+          req.url = pathname + '.html' + (query ? '?' + query : '');
+        }
+        next();
+      });
+    },
+  };
+}
+
 export default defineConfig(() => {
   return {
-    plugins: [htmlPartialsPlugin()],
+    plugins: [htmlPartialsPlugin(), cleanUrlsPublicPlugin()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

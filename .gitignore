@@ -7,6 +7,7 @@ coverage/
 .DS_Store
 *.log
 .vercel
+.cache/
 .env*
 !.env.example
 
@@ -15,4 +16,5 @@ coverage/
 public/wasm/v86/alpine-fs.json
 public/wasm/v86/alpine-rootfs-flat/
 public/wasm/v86/alpine-rootfs.tar
+public/wasm/v86/alpine-rootfs.tar.zst
 public/wasm/v86/alpine-state.bin.zst

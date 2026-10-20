@@ -323,6 +323,89 @@ Esto se enchufa directamente a **xterm.js** o al renderer DOM propio. Además, `
 
 ---
 
+### 11.8 Estado de la implementación (v1.2)
+
+Sobre el primer prototipo se han cerrado tres frentes:
+
+1. **Rootfs servible en producción sin versionarlo.** `alpine.html` resuelve la base del rootfs en
+   este orden: `?rootfs=<url>` → `DEFAULT_ROOTFS_BASE` (constante en la página) → local (`./`). El
+   motor y las BIOS siguen siendo locales. Para traer el rootfs a local/CI:
+   `npm run wasm:rootfs -- --base=<url>`, con verificación de integridad
+   `sha256(contenido)[:10] == nombre` (el esquema de `copy-to-sha256.py` de v86). La base externa
+   **debe permitir CORS** (jsDelivr y GitHub raw lo hacen). `node scripts/fetch-alpine-rootfs.mjs
+   --check` valida lo local sin descargar.
+2. **Memoria adaptativa + aviso de rendimiento.** Se detecta móvil/equipo limitado
+   (`navigator.deviceMemory`, `hardwareConcurrency`, `pointer: coarse`) y se asigna **256 MB**
+   (ligero) o **512 MB** (escritorio); con **i3** (`?gui=1`) sube a **1024 MB** (512 en equipos
+   limitados). Se puede forzar con `?mem=<MiB>`. La página muestra un aviso visible de que se trata
+   de emulación (más lenta que nativo) y de la RAM emulada, y advierte en móvil.
+3. **Detección de assets endurecida.** Comprobación con `HEAD` y reserva `GET` con `Range`
+   (servidores que no soportan `HEAD`), validación del índice `alpine-fs.json` (JSON real; descarta
+   el SPA fallback que devuelve `text/html`) y sondeo de archivos del árbol `alpine-rootfs-flat/`.
+   El enlace del lanzador usa `/wasm/v86/alpine` (sin `.html`, alineado con `cleanUrls`), con un
+   plugin de Vite que replica `cleanUrls` para `public/` en desarrollo.
+
+Queda pendiente (**fuera de este alcance**): **Web Worker** para no bloquear el hilo principal y
+**snapshot** pre-arrancado (`alpine-state.bin.zst`) para arranque casi instantáneo. La consola serie
+(`serial0`) **ya se usa** para detectar el prompt y el estado de i3 (ver §11.10).
+
+### 11.9 Recorte del rootfs
+
+El rootfs construido (Alpine 3.21 + X11/i3) pesa ~95 MB antes de recortar. El script
+`scripts/trim-alpine-rootfs.mjs` elimina rutas por prefijo, **recalcula el `size`** del índice y
+borra del árbol solo los archivos que quedan sin referencias (hay archivos compartidos entre varias
+rutas, de ahí el conteo de referencias). Perfiles:
+
+| Perfil | Quita | Árbol | Archivo mayor |
+| :--- | :--- | ---: | ---: |
+| `safe` | `/usr/bin/node`, mapas/config de kernel, `/var/cache` | ~98 MB | 7.3 MB (kernel) |
+| `aggressive` | + `/usr/share` (⚠️ **rompe i3**: xkb y fuentes) | ~95 MB | 7.3 MB |
+| `extreme` | + `/lib/modules` (⚠️ **rompe udev/libinput/modprobe**) | ~78 MB | 7.3 MB |
+
+Con el escritorio i3 **`safe` es el único perfil recomendado**: `/usr/share` guarda el mapa de
+teclado (`xkeyboard-config`) y las fuentes, y `/lib/modules` es imprescindible para udev/libinput
+(ratón PS/2). Sin `node`, el mayor archivo es el kernel (7.3 MB), lo que hace viable servirlo por un
+CDN con límite por archivo (jsDelivr). Es reversible reconstruyendo el rootfs con Docker. Detalle en
+`public/wasm/v86/README.md`.
+
+### 11.10 Escritorio i3 en el rootfs
+
+Sobre la consola base se añadió un **escritorio X11/i3** horneado en la imagen (el invitado no tiene
+red): `docker/alpine-i3/` deriva de `tools/docker/alpine` de v86 e instala
+`xorg-server xf86-video-fbdev xf86-input-libinput eudev udev-init-scripts xinit i3wm i3status dmenu
+xterm mc tmux font-misc-misc font-dejavu xkeyboard-config xrandr xsetroot`. Se construye con
+`npm run wasm:rootfs:build` (build + export + `fs2json` + recorte).
+
+El escritorio es mínimo pero usable: barra `i3status` (CPU, RAM, load, hora), **xterm** como consola
+(`Mod4+Enter`), **mc** como explorador de archivos en terminal (`Mod4+Shift+f`) y **tmux**
+(`Mod4+Shift+t`). Se evita deliberadamente GTK: un explorador GUI (`pcmanfm`) costaría +25 MB (GTK3,
+dbus, avahi, at-spi) y sería lento sin GPU en v86.
+
+Decisiones relevantes:
+
+- **Framebuffer, no VESA.** v86 emula una VGA Bochs (PCI `1234:1111`). El kernel la engancha con el
+  driver DRM `bochs` (`CONFIG_DRM_BOCHS=m`, cargado por udev) y expone `/dev/fb0`; Xorg usa el driver
+  **fbdev** (como la imagen GUI oficial de v86). El driver `vesa` **no funciona**: su `int10`/x86emu
+  responde *"VESA BIOS not detected"* y X aborta con *"no screens found"*.
+- **Consola en framebuffer.** Al cargar `bochs-drm` (~30 s), la consola del guest pasa a un
+  framebuffer 1024×768. La página detecta el prompt (`localhost:~#`) y el estado de i3 (`I3_READY`)
+  por la **consola serie** (`ttyS0`) vía `serial0-output-byte`; mantiene la detección por pantalla de
+  texto como respaldo. El rootfs deja autologin root en tty1 y ttyS0.
+- **Sin Mesa/LLVM.** `xorg-server` arrastra Mesa (gallium + LLVM, ~285 MB) por libGL/EGL; el driver
+  fbdev no lo usa. Se eliminan físicamente (`libLLVM*`, `libgallium*`, `libGL*`, `libEGL*`,
+  `libgbm*`, `/usr/lib/dri`, `gallium-pipe`…) y se pone `Disable "glx"` en `xorg.conf`. Sin esto el
+  rootfs pesaría ~385 MB.
+- **APK por HTTP si falla TLS.** Docker Desktop/antivirus intercepta TLS dentro del contenedor
+  (`certificate verify failed`); el script sondea HTTPS y cae a `http://` (los paquetes se siguen
+  verificando con la firma RSA de Alpine). `--apk-scheme=` lo fuerza.
+- **Autobloqueo del DRM descartado.** Se probó a bloquear `bochs` para conservar la consola de texto y
+  usar `vesa`; X fallaba igual, así que se optó por fbdev (vía oficial de v86).
+
+Verificación headless (Node + `libv86.js` como CJS): arranque → prompt serie a los ~46 s → `startx`
+por teclado → `GUI_READY` e `I3_READY` a los ~72 s, con el framebuffer en 1024×768×32.
+
+---
+
 ## 🔗 12. Referencias
 
 - `copy/v86` — emulador x86 + JIT a WASM: https://github.com/copy/v86

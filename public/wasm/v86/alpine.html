@@ -5,23 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="color-scheme" content="dark" />
-  <title>Alpine Linux en WebAssembly — Maclovia</title>
+  <title>Alpine Linux + i3 en WebAssembly — Maclovia</title>
   <!--
     MACLOVIA. Belleza Maldita — Página limpia de arranque de Alpine Linux sobre v86 (WASM).
     Documento autónomo: NO carga CSS/JS de la web principal (impacto cero en su FCP/Lighthouse).
     Se abre en pestaña nueva desde la terminal de Maclovia ("Boot Alpine (WASM)").
 
-    CONTRATO DE ASSETS (en esta misma carpeta, servida como /wasm/v86/):
-      ./libv86.js               API + glue de hardware de v86
-      ./v86.wasm                núcleo Rust→WASM (JIT x86→wasm)
-      ./seabios.bin             BIOS
-      ./vgabios.bin             VGA BIOS
-      ./alpine-fs.json          índice del rootfs 9p
-      ./alpine-rootfs-flat/     árbol del rootfs de Alpine (9p)
-      ./alpine-state.bin.zst    (opcional) instantánea pre-arrancada → arranque casi instantáneo
+    ESCRITORIO: el rootfs incluye X11 + i3wm. Arranca en consola; el escritorio
+    se abre a demanda con `startx` (botón «i3», o ?gui=1 para 1024 MB y autoarranque).
+    Con bochs-drm la consola del guest es un framebuffer 1024x768; el prompt y el
+    estado de i3 se detectan por la consola serie (ttyS0), que la página lee.
+
+    CONTRATO DE ASSETS
+      Motor + BIOS (locales, en esta misma carpeta = /wasm/v86/):
+        ./libv86.js               API + glue de hardware de v86
+        ./v86.wasm                núcleo Rust→WASM (JIT x86→wasm)
+        ./seabios.bin             BIOS
+        ./vgabios.bin             VGA BIOS
+      Rootfs de Alpine (base configurable, por defecto también local):
+        ./alpine-fs.json          índice del rootfs 9p
+        ./alpine-rootfs-flat/     árbol del rootfs de Alpine (9p) — X11 + i3
+        ./alpine-state.bin.zst    (opcional) instantánea pre-arrancada → arranque casi instantáneo
 
     Vía de arranque: rootfs 9p + virtio (equivale a examples/alpine.html de v86).
-    Ver ./README.md para instrucciones de obtención y cabeceras de servidor.
+    El rootfs puede servirse desde un CDN/release (DEFAULT_ROOTFS_BASE o ?rootfs=…)
+    sin versionarlo en este repositorio. Ver ./README.md para detalles.
   -->
   <style>
     :root { color-scheme: dark; --rosa: #E4007C; --bg: #070707; --panel: #0d0d0d; --line: #1f1f1f; --ink: #e8e8e8; --muted: #9aa0a6; }
@@ -36,6 +44,11 @@
     .dot.ok { background: #34d399; }
     .dot.warn { background: #f43f5e; }
     @keyframes pulse { 50% { opacity: 0.35; } }
+    .notice { display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem 1rem; border-bottom: 1px solid var(--line); background: #14110a; color: #f2d68a; font-size: 0.74rem; line-height: 1.5; }
+    .notice[hidden] { display: none; }
+    .notice code { background: #00000055; border: 1px solid var(--line); padding: 0 0.25rem; }
+    .notice .x { margin-left: auto; flex: none; font: inherit; color: inherit; background: none; border: 0; cursor: pointer; opacity: 0.65; }
+    .notice .x:hover { opacity: 1; }
     nav { margin-left: auto; display: flex; gap: 0.5rem; }
     .btn { font: inherit; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); background: transparent; border: 1px solid var(--line); padding: 0.45rem 0.8rem; text-decoration: none; cursor: pointer; }
     .btn:hover { border-color: var(--rosa); color: var(--rosa); }
@@ -51,6 +64,7 @@
     #setup th, #setup td { border: 1px solid var(--line); padding: 0.45rem 0.6rem; text-align: left; }
     #setup th { color: var(--ink); background: #111; }
     #setup .missing-wrap { border: 1px solid #f43f5e55; background: #f43f5e12; padding: 0.6rem 0.9rem; font-size: 0.82rem; }
+    #setup .missing-reason { color: #f4a4b4; font-size: 0.78rem; margin: 0.4rem 0 0; }
     #setup pre { background: #111; border: 1px solid var(--line); padding: 0.8rem 1rem; overflow-x: auto; font-size: 0.78rem; color: var(--ink); }
     noscript div { padding: 2rem; color: var(--rosa); }
   </style>
@@ -63,10 +77,17 @@
       <span id="status">Iniciando…</span>
     </div>
     <nav>
+      <button class="btn" id="gui" type="button" title="Abrir el escritorio i3 (startx)">i3</button>
       <button class="btn" id="reload" type="button">Reiniciar</button>
       <a class="btn" href="/">Volver a Maclovia</a>
     </nav>
   </header>
+
+  <div class="notice" id="notice" role="status" hidden>
+    <span>✦</span>
+    <span id="notice-text"></span>
+    <button class="x" id="notice-close" type="button" aria-label="Ocultar aviso">✕</button>
+  </div>
 
   <main>
     <div id="screen_container" tabindex="0" aria-label="Pantalla del sistema operativo Alpine">
@@ -86,6 +107,7 @@
 
       <div class="missing-wrap" id="missing-wrap" hidden>
         No encontrados: <strong id="missing-list"></strong>
+        <p class="missing-reason" id="missing-reason" hidden></p>
       </div>
 
       <table>
@@ -98,31 +120,36 @@
           <tr><td><code>v86-fallback.wasm</code></td><td>Núcleo alternativo (navegadores sin extensiones)</td><td>Incluido</td><td>Release <code>copy/v86</code></td></tr>
           <tr><td><code>seabios.bin</code></td><td>BIOS</td><td>Incluido</td><td><code>copy/v86</code> (<code>bios/</code>)</td></tr>
           <tr><td><code>vgabios.bin</code></td><td>VGA BIOS</td><td>Incluido</td><td><code>copy/v86</code> (<code>bios/</code>)</td></tr>
-          <tr><td><code>alpine-fs.json</code></td><td>Índice del rootfs 9p</td><td><strong>Por construir</strong></td><td><code>tools/docker/alpine/build.sh</code></td></tr>
-          <tr><td><code>alpine-rootfs-flat/</code></td><td>Árbol del rootfs</td><td><strong>Por construir</strong></td><td><code>tools/docker/alpine/build.sh</code></td></tr>
+          <tr><td><code>alpine-fs.json</code></td><td>Índice del rootfs 9p</td><td><strong>Por construir</strong></td><td><code>npm run wasm:rootfs:build</code></td></tr>
+          <tr><td><code>alpine-rootfs-flat/</code></td><td>Árbol del rootfs</td><td><strong>Por construir</strong></td><td><code>npm run wasm:rootfs:build</code></td></tr>
           <tr><td><code>alpine-state.bin.zst</code></td><td>Instantánea pre-arrancada (opcional)</td><td>Opcional</td><td><code>tools/docker/alpine/build-state.js</code></td></tr>
         </tbody>
       </table>
 
-      <p>Construcción del rootfs (requiere Docker en marcha):</p>
-      <pre># 1) Motor + BIOS: ya incluidos en /wasm/v86/ (no hace falta descargar nada)
-#    Reproducible con:  node scripts/fetch-wasm-assets.mjs
+      <p>Construcción del rootfs (requiere Docker, git y Python 3):</p>
+      <pre># 1) Motor + BIOS: ya incluidos en /wasm/v86/ (reproducible con npm run wasm:assets)
 
-# 2) Rootfs de Alpine (9p) desde el repo de v86
-git clone --depth 1 https://github.com/copy/v86.git /tmp/v86
-cd /tmp/v86/tools/docker/alpine
-./build.sh          # -> images/alpine-fs.json + images/alpine-rootfs-flat/
-# ./build-state.js  # -> images/alpine-state.bin.zst  (opcional, arranque instantáneo)
+# 2) Rootfs de Alpine + escritorio i3 (docker/alpine-i3/Dockerfile)
+npm run wasm:rootfs:build
+#   -> public/wasm/v86/alpine-fs.json + alpine-rootfs-flat/
+#   --with-node  incluye node (~46 MB más)
+#   --no-trim    conserva System.map, config y /var/cache
+#   --zstd       comprime los .bin (requiere el módulo zstandard)
 
-# 3) Copiar a este directorio
-cp /tmp/v86/images/alpine-fs.json        ./
-cp -r /tmp/v86/images/alpine-rootfs-flat ./
-# cp /tmp/v86/images/alpine-state.bin.zst ./   # opcional</pre>
+# Alternativa sin escritorio: tools/docker/alpine/build.sh del repo copy/v86</pre>
 
       <p>
         Servidor: sirve <code>.wasm</code> con <code>Content-Type: application/wasm</code> y
         cachea los assets con <code>Cache-Control: max-age=86400</code>. No se requieren cabeceras
         <code>COOP</code>/<code>COEP</code> en este modo (sin Web Worker con memoria compartida).
+      </p>
+
+      <p>
+        <strong>Producción:</strong> el rootfs puede servirse desde un CDN o un release sin
+        versionarlo aquí. Define <code>DEFAULT_ROOTFS_BASE</code> en esta página o pásalo en la URL
+        con <code>?rootfs=https://…/</code> (el CDN debe permitir <code>CORS</code>). Para traerlo a
+        esta carpeta en local o CI:
+        <code>node scripts/fetch-alpine-rootfs.mjs --base=&lt;url&gt;</code>.
       </p>
     </section>
   </main>
@@ -134,33 +161,175 @@ cp -r /tmp/v86/images/alpine-rootfs-flat ./
   'use strict';
 
   // --- Configuración -----------------------------------------------
-  var BASE = './'; // esta carpeta = /wasm/v86/
-  var REQUIRED = ['libv86.js', 'v86.wasm', 'seabios.bin', 'vgabios.bin', 'alpine-fs.json'];
+  // Motor + BIOS: SIEMPRE locales (versionados en este mismo directorio).
+  var ENGINE_BASE = './'; // esta carpeta = /wasm/v86/
+
+  // Rootfs de Alpine (índice 9p `alpine-fs.json` + árbol `alpine-rootfs-flat/`
+  // + snapshot opcional). Vacío = local (./). En producción apunta a un CDN o
+  // release que aloje el rootfs, p. ej. jsDelivr sobre un repo con el árbol:
+  //   var DEFAULT_ROOTFS_BASE = 'https://cdn.jsdelivr.net/gh/usuario/maclovia-rootfs@v1/';
+  // Sobrescribible en runtime con  ?rootfs=https://…/
+  var DEFAULT_ROOTFS_BASE = '';
+
+  // Memoria del guest en MiB. 0 = automática según el dispositivo.
+  // Sobrescribible en runtime con  ?mem=256
+  var DEFAULT_MEMORY_MB = 0;
+
+  // Escritorio i3: con ?gui=1 se usan 1024 MB (512 en equipos limitados) y se
+  // envía `startx` automáticamente al detectar el prompt. Sin ?gui se arranca
+  // en consola y el escritorio se abre a demanda (carga diferida por 9p).
+
+  var ENGINE_FILES = ['libv86.js', 'v86.wasm', 'seabios.bin', 'vgabios.bin'];
+  var ROOTFS_INDEX = 'alpine-fs.json';
+  var ROOTFS_TREE = 'alpine-rootfs-flat/';
   var OPTIONAL_STATE = 'alpine-state.bin.zst';
+  var MEMORY_STEPS = [128, 256, 512, 1024];
   var CMDLINE =
     'rw root=host9p rootfstype=9p rootflags=trans=virtio,cache=loose modules=virtio_pci tsc=reliable';
+
+  var ROOTFS_BASE = resolveRootfsBase();
 
   // --- DOM ----------------------------------------------------------
   var statusEl   = document.getElementById('status');
   var dotEl      = document.getElementById('status-dot');
   var stageEl    = document.getElementById('screen_container');
   var setupEl    = document.getElementById('setup');
+  var noticeEl   = document.getElementById('notice');
+  var noticeText = document.getElementById('notice-text');
+  var guiBtn     = document.getElementById('gui');
 
   function setStatus(text, kind) {
     statusEl.textContent = text;
     dotEl.className = 'dot' + (kind ? ' ' + kind : '');
   }
 
-  // Los servidores de desarrollo (p. ej. Vite) devuelven el index.html (200 con
-  // Content-Type text/html) en rutas inexistentes por el SPA fallback. Hay que
-  // descartar ese caso para no dar por presente un asset que en realidad falta.
-  function assetOk(url) {
-    return fetch(url, { method: 'HEAD', cache: 'no-store' })
-      .then(function (r) {
-        var ct = (r.headers.get('content-type') || '').toLowerCase();
-        return r.ok && ct.indexOf('text/html') === -1;
-      })
+  function setNotice(text) {
+    if (!noticeEl) return;
+    noticeEl.hidden = false;
+    if (noticeText && text) noticeText.textContent = text;
+  }
+
+  // --- Parámetros de URL y perfil del dispositivo -------------------
+  function queryParam(name) {
+    var m = new RegExp('[?&]' + name + '=([^&]+)').exec(location.search || '');
+    if (!m) return '';
+    try { return decodeURIComponent(m[1]); } catch (e) { return m[1]; }
+  }
+
+  // Conserva el resto de parámetros (rootfs, mem) al añadir/forzar uno.
+  function withParam(name, value) {
+    try {
+      var url = new URL(location.href);
+      url.searchParams.set(name, value);
+      return url.pathname + url.search + url.hash;
+    } catch (e) {
+      return location.pathname + '?' + name + '=' + encodeURIComponent(value);
+    }
+  }
+
+  function resolveRootfsBase() {
+    var base = queryParam('rootfs') || DEFAULT_ROOTFS_BASE;
+    if (!base) return './';
+    return base.charAt(base.length - 1) === '/' ? base : base + '/';
+  }
+
+  function clampMemory(mb) {
+    var best = MEMORY_STEPS[0];
+    for (var i = 0; i < MEMORY_STEPS.length; i++) {
+      if (Math.abs(MEMORY_STEPS[i] - mb) < Math.abs(best - mb)) best = MEMORY_STEPS[i];
+    }
+    return best;
+  }
+
+  function deviceProfile() {
+    var dm = navigator.deviceMemory || 0;          // GB aprox. (Chromium)
+    var hc = navigator.hardwareConcurrency || 0;   // núcleos lógicos
+    var coarse = !!(window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+    var mobileUA = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || '');
+    var mobile = coarse || mobileUA;
+    var constrained = mobile || (dm > 0 && dm <= 4) || (hc > 0 && hc <= 2);
+    return { mobile: mobile, constrained: constrained, deviceMemory: dm, cores: hc };
+  }
+
+  function resolveMemoryMb(profile, guiMode) {
+    var q = parseInt(queryParam('mem'), 10);
+    if (q) return clampMemory(q);
+    if (DEFAULT_MEMORY_MB) return clampMemory(DEFAULT_MEMORY_MB);
+    // i3 + Xorg necesitan más RAM que una consola; en equipos limitados, 512.
+    if (guiMode) return profile.constrained ? 512 : 1024;
+    return profile.constrained ? 256 : 512;
+  }
+
+  function applyNotice(profile, memoryMb, guiMode) {
+    var parts = [
+      'Alpine corre emulado (v86, x86→WASM): más lento que nativo y el primer arranque descarga el rootfs.',
+      'RAM emulada: ' + memoryMb + ' MB.'
+    ];
+    if (guiMode) parts.push('Escritorio i3: se abrirá al detectar el prompt.');
+    else parts.push('Escribe startx (o pulsa «i3») para abrir el escritorio i3.');
+    if (profile.mobile) parts.push('En móvil puede consumir bastante memoria y batería.');
+    else if (profile.constrained) parts.push('Dispositivo con recursos limitados: se usó el perfil ligero.');
+    setNotice(parts.join(' '));
+  }
+
+  // --- Comprobación de assets --------------------------------------
+  // Un servidor de desarrollo puede devolver el index.html (200 text/html) en
+  // rutas inexistentes por el SPA fallback. Hay que descartarlo para no dar por
+  // presente un asset que en realidad falta.
+  function looksLikeHtml(res) {
+    return (res.headers.get('content-type') || '').toLowerCase().indexOf('text/html') !== -1;
+  }
+
+  function rangeProbe(url) {
+    return fetch(url, { headers: { Range: 'bytes=0-0' }, cache: 'no-store' })
+      .then(function (r) { return r.ok && !looksLikeHtml(r); })
       .catch(function () { return false; });
+  }
+
+  // Comprueba la existencia de un asset. Si el servidor no soporta HEAD
+  // (405/501) o HEAD falla a nivel de red, reintenta con un GET parcial.
+  function assetOk(url) {
+    return fetch(url, { method: 'HEAD', cache: 'no-store' }).then(function (r) {
+      if (r.ok && !looksLikeHtml(r)) return true;
+      if (r.status === 405 || r.status === 501) return rangeProbe(url);
+      return false;
+    }).catch(function () { return rangeProbe(url); });
+  }
+
+  // Recorre el árbol 9p (`fsroot`) y devuelve hasta `limit` archivos regulares.
+  function isNode(x) { return Array.isArray(x) && typeof x[0] === 'string' && typeof x[1] === 'number'; }
+  function collectFiles(node, out, limit) {
+    if (out.length >= limit || !Array.isArray(node)) return out;
+    if (isNode(node)) {
+      var child = node[6];
+      if (typeof child === 'string') { if (/\.bin$/.test(child)) out.push(child); }
+      else if (Array.isArray(child)) collectFiles(child, out, limit);
+    } else {
+      for (var i = 0; i < node.length && out.length < limit; i++) collectFiles(node[i], out, limit);
+    }
+    return out;
+  }
+
+  // Valida el índice (JSON real, no SPA fallback) y sondea algunos archivos del
+  // árbol para confirmar que el rootfs está realmente servido.
+  function validateRootfs() {
+    return fetch(ROOTFS_BASE + ROOTFS_INDEX, { cache: 'no-store' })
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        if (looksLikeHtml(r)) throw new Error('servido como text/html (SPA fallback)');
+        return r.json();
+      })
+      .then(function (idx) {
+        var probes = collectFiles(idx && idx.fsroot, [], 3);
+        if (!probes.length) throw new Error('índice sin archivos');
+        return Promise.all(probes.map(function (f) { return assetOk(ROOTFS_BASE + ROOTFS_TREE + f); }))
+          .then(function (oks) {
+            return oks.some(Boolean) ? { ok: true } : { ok: false, missing: [ROOTFS_TREE + '(árbol no accesible)'] };
+          });
+      })
+      .catch(function (err) {
+        return { ok: false, missing: [ROOTFS_INDEX], reason: String((err && err.message) || err) };
+      });
   }
 
   function loadScript(src) {
@@ -173,28 +342,41 @@ cp -r /tmp/v86/images/alpine-rootfs-flat ./
     });
   }
 
-  function showSetup(missing) {
-    setStatus('Binarios pendientes', 'warn');
+  function showSetup(missing, reason) {
+    setStatus(reason ? 'Rootfs no disponible' : 'Binarios pendientes', 'warn');
     stageEl.hidden = true;
     setupEl.hidden = false;
     if (missing && missing.length) {
       document.getElementById('missing-list').textContent = missing.join(', ');
       document.getElementById('missing-wrap').hidden = false;
     }
+    if (reason) {
+      var rEl = document.getElementById('missing-reason');
+      if (rEl) { rEl.textContent = 'Detalle: ' + reason; rEl.hidden = false; }
+    }
   }
 
   async function boot() {
+    var guiMode = queryParam('gui') === '1';
+    var profile = deviceProfile();
+    var memoryMb = resolveMemoryMb(profile, guiMode);
+    applyNotice(profile, memoryMb, guiMode);
+
     setStatus('Comprobando binarios…', 'busy');
 
-    var checks = await Promise.all(REQUIRED.map(function (f) {
-      return assetOk(BASE + f).then(function (ok) { return ok ? null : f; });
+    var engineChecks = await Promise.all(ENGINE_FILES.map(function (f) {
+      return assetOk(ENGINE_BASE + f).then(function (ok) { return ok ? null : f; });
     }));
-    var missing = checks.filter(Boolean);
+    var missing = engineChecks.filter(Boolean);
     if (missing.length) { showSetup(missing); return; }
+
+    setStatus('Verificando rootfs de Alpine…', 'busy');
+    var rootfs = await validateRootfs();
+    if (!rootfs.ok) { showSetup(rootfs.missing, rootfs.reason); return; }
 
     setStatus('Cargando motor v86…', 'busy');
     try {
-      await loadScript(BASE + 'libv86.js');
+      await loadScript(ENGINE_BASE + 'libv86.js');
     } catch (err) {
       showSetup(['libv86.js']);
       return;
@@ -204,25 +386,28 @@ cp -r /tmp/v86/images/alpine-rootfs-flat ./
       return;
     }
 
-    var hasState = await assetOk(BASE + OPTIONAL_STATE);
+    var hasState = await assetOk(ROOTFS_BASE + OPTIONAL_STATE);
 
     var config = {
-      wasm_path: BASE + 'v86.wasm',
-      memory_size: 512 * 1024 * 1024,
+      wasm_path: ENGINE_BASE + 'v86.wasm',
+      memory_size: memoryMb * 1024 * 1024,
       vga_memory_size: 8 * 1024 * 1024,
       screen_container: stageEl,          // ← "ver el sistema operativo" (framebuffer VGA)
-      bios:     { url: BASE + 'seabios.bin' },
-      vga_bios: { url: BASE + 'vgabios.bin' },
+      bios:     { url: ENGINE_BASE + 'seabios.bin' },
+      vga_bios: { url: ENGINE_BASE + 'vgabios.bin' },
       filesystem: {
-        baseurl: BASE + 'alpine-rootfs-flat', // árbol del rootfs
-        basefs:  BASE + 'alpine-fs.json'      // índice del filesystem 9p
+        baseurl: ROOTFS_BASE + 'alpine-rootfs-flat', // árbol del rootfs
+        basefs:  ROOTFS_BASE + ROOTFS_INDEX          // índice del filesystem 9p
       },
       bzimage_initrd_from_filesystem: true,   // kernel+initrd salen del propio 9p
       disable_speaker: true,                  // sin audio: evita el aviso de AudioContext
       cmdline: CMDLINE,
       autostart: true
     };
-    if (hasState) config.initial_state = { url: BASE + OPTIONAL_STATE };
+    if (hasState) config.initial_state = { url: ROOTFS_BASE + OPTIONAL_STATE };
+
+    // Referencia de depuración: perfil resuelto y bases efectivas.
+    window.__alpine = { profile: profile, memoryMb: memoryMb, engineBase: ENGINE_BASE, rootfsBase: ROOTFS_BASE };
 
     setStatus('Arrancando Alpine…', 'busy');
     try {
@@ -231,17 +416,81 @@ cp -r /tmp/v86/images/alpine-rootfs-flat ./
 
       var ready = false;
       var bootTimer = setTimeout(function () {
-        if (!ready) {
-          setStatus('Arrancando Alpine… (la primera vez descarga el rootfs)', 'busy');
-        }
+        if (!ready) setStatus('Arrancando Alpine… (la primera vez descarga el rootfs)', 'busy');
       }, 8000);
+      var stallTimer = setTimeout(function () {
+        if (!ready) setNotice('Tarda más de lo esperado. El primer arranque descarga decenas de MB del rootfs; si persiste, revisa la consola del navegador.');
+      }, 45000);
 
       emulator.add_listener('emulator-ready', function () {
         ready = true;
         clearTimeout(bootTimer);
-        setStatus('Alpine Linux en ejecución', 'ok');
+        clearTimeout(stallTimer);
+        setStatus('Arrancando Alpine (kernel + initramfs)…', 'busy');
         stageEl.focus();
       });
+
+      // --- Escritorio i3 ------------------------------------------
+      // El rootfs arranca en consola; `startx` (bajo demanda) descarga X/i3 por
+      // 9p. Con bochs-drm la consola del guest es un framebuffer, así que la
+      // señal fiable del prompt y de i3 llega por la consola serie (ttyS0).
+      var promptReady = false;
+      var wantGui = guiMode;
+      var guiStarted = false;
+      var i3Ready = false;
+      var serialBuf = '';
+
+      function markPromptReady() {
+        if (promptReady) return;
+        promptReady = true;
+        if (!guiStarted) setStatus('Alpine Linux en ejecución — escribe startx para i3', 'ok');
+        if (wantGui) setTimeout(openGui, 250);
+      }
+
+      function openGui() {
+        if (!emulator || guiStarted) return;
+        if (!promptReady) {
+          wantGui = true;
+          setStatus('Esperando al prompt de Alpine…', 'busy');
+          return;
+        }
+        guiStarted = true;
+        emulator.keyboard_send_text('startx\n');
+        setStatus('Abriendo i3…', 'busy');
+        setNotice('i3: Mod4+Enter abre xterm · Mod4+Shift+f abre mc (archivos) · Mod4+d abre dmenu · Mod4+Shift+q cierra la ventana · Mod4+Shift+e sale.');
+        stageEl.focus();
+      }
+
+      if (guiBtn) {
+        guiBtn.addEventListener('click', function () {
+          if (!emulator) { location.href = withParam('gui', '1'); return; }
+          openGui();
+        });
+      }
+
+      // El guest escribe el prompt (`localhost:~#`) e `I3_READY` en ttyS0.
+      emulator.add_listener('serial0-output-byte', function (byte) {
+        serialBuf += String.fromCharCode(byte & 0xff);
+        if (serialBuf.length > 8192) serialBuf = serialBuf.slice(-4096);
+        if (!promptReady && serialBuf.indexOf(':~#') !== -1) markPromptReady();
+        if (guiStarted && !i3Ready && serialBuf.indexOf('I3_READY') !== -1) {
+          i3Ready = true;
+          setStatus('i3 en ejecución', 'ok');
+        }
+      });
+
+      emulator.add_listener('screen-set-size', function (args) {
+        if (args && args[2] > 0 && !promptReady) {
+          setStatus('Consola framebuffer ' + args[0] + 'x' + args[1] + ' — esperando el prompt…', 'busy');
+        }
+      });
+
+      // Respaldo por pantalla de texto (por si el guest no usara framebuffer).
+      try {
+        emulator.wait_until_vga_screen_contains(/:~#\s*$/, { timeout_msec: 60000 })
+          .then(function (ok) { if (ok) markPromptReady(); })
+          .catch(function () {});
+      } catch (e) { /* consola gráfica: basta con la serie */ }
 
       emulator.add_listener('download-progress', function (e) {
         if (!e || !e.total) return;
@@ -252,11 +501,13 @@ cp -r /tmp/v86/images/alpine-rootfs-flat ./
       stageEl.addEventListener('click', function () { stageEl.focus(); });
     } catch (err) {
       console.error('[v86] fallo al arrancar:', err);
-      showSetup(null);
+      showSetup(null, String((err && err.message) || err));
     }
   }
 
   document.getElementById('reload').addEventListener('click', function () { location.reload(); });
+  var noticeClose = document.getElementById('notice-close');
+  if (noticeClose) noticeClose.addEventListener('click', function () { noticeEl.hidden = true; });
   boot();
 })();
 </script>

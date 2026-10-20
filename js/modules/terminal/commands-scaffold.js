@@ -32,7 +32,7 @@ export function resolveCliAlias(trimmed, { log, raw }) {
       cmd = 'maclovia-bm';
       args = ['init', ...args.slice(2)];
     } else if (args[0] === 'run') {
-      const rest = args.slice(2);
+      let rest = args.slice(2);
       if (rest[0] === '--') rest = rest.slice(1);
       const sub = (rest[0] || '').toLowerCase();
       if (sub === 'init') return { cmd: 'init', args: rest.slice(1) };

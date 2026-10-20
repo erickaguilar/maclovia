@@ -1,0 +1,114 @@
+# ✦ Maclovia — configuración de i3 sobre v86
+#
+# Completa y autocontenida: solo usa xterm, dmenu e i3status (todos instalados).
+# Mod4 = tecla Windows/Super.
+
+set $mod Mod4
+set $term xterm
+
+# Tipografía (font-dejavu)
+font pango:DejaVu Sans Mono 9
+
+# Mover/redimensionar ventanas flotantes con Mod4 + clic
+floating_modifier $mod
+
+# --- Aplicaciones -------------------------------------------------
+bindsym $mod+Return      exec $term
+bindsym $mod+Shift+Return exec $term
+bindsym $mod+d           exec --no-startup-id dmenu_run
+bindsym $mod+Shift+q     kill
+# Explorador de archivos (Midnight Commander) y consola con tmux
+bindsym $mod+Shift+f     exec $term -e mc
+bindsym $mod+Shift+t     exec $term -e tmux new -A -s main
+
+# --- Foco ---------------------------------------------------------
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+bindsym $mod+h     focus left
+bindsym $mod+j     focus down
+bindsym $mod+k     focus up
+bindsym $mod+l     focus right
+
+# --- Mover ventana ------------------------------------------------
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+h     move left
+bindsym $mod+Shift+j     move down
+bindsym $mod+Shift+k     move up
+bindsym $mod+Shift+l     move right
+
+# --- Workspaces ---------------------------------------------------
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+
+# --- Diseño -------------------------------------------------------
+bindsym $mod+b            split h
+bindsym $mod+v            split v
+bindsym $mod+f            fullscreen toggle
+bindsym $mod+s            layout stacking
+bindsym $mod+w            layout tabbed
+bindsym $mod+e            layout toggle split
+bindsym $mod+Shift+space  floating toggle
+bindsym $mod+space        focus mode_toggle
+bindsym $mod+a            focus parent
+
+# --- i3 -----------------------------------------------------------
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec i3-msg exit
+
+# --- Redimensionar (Mod4 + r) ------------------------------------
+mode "resize" {
+    bindsym Left  resize shrink width 10 px or 10 ppt
+    bindsym Down  resize grow height 10 px or 10 ppt
+    bindsym Up    resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# --- Barra --------------------------------------------------------
+bar {
+    status_command i3status
+    position top
+    tray_output none
+    colors {
+        background          #0a0a0f
+        statusline          #e8e8e8
+        separator           #1f1f1f
+        focused_workspace   #E4007C #E4007C #070707
+        active_workspace    #1f1f1f #1f1f1f #e8e8e8
+        inactive_workspace  #0a0a0f #0a0a0f #9aa0a6
+        urgent_workspace    #f43f5e #f43f5e #070707
+    }
+}
+
+# Fondo sólido (sin dependencias de imágenes)
+exec --no-startup-id xsetroot -solid "#070707"
+
+# Marca en la consola serie que i3 está en marcha (la usa la página y las pruebas)
+exec --no-startup-id /bin/sh -c "printf '\nI3_READY\n' > /dev/ttyS0 2>/dev/null || true"
