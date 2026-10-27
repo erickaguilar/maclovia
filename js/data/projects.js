@@ -242,5 +242,110 @@ export const PROJECTS = [
         '专为离散搜索启发式算法与组合优化研究打造。'
       ]
     }
+  },
+  {
+    id: 'generador-historias',
+    name: 'Generador de Historias Interactivas con IA',
+    nameZh: 'AI 互动故事生成器与多模态叙事工作台',
+    repoName: 'erickaguilar/generador_historias',
+    category: 'belleza',
+    badgeCategoryEs: 'BELLEZA MALDITA · IA GENERATIVA & PWA',
+    badgeCategoryEn: 'BELLEZA MALDITA · GENERATIVE AI & PWA',
+    badgeCategoryZh: 'BELLEZA MALDITA · 生成式 AI 与 PWA',
+    taglineEs: 'Taller interactivo de narrativa ramificada impulsado por Gemini 2.5 Flash, Imagen 3, síntesis por voz y persistencia Dexie.',
+    taglineEn: 'Interactive branching storytelling studio powered by Gemini 2.5 Flash, Imagen 3, Web Speech API, and offline Dexie DB.',
+    taglineZh: '由 Gemini 2.5 Flash 与 Imagen 3 驱动的分支互动叙事工作台，支持原生语音合成与 Dexie 离线存储。',
+    descriptionEs: 'Aplicación web progresiva (PWA) colaborativa para coescribir historias literarias interactivas con IA multimodal. Incorpora libro de lore (world-building) persistente, generación de arte visual de escenas con Imagen 3, exportación editorial a PDF maquetado con jsPDF y almacenamiento seguro en cliente sobre IndexedDB (Dexie.js).',
+    descriptionEn: 'Collaborative Progressive Web App (PWA) to co-write interactive branching narratives with multimodal AI. Features persistent lore book world-building, high-fidelity scene illustration with Imagen 3, publication-ready PDF exports with jsPDF, and zero-cloud client storage via IndexedDB (Dexie.js).',
+    descriptionZh: '基于多模态 AI 协同创作分支互动小说的渐进式 Web 应用 (PWA)。内置世界观设定集（Lore Book）、Imagen 3 概念插画渲染、基于 jsPDF 的专业电子书排版导出，以及依托 IndexedDB (Dexie.js) 的纯离线数据安全管理。',
+    primaryLanguage: 'TypeScript / React',
+    techStack: ['React 19', 'TypeScript', 'Gemini 2.5 Flash', 'Imagen 3', 'Dexie.js / IndexedDB', 'jsPDF', 'PWA Offline'],
+    githubUrl: 'https://github.com/erickaguilar/generador_historias',
+    demoUrl: 'https://generador-historias.vercel.app/',
+    cloneCmd: 'git clone https://github.com/erickaguilar/generador_historias.git',
+    architectureDetails: {
+      runtime: 'React 19 + TypeScript + Vite + Google GenAI SDK',
+      throughput: 'Gemini 2.5 Flash Streaming + Imagen 3 1024px',
+      quantizationOrType: 'Local-First Client / IndexedDB Store',
+      cliExample: 'git clone https://github.com/erickaguilar/generador_historias.git && npm install && npm run dev',
+      highlightsEs: [
+        'Generación de relatos ramificados colaborativos con Gemini 2.5 Flash e ilustración visual con Imagen 3.',
+        'Libro de Lore (world-building) persistente para coherencia narrativa, memoria de personajes y reglas de trama.',
+        'Arquitectura local-first con Dexie.js (IndexedDB): privacidad absoluta y funcionamiento sin base de datos externa.',
+        'Exportación editorial a PDF de alta fidelidad maquetada con carátulas e ilustraciones vía jsPDF.'
+      ],
+      highlightsEn: [
+        'Branching collaborative storytelling powered by Gemini 2.5 Flash and scene generation via Imagen 3.',
+        'Persistent Lore Book (world-building) preserving character continuity, narrative constraints, and plot twists.',
+        'Local-first client architecture using Dexie.js (IndexedDB) for privacy with zero external database dependencies.',
+        'High-fidelity digital book PDF exporting with custom cover layouts and generated illustrations via jsPDF.'
+      ],
+      highlightsZh: [
+        '基于 Gemini 2.5 Flash 与 Imagen 3 的多模态分支互动叙事与场景绘画引擎。',
+        '持久化设定集（Lore Book）技术，为生成流程注入世界观连续性与角色长程记忆。',
+        '基于 Dexie.js (IndexedDB) 的本地优先架构，零外部数据库依赖且全程保护用户隐私。',
+        '内置出版级 PDF 导出排版器，自动整合插画、封面与章节目录。'
+      ],
+      benchmarks: [
+        { label: 'Modelo LLM', value: 'Gemini 2.5', subtext: 'Google GenAI SDK' },
+        { label: 'Persistencia', value: 'IndexedDB', subtext: 'Dexie 4.0 Local-First' },
+        { label: 'Exportación', value: 'Vector PDF', subtext: 'jsPDF con carátulas' },
+        { label: 'Arquitectura', value: '100% PWA', subtext: 'Offline Service Worker' }
+      ]
+    }
+  },
+  {
+    id: 'mivit3',
+    name: 'miVIT3: Editor de Currículum Vitae WYSIWYG Estilo Word',
+    nameZh: 'miVIT3：Word 风格即时所见即所得简历编辑器',
+    repoName: 'erickaguilar/mivit3',
+    category: 'belleza',
+    badgeCategoryEs: 'BELLEZA MALDITA · PRODUCTIVITY & ATS',
+    badgeCategoryEn: 'BELLEZA MALDITA · PRODUCTIVITY & ATS',
+    badgeCategoryZh: 'BELLEZA MALDITA · 生产力工具与 ATS',
+    taglineEs: 'Editor interactivo de CV en tiempo real sobre lienzo A4 con ribbon toolbar estilo Word, 8 plantillas ATS y 100% Vanilla JS.',
+    taglineEn: 'Real-time interactive CV editor on A4 canvas featuring Microsoft Word ribbon toolbar, 8 ATS-ready templates, and pure Vanilla JS.',
+    taglineZh: '基于 A4 真实画布与 Word 功能区界面的即时简历编辑器，内置 8 款 ATS 优化模板，100% 原生 JavaScript 零重依赖。',
+    descriptionEs: 'Procesador de texto ligero y enfocado en privacidad para diseñar currículums profesionales en el navegador. Cuenta con ribbon toolbar estilo Office (fuentes, colores, alineación, listas y enlaces), lienzo A4 milimétrico con guías de corte y paginación en vivo, 8 plantillas intercambiables optimizadas para filtros ATS y exportación a PDF sin marcas de agua.',
+    descriptionEn: 'Lightweight, privacy-focused in-browser word processor for crafting professional resumes. Features an Office-style ribbon toolbar (fonts, colors, alignment, lists, links), millimeter-accurate A4 canvas with live pagination and page-break guides, 8 interchangeable ATS-optimized templates, and high-fidelity watermark-free PDF exports.',
+    descriptionZh: '注重隐私与轻量高效的专业简历排版文字处理器。配备 Office 风格的功能区工具栏（字体、色板、段落、列表、超链接），带有实时分页与截断参考线的毫米级 A4 纸张画布，内置 8 款通过 ATS 筛选优化的主题模板，支持无水印高保真矢量打印与 PDF 导出。',
+    primaryLanguage: 'JavaScript / CSS',
+    techStack: ['Vanilla JavaScript', 'CSS3 Modern Modules', 'WYSIWYG Engine', 'SVG Icons', 'PWA Offline', 'Print / PDF Engine'],
+    githubUrl: 'https://github.com/erickaguilar/mivit3',
+    demoUrl: 'https://mivit3.vercel.app/',
+    cloneCmd: 'git clone https://github.com/erickaguilar/mivit3.git',
+    architectureDetails: {
+      runtime: 'Pure Vanilla JavaScript ES Modules (Zero External Frameworks)',
+      throughput: 'WYSIWYG DOM updates < 4ms · Cero Latencia',
+      quantizationOrType: 'LocalStorage + JSON Backup System',
+      cliExample: 'git clone https://github.com/erickaguilar/mivit3.git && cd mivit3 && npx serve',
+      highlightsEs: [
+        'Editor WYSIWYG directo sobre lienzo A4 con ribbon toolbar estilo Microsoft Word/Google Docs.',
+        '8 plantillas profesionales (Tech Minimalista, Ejecutivo Harvard, Línea de Tiempo, Nordic Clean y Colección Alpha).',
+        'Motor de paginación geométrica y guías de corte visuales para evitar desbordes en impresión A4.',
+        'Auditor ATS integrado para optimización de palabras clave y formato compatible con software de reclutamiento.',
+        'Privacidad estricta: procesamiento 100% en el cliente sin servidores externos ni transmisión de datos.'
+      ],
+      highlightsEn: [
+        'Direct WYSIWYG inline editor on A4 paper canvas with Microsoft Word / Google Docs style ribbon bar.',
+        '8 professional themes (Tech Minimalist, Harvard Executive, Career Timeline, Nordic Clean, and Alpha collection).',
+        'Geometric page-break measurement system with visual cut guides preventing content overflow during print.',
+        'Integrated ATS keyword auditor ensuring recruiters and machine screening filters parse the CV flawlessly.',
+        'Strict zero-knowledge privacy: executes 100% inside client browser with zero data transmitted to servers.'
+      ],
+      highlightsZh: [
+        '所见即所得 A4 纸张排版引擎，还原微软 Word 与 Google Docs 功能区交互体验。',
+        '8 款精工级职业模板（科技极简、哈佛主管、职业时间线、北欧风与 Alpha 系列）。',
+        '几何分页测算系统与物理切线引导，杜绝跨页打印排版错位。',
+        '内置 ATS 关键字审计系统，确保企业招聘筛选系统精准解析。',
+        '严苛的零知识隐私：数据完全驻留浏览器本地存储，绝无云端泄露隐患。'
+      ],
+      benchmarks: [
+        { label: 'Dependencias', value: '0 bytes', subtext: 'Vanilla JS puro' },
+        { label: 'Plantillas ATS', value: '8 temas', subtext: 'Intercambiables al vuelo' },
+        { label: 'Lienzo', value: 'A4 Real', subtext: 'Paginación milimétrica' },
+        { label: 'Privacidad', value: '100% Local', subtext: 'Sin tracking ni backend' }
+      ]
+    }
   }
 ];
